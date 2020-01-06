@@ -1,0 +1,19 @@
+au revoir|
+stop|
+non|vous êtes bien négatif
+(.*)deriv(.*) ([^\?]*) = ([^\?]*)|alors vous apprenez l'analyse et vous voudriez dériver {2} = {3}
+un ([^\?]*) est un ([^\?]*)|hmm très pertinent, précisez la relation entre {0} et {1}
+([^\?]*) et ([^\?]*) sont (.*)|appronfondissez plus le lien entre {0} et {1}
+(.*) années (.*)| cela fait bien longtemps
+([^\?]*)|c'est un peu court
+(.*) je ne suis pas ([^\?]*)|pourquoi pensez-vous que vous n'êtes pas {1}
+(.*) suis ([^\?]*)|pourquoi pensez-vous que vous êtes {1}
+(.*) ne (.*)|vous en êtes sûr
+(.*) non (.*)|vous êtes très négatif
+(.*) vous (.*)|concentrez-vous sur le problème
+(.*) moi (.*)|Revenez s'il vous plait sur le problème
+(.*) je (.*)|Je comprends, cependant reformulez clairement votre demande
+(.*) j'ai (.*)|Vous avez, j'ai compris...
+([^\?]*) ([^\?]*) ([^\?]*)|hmmm
+(.*) ([^\?]*) = ([^\?]*)|on va donc essayer de dériver {1} = {2}
+(.*)|je ne vous suis pas très bien
