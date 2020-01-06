@@ -66,6 +66,8 @@ public class Main {
 		}
 		System.out.println("Au revoir");
 		sc.close();*/
+		
+		System.out.println(Expression.formuleToExpression("a+b*c^d-(e/f)"));
     }
 	static void afficher(Expression expr) {
 		Simplification simp = new Simplification();
