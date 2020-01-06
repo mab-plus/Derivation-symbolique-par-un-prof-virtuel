@@ -1,7 +1,9 @@
 au revoir|
 stop|
 non|vous êtes bien négatif
-(.*)deriv(.*) ([^\?]*) = ([^\?]*)|alors vous apprenez l'analyse et vous voudriez dériver {2} = {3}
+(.*)deriv(.*) ([^\?]*) = ([^\?]*)|alors vous apprenez l'analyse et vous voudriez dériver {3} = {4}
+deriv(.*) ([^\?]*)|alors vous apprenez l'analyse et vous voudriez dériver {2}
+(.*)deriv(.*) ([^\?]*)|alors vous apprenez l'analyse et vous voudriez dériver {2}
 un ([^\?]*) est un ([^\?]*)|hmm très pertinent, précisez la relation entre {0} et {1}
 ([^\?]*) et ([^\?]*) sont (.*)|appronfondissez plus le lien entre {0} et {1}
 (.*) années (.*)| cela fait bien longtemps

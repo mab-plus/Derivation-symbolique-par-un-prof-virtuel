@@ -4,6 +4,7 @@ import edu.projet.LeProf.*;
 import edu.projet.calcul.Derivation;
 import edu.projet.calcul.Simplification;
 import edu.projet.expressions.*;
+import edu.projet.fonctions.*;
 
 public class Main {
 	
@@ -47,10 +48,18 @@ public class Main {
 		afficher(d);
 		System.out.println("Dérivation :");
 		afficher(deriver(d, "x"));*/
-		//System.out.println(LeProf.reflet("I love you"));
-		//System.out.println(LeProf.analyse("je voudrais dériver la fonction f(x) = x^2 + 3"));*/
 		
-		   
+		String question = "je voudrais dériver la fonction f(x) = x^2 + 3";
+		String reponse = LeProf.analyse(question);
+		System.out.println("-------------------");
+		System.out.println("-------------------");
+		Expression q = Expression.formuleToExpression(reponse);
+		afficher(q);
+		afficher(deriver(q, "x"));
+		
+		/*afficher(new Puissance(new Variable("x"), 2));
+		afficher(deriver(new Puissance(new Variable("x"), 2), "x"));*/
+		
 		/*String reponse;  
 		Scanner sc = new Scanner(System.in);
 		System.out.println(">Bonjour, je suis Prof, prêt à vous aider à dériver.");
@@ -67,7 +76,7 @@ public class Main {
 		System.out.println("Au revoir");
 		sc.close();*/
 		
-		System.out.println(Expression.formuleToExpression("a+b*c^d-(e/f)"));
+		
     }
 	static void afficher(Expression expr) {
 		Simplification simp = new Simplification();

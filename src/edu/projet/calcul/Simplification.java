@@ -49,9 +49,9 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
         	   expr1 = pile.pop();      
         	   expr2 = pile.pop();
         	   
-        	   System.out.printf("operateur : %s\n", termes.get(i).getSymbole());
+        	   /*System.out.printf("operateur : %s\n", termes.get(i).getSymbole());
         	   System.out.printf("expr1 : %s\n", expr1.asString());
-        	   System.out.printf("expr2 : %s\n", expr2.asString());
+        	   System.out.printf("expr2 : %s\n", expr2.asString());*/
         	
                switch(termes.get(i).getSymbole()) { 
                    case "+": 
@@ -100,8 +100,8 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
        } 
        
        Expression resultat = pile.pop();
-       System.out.printf("pop = %s \n", resultat.asString());
-       System.out.println("-------------------");
+       /*System.out.printf("pop = %s \n", resultat.asString());
+       System.out.println("-------------------");*/
     	  
        return resultat;   
    }

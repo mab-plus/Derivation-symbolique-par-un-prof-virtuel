@@ -18,7 +18,7 @@ public class Derivation implements FormuleDerivation, DerivationVisitor<Expressi
 	
 	@Override
 	public Expression visit(Variable expr, String dx) {
-		if (expr.getSymbole() == dx)
+		if (expr.getSymbole().equals(dx))
 			return new Constante(1);
 		else 
 			return new Constante(0);

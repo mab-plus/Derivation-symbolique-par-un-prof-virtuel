@@ -2,6 +2,7 @@ package edu.projet.expressions;
 
 import java.util.Stack;
 
+import edu.projet.fonctions.*;
 import edu.projet.interfaces.Formule;
 
 public abstract class Expression implements Formule {
@@ -127,9 +128,9 @@ public abstract class Expression implements Formule {
     	  return -1;   
   }
   
-  // conversion formule donnée à LeProf en Expression:/
-  // inspiration https://www.geeksforgeeks.org/stack-set-2-infix-to-postfix/
-  public static String formuleToExpression(String frm) { 
+  //inspiration https://www.geeksforgeeks.org/stack-set-2-infix-to-postfix
+  //infix notation normale, postfix est la notation polonaise inversée qui servira à contruire l'Expression correspondante
+  private static String infixToPostfix(String frm) { 
 	   
 	  String[] termes = frm.toLowerCase().split("");
 	  String resultat = new String(""); 
@@ -177,6 +178,86 @@ public abstract class Expression implements Formule {
       
      return resultat; 
   }
+  
+  // conversion formule donnée à LeProf en Expression:/
+  public static Expression formuleToExpression(String formule) {
+	  Stack<Expression> pile = new Stack<Expression>(); 
+      Expression expr1, expr2; 
+      
+	  String[] termes = infixToPostfix(formule).toLowerCase().split("");
 
-
+      for (int i = 0; i < termes.length; i++) {
+   	   // si operande -> la pile 
+          if ( !isOperateur( termes[i] ) && !isFonction( termes[i] ) ) { 
+   	    
+        	  try {
+        		  pile.push(new Constante(Double.valueOf(termes[i]) ));
+        	  }
+        	  catch (Exception e) {
+      	        pile.push(new Variable(termes[i]));
+        	  }
+          }
+          // operateur + - * / ^
+          else if ( isOperateur( termes[i] ) ) { 
+       	   // Pop les deux operandes de l'operateur
+       	   expr1 = pile.pop();      
+       	   expr2 = pile.pop();
+       	   
+       	   System.out.printf("operateur : %s\n", termes[i]);
+       	   System.out.printf("expr1 : %s\n", expr1.asString());
+       	   System.out.printf("expr2 : %s\n", expr2.asString());
+       	
+              switch(termes[i]) { 
+                  case "+": 
+               	   pile.push(new Addition(expr2, expr1)); 
+                  break; 
+                    
+                  case "-": 
+               	   pile.push(new Soustraction(expr2, expr1)); 
+                  break; 
+                    
+                  case "*":           	   
+               	   pile.push(new Multiplication(expr2, expr1)); 
+                  break; 
+                    
+                  case "/": 
+               	   pile.push(new Division(expr2, expr1)); 
+                  break; 
+                  
+                  case "^": 
+               	   pile.push(new Puissance(expr2, expr1)); 
+                  break;
+            }
+              System.out.printf("RESULT : %s\n", pile.lastElement().asString());
+          }
+          // fonctions cos sin exp log etc...
+          else {
+       	   // Pop argment e la fonction
+       	   expr1 = pile.pop();
+       	   
+              switch(termes[i]) { 
+                  case "log": 
+               	   pile.push(new Log(expr1)); 
+                  break;
+                  case "exp": 
+               	   pile.push(new Exp(expr1)); 
+                  break;
+                  case "cos": 
+               	   pile.push(new Cos(expr1)); 
+                  break;
+                  case "sin": 
+               	   pile.push(new Sin(expr1)); 
+                  break;
+            } 
+              System.out.printf("RESULT : %s\n", pile.lastElement().asString());
+          }           
+      } 
+      
+      Expression resultat = pile.pop();
+      System.out.printf("pop = %s \n", resultat.asString());
+      System.out.println("-------------------");
+   	  
+      return resultat;   
+  }
+  
 }
