@@ -1,4 +1,4 @@
-package edu.projet.LeProf;
+package edu.projet.Prof;
 
 public enum Filtres {
 	

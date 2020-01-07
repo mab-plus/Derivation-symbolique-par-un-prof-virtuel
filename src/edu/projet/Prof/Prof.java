@@ -1,13 +1,17 @@
-package edu.projet.LeProf;
+package edu.projet.Prof;
 
 import java.text.Normalizer;
 import java.text.Normalizer.Form;
 import java.util.List;
+import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LeProf {
+import edu.projet.expressions.Expression;
+
+public class Prof {
 	
+	Stack<Expression> memoire = new Stack<Expression>(); 
 
 	public static String reflet(String phrase) {
 		

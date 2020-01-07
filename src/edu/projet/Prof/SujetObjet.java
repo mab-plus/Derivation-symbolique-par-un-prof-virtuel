@@ -1,4 +1,4 @@
-package edu.projet.LeProf;
+package edu.projet.Prof;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -13,7 +13,7 @@ public class SujetObjet {
 	
 	public static String sujetObjet (String terme) {
  
-		Path sujetObjet = FileSystems.getDefault().getPath("src/edu/projet/LeProf/sujetObjet");
+		Path sujetObjet = FileSystems.getDefault().getPath("src/edu/projet/Prof/sujetObjet");
 		
 		try (Stream<String> lines = Files.lines(sujetObjet)) {
 			

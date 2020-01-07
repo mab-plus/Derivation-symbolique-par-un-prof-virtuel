@@ -1,4 +1,4 @@
-package edu.projet.LeProf;
+package edu.projet.Prof;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -13,7 +13,7 @@ public class MathsBlaba {
 	
 	public static List< List<String> >  mathsBlaba () {
  
-		Path mathsBlabla = FileSystems.getDefault().getPath("src/edu/projet/LeProf/mathsBlabla");
+		Path mathsBlabla = FileSystems.getDefault().getPath("src/edu/projet/Prof/mathsBlabla");
 		
 		try (Stream<String> lines = Files.lines(mathsBlabla)) {
 			

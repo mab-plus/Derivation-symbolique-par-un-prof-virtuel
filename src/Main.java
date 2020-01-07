@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-import edu.projet.LeProf.*;
+import edu.projet.Prof.*;
 import edu.projet.calcul.Derivation;
 import edu.projet.calcul.Simplification;
 import edu.projet.expressions.*;
@@ -61,7 +61,6 @@ public class Main {
 		afficher(deriver(new Puissance(new Variable("x"), 2), "x"));*/
 		
 		String reponse, question;  
-		Expression e;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("> Bonjour, je suis Prof, prêt à vous aider à dériver.");
 		System.out.println("> Cependant, je n'ai pas une bonne vue, alors soyez aimable de noter l'expression à dériver");
@@ -69,7 +68,7 @@ public class Main {
 		  
 		while (sc.hasNextLine()) {
 			question = sc.nextLine();
-			reponse = LeProf.analyse(question); 
+			reponse = Prof.analyse(question); 
 			System.out.print("> " + reponse); 
 			if(question.equals("exit") || reponse.equals("exit")) {
 		          break;
