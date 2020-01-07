@@ -4,7 +4,6 @@ import edu.projet.Prof.*;
 import edu.projet.calcul.Derivation;
 import edu.projet.calcul.Simplification;
 import edu.projet.expressions.*;
-import edu.projet.fonctions.*;
 
 public class Main {
 	
