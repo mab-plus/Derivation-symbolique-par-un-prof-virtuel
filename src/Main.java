@@ -9,6 +9,7 @@ public class Main {
 	
 	public static void main(String[] args) {
             
+		
 		/*Constante zero = new Constante(0);
 		Constante un = new Constante(1); 
 		Constante deux = new Constante(2);
