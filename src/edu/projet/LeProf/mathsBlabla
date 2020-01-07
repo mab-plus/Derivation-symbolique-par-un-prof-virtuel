@@ -1,6 +1,7 @@
 au revoir|
 stop|
 non|vous êtes bien négatif
+([a-zA-Z]\s*\([a-zA-Z]\))\s*=\s*([a-zA-Z0-9+\-*\/^\(\)\s*]*)|Au moins, vous savez ce que vous voulez, dériver {1}={2} 
 (.*)deriv(.*) ([^\?]*) = ([^\?]*)|alors vous apprenez l'analyse et vous voudriez dériver {3} = {4}
 deriv(.*) ([^\?]*)|alors vous apprenez l'analyse et vous voudriez dériver {2}
 (.*)deriv(.*) ([^\?]*)|alors vous apprenez l'analyse et vous voudriez dériver {2}

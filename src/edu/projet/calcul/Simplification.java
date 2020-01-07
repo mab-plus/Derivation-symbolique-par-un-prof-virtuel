@@ -74,7 +74,7 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
                 	   pile.push(new Puissance(expr2, expr1).accept(this)); 
                    break;
              }
-               System.out.printf("RESULT : %s\n", pile.lastElement().asString());
+               //System.out.printf("RESULT : %s\n", pile.lastElement().asString());
            }
            // fonctions cos sin exp log etc...
            else {
@@ -95,7 +95,7 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
                 	   pile.push(new Sin(expr1.accept(this))); 
                    break;
              } 
-               System.out.printf("RESULT : %s\n", pile.lastElement().asString());
+               //System.out.printf("RESULT : %s\n", pile.lastElement().asString());
            }           
        } 
        
@@ -109,7 +109,7 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
 	@Override
 	public Expression simplifier(Expression expression) {
 		
-		System.out.printf("expression = %s \n", expression.asString());
+		//System.out.printf("expression = %s \n", expression.asString());
 		List<Expression> termesDecomposition = new ArrayList<>();
 		
 		this.deCompose(termesDecomposition, expression);

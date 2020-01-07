@@ -49,40 +49,42 @@ public class Main {
 		System.out.println("Dérivation :");
 		afficher(deriver(d, "x"));*/
 		
-		String question = "je voudrais dériver la fonction f(x) = x^2 + 3";
+		/*String question = "je voudrais dériver la fonction f(x) = x^2 + 3";
 		String reponse = LeProf.analyse(question);
 		System.out.println("-------------------");
 		System.out.println("-------------------");
 		Expression q = Expression.formuleToExpression(reponse);
 		afficher(q);
-		afficher(deriver(q, "x"));
+		afficher(deriver(q, "x"));*/
 		
 		/*afficher(new Puissance(new Variable("x"), 2));
 		afficher(deriver(new Puissance(new Variable("x"), 2), "x"));*/
 		
-		/*String reponse;  
+		String reponse;  
+		Expression e;
 		Scanner sc = new Scanner(System.in);
-		System.out.println(">Bonjour, je suis Prof, prêt à vous aider à dériver.");
-		    
+		System.out.println("> Bonjour, je suis Prof, prêt à vous aider à dériver.");
+		System.out.println("> Cependant, je n'ai pas une bonne vue, alors soyez aimable de noter l'expression à dériver");
+		System.out.println("> entre guillemets et la varible de dérivation entre parenthèses...");    
 		  
 		while (sc.hasNextLine()) {
 			reponse = LeProf.analyse(sc.nextLine()); 
-			System.out.println(">" + reponse);
+			e = Expression.formuleToExpression(reponse);
+			System.out.print("> " + reponse + " : " );  afficher(e);
 			if(reponse.equals("exit")) {
 		          break;
 		      
 			}
 		}
 		System.out.println("Au revoir");
-		sc.close();*/
+		sc.close();
 		
 		
     }
 	static void afficher(Expression expr) {
 		Simplification simp = new Simplification();
 		
-		System.out.printf("Expression : %s\n", expr.asString());
-		System.out.printf("Sortie simplifiée : %s\n", simp.simplifier(expr).asString());
+		System.out.println(simp.simplifier(expr).asString());
 	}
 	
 	static Expression deriver(Expression expr, String dx) {

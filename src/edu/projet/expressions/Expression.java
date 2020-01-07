@@ -131,13 +131,13 @@ public abstract class Expression implements Formule {
   //inspiration https://www.geeksforgeeks.org/stack-set-2-infix-to-postfix
   //infix notation normale, postfix est la notation polonaise inversée qui servira à contruire l'Expression correspondante
   private static String infixToPostfix(String frm) { 
-	   
+	  
 	  String[] termes = frm.toLowerCase().split("");
 	  String resultat = new String(""); 
 	  Stack<String> pile = new Stack<>(); 
        
      for (int i = 0; i < termes.length; ++i) {
-    	   String terme =termes[i];
+    	   String terme =termes[i].trim();
            
            if (!isOperateur(terme) && !terme.equals("(") && !terme.equals(")"))
                resultat += terme; 
@@ -181,6 +181,7 @@ public abstract class Expression implements Formule {
   
   // conversion formule donnée à LeProf en Expression:/
   public static Expression formuleToExpression(String formule) {
+	  System.out.println("infixToPostfix(formule) = " + infixToPostfix(formule));
 	  Stack<Expression> pile = new Stack<Expression>(); 
       Expression expr1, expr2; 
       
