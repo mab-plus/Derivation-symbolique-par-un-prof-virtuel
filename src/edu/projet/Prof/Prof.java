@@ -29,7 +29,6 @@ public class Prof {
 			Simplification simp = new Simplification();
 			Derivation df = new Derivation();
 			
-			
 			String fn = Prof.getMemoire().pop();
 			String dx = Prof.getMemoire().pop();
 			String f = Prof.getMemoire().pop();
@@ -50,25 +49,25 @@ public class Prof {
 		question = deAccentuer(question);
 		matchEquation(question);
 		
-		System.out.println("phrase = " + question);
+		System.out.println("***** phrase = " + question);
 		
 	    for(int i = 0; i < mathsBlaba.size(); i++) {
 	    	regex = deAccentuer(mathsBlaba.get(i).get(0));
 	    	regex = Filtres.regex(regex);
 	    	
-	    	System.out.println("filtre = " + regex);
+	    	System.out.println("***** filtre = " + regex);
 	    	matcher = match(regex, question);
 	    	
 	    	if (matcher.find() ) {
 				reponse = mathsBlaba.get(i).get( (int) (Math.random() * (mathsBlaba.get(i).size() - 1) + 1));
 	    		
 	            if (matcher.groupCount() == 0) {
-		            System.out.printf("Group Zero: %s\n", matcher.group());
+		            System.out.printf("***** Groupe Zero: %s\n", matcher.group());
 	    			return match("\\{1\\}", reponse).replaceAll( reflet(matcher.group()) );
 	            }
 	    		else {   
 					for (int j = 1; j <= matcher.groupCount(); j++) {
-						System.out.printf("Group %d/%d: %s\n", j, matcher.groupCount(), matcher.group(j ));
+						System.out.printf("***** Groupe %d/%d: %s\n", j, matcher.groupCount(), matcher.group(j ));
 						reponse = match("\\{" + Integer.toString(j) + "\\}", reponse).replaceAll( reflet(matcher.group(j)) );
 					}
 					return reponse;
@@ -106,11 +105,11 @@ public class Prof {
 		String regex = Filtres.$eq.regex;
 		Matcher matcher = Pattern.compile(regex, Pattern.CASE_INSENSITIVE).matcher(eq);
 		Stack<String> equation = new Stack<String>();
-		
+		System.out.println("\n***** DEbug *****");
 		if ( matcher.find() ) {
-			System.out.println("matchEquation equation : " + eq);
-			System.out.println("matchEquation regex : " + regex);
-			System.out.println("matchEquation matcher.groupCount() : " + matcher.groupCount());
+			System.out.println("***** matchEquation equation : " + eq);
+			System.out.println("***** matchEquation regex : " + regex);
+			System.out.println("***** matchEquation matcher.groupCount() : " + matcher.groupCount());
             if (matcher.groupCount() != 0) {
             	equation.add(matcher.group(1));
             	equation.add(matcher.group(2));

@@ -11,13 +11,15 @@ import java.util.stream.Stream;
 
 public class SujetObjet {
 	
+	private static String sep = "&";
+	
 	public static String sujetObjet (String terme) {
  
 		Path sujetObjet = FileSystems.getDefault().getPath("src/edu/projet/Prof/sujetObjet");
 		
 		try (Stream<String> lines = Files.lines(sujetObjet)) {
 			
-			List< List<String> > items = lines.map(line -> Arrays.asList(line.split("\\|"))).collect(Collectors.toList());
+			List< List<String> > items = lines.map(line -> Arrays.asList(line.split(sep))).collect(Collectors.toList());
 			
 			for(int i = 0; i < items.size(); i++) {
 			      

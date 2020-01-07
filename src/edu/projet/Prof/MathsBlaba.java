@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class MathsBlaba {
+	private static String sep = "&";
 	
 	public static List< List<String> >  mathsBlaba () {
  
@@ -17,7 +18,7 @@ public class MathsBlaba {
 		
 		try (Stream<String> lines = Files.lines(mathsBlabla)) {
 			
-			List< List<String> > items = lines.map(line -> Arrays.asList(line.split("\\|"))).collect(Collectors.toList());
+			List< List<String> > items = lines.map(line -> Arrays.asList(line.split(sep))).collect(Collectors.toList());
 			return items;
 		} 
 		catch (IOException e) {

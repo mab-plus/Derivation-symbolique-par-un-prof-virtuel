@@ -62,8 +62,8 @@ public class Main {
 		
 		String reponse, question;  
 		Scanner sc = new Scanner(System.in);
-		System.out.println("> Bonjour, je suis Prof, prêt à vous aider à dériver des fonctions de niveau lycée...");
-		System.out.println("> Cependant, je n'ai pas une bonne vue, alors soyez aimable de bien noter l'expression à dériver.");  
+		System.out.println(">  LeProf : Bonjour, je suis prêt à vous aider à dériver des fonctions");
+		System.out.println(">  LeProf : Cependant, je suis débutant et je voudrais connatre votre niveau scolaire.");  
 		  
 		while (sc.hasNextLine()) {
 			question = sc.nextLine();
@@ -74,10 +74,11 @@ public class Main {
 				break;
 			}
 			else {
-				System.out.println("> " + reponse); 
+				System.out.println("***** DEbug fin *****\n");			
+				System.out.println("> LeProf : " + reponse); 
 				
 				if (!Prof.getMemoire().isEmpty())
-					System.out.println(">> Voici le résultat : " + Prof.calcul (question));
+					System.out.println(">> LeProf : Voici le résultat : " + Prof.calcul (question));
 			}
 		}
 		sc.close();
