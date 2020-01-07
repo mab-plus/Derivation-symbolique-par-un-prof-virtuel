@@ -4,7 +4,7 @@ public enum Filtres {
 	
 	$$(".*"), 
 	$x("([a-zA-Z]+)"), // match expression pour remplacement
-	$eq("[a-zA-Z]\\s*\\(([a-zA-Z])\\)\\s*=\\s*([a-zA-Z0-9+\\-*\\/^\\(\\)\\s*]*)"), //match équation ex : f(x) = x^2 + 2
+	$eq("([a-zA-Z])\\s*\\(([a-zA-Z])\\)\\s*=\\s*([a-zA-Z0-9+\\-*\\/^\\(\\)\\s*]*)"), //match équation ex : f(x) = x^2 + 2
 	$("[a-zA-Z]+?");
 
 	public String regex = "";

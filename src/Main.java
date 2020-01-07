@@ -62,20 +62,24 @@ public class Main {
 		
 		String reponse, question;  
 		Scanner sc = new Scanner(System.in);
-		System.out.println("> Bonjour, je suis Prof, prêt à vous aider à dériver.");
-		System.out.println("> Cependant, je n'ai pas une bonne vue, alors soyez aimable de noter l'expression à dériver");
-		System.out.println("> entre guillemets et la varible de dérivation entre parenthèses...");    
+		System.out.println("> Bonjour, je suis Prof, prêt à vous aider à dériver des fonctions de niveau lycée...");
+		System.out.println("> Cependant, je n'ai pas une bonne vue, alors soyez aimable de bien noter l'expression à dériver.");  
 		  
 		while (sc.hasNextLine()) {
 			question = sc.nextLine();
 			reponse = Prof.analyse(question); 
-			System.out.print("> " + reponse); 
-			if(question.equals("exit") || reponse.equals("exit")) {
-		          break;
-		      
+			
+			if(reponse.equals("quit")) {
+				System.out.println("> Au revoir");
+				break;
+			}
+			else {
+				System.out.println("> " + reponse); 
+				
+				if (!Prof.getMemoire().isEmpty())
+					System.out.println(">> Voici le résultat : " + Prof.calcul (question));
 			}
 		}
-		System.out.println("Au revoir");
 		sc.close();
 
 		
