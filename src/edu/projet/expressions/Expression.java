@@ -181,7 +181,7 @@ public abstract class Expression implements Formule {
   
   // conversion formule donnée à LeProf en Expression:/
   public static Expression formuleToExpression(String formule) {
-	  System.out.println("infixToPostfix(formule) = " + infixToPostfix(formule));
+	  //System.out.println("infixToPostfix(formule) = " + infixToPostfix(formule));
 	  Stack<Expression> pile = new Stack<Expression>(); 
       Expression expr1, expr2; 
       
@@ -204,9 +204,9 @@ public abstract class Expression implements Formule {
        	   expr1 = pile.pop();      
        	   expr2 = pile.pop();
        	   
-       	   System.out.printf("operateur : %s\n", termes[i]);
+       	   /*System.out.printf("operateur : %s\n", termes[i]);
        	   System.out.printf("expr1 : %s\n", expr1.asString());
-       	   System.out.printf("expr2 : %s\n", expr2.asString());
+       	   System.out.printf("expr2 : %s\n", expr2.asString());*/
        	
               switch(termes[i]) { 
                   case "+": 
@@ -229,7 +229,7 @@ public abstract class Expression implements Formule {
                	   pile.push(new Puissance(expr2, expr1)); 
                   break;
             }
-              System.out.printf("RESULT : %s\n", pile.lastElement().asString());
+              //System.out.printf("RESULT : %s\n", pile.lastElement().asString());
           }
           // fonctions cos sin exp log etc...
           else {
@@ -255,8 +255,8 @@ public abstract class Expression implements Formule {
       } 
       
       Expression resultat = pile.pop();
-      System.out.printf("pop = %s \n", resultat.asString());
-      System.out.println("-------------------");
+      /*System.out.printf("pop = %s \n", resultat.asString());
+      System.out.println("-------------------");*/
    	  
       return resultat;   
   }

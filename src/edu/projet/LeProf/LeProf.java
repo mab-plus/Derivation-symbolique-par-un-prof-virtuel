@@ -21,36 +21,38 @@ public class LeProf {
 	    return String.join("", termes);
 	}
 	
-	public static String analyse(String phrase) {
+	public static String analyse(String question) {
 		
 		List< List<String> > mathsBlaba = MathsBlaba.mathsBlaba();
-		String response = "...";
+		String reponse = "...", regex;
 		Matcher matcher;
-		phrase = deAccentuer(phrase);
-	    for(int i = 0; i < mathsBlaba.size(); i++) { 
-	    	matcher = match(mathsBlaba.get(i).get(0), phrase);
+		question = deAccentuer(question);
+		System.out.println("phrase = " + question);
+	    for(int i = 0; i < mathsBlaba.size(); i++) {
+	    	regex = deAccentuer(mathsBlaba.get(i).get(0));
+	    	regex = Filtres.regex(regex);
+	    	
+	    	System.out.println("filtre = " + regex);
+	    	matcher = match(regex, question);
+	    	
 	    	if (matcher.find() ) {
-		    	/*System.out.println(mathsBlaba.get(i).get(0));
-		    	System.out.println(matcher.groupCount());*/
-				response = mathsBlaba.get(i).get( (int) (Math.random() * (mathsBlaba.get(i).size() - 1) + 1));
+				reponse = mathsBlaba.get(i).get( (int) (Math.random() * (mathsBlaba.get(i).size() - 1) + 1));
 	    		
 	            if (matcher.groupCount() == 0) {
-		            //System.out.printf("Group Zero Text: %s\n", matcher.group());
-	    			return match("\\{0\\}", response).replaceAll( reflet(matcher.group()) );
+		            System.out.printf("Group Zero: %s\n", matcher.group());
+	    			return match("\\{0\\}", reponse).replaceAll( reflet(matcher.group()) );
 	            }
 	    		else {   
 					for (int j = 1; j <= matcher.groupCount(); j++) {
-						//System.out.printf("Group %d Text: %s\n", j, matcher.group(j));
-						response = match("\\{" + Integer.toString(j) + "\\}", response).replaceAll( reflet(matcher.group(j)) );
+						System.out.printf("Group %d: %s\n", j, matcher.group(j));
+						reponse = match("\\{" + Integer.toString(j) + "\\}", reponse).replaceAll( reflet(matcher.group(j)) );
 					}
-					if(matchEquation(response).equals(response))
-						return response;
-					else
-						return matchEquation(response);
+					return reponse;
 	    		}
 		    }
 	    }
-		return response;
+	    
+		return reponse;
 	}
 	
 	//inspiration source https://www.programcreek.com/java-api-examples/java.text.Normalizer
@@ -59,23 +61,26 @@ public class LeProf {
 	        Normalizer.normalize(text, Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
 	}
 	
-	private static Matcher match(String regex, String str) {
+	private static Matcher match(String regex, String expression) {
 		
-		return Pattern.compile(regex, Pattern.CASE_INSENSITIVE).matcher(str);
+		return Pattern.compile(regex, Pattern.CASE_INSENSITIVE).matcher(expression);
 	}
 	
-	private static String matchEquation(String str) {
-		String regex = "[a-zA-Z]\\s*\\(([a-zA-Z])\\)\\s*=\\s*([a-zA-Z0-9+\\-*\\/^\\(\\)\\s*]*)";
-		Matcher matcher = Pattern.compile(regex, Pattern.CASE_INSENSITIVE).matcher(str);
+	private static String matchEquation(String equation) {
+		String regex = Filtres.$eq.regex;
+		Matcher matcher = Pattern.compile(regex, Pattern.CASE_INSENSITIVE).matcher(equation);
 		
+		System.out.println("matchEquation equation : " + equation);
+		System.out.println("matchEquation regex : " + regex);
 		if ( matcher.find() ) {
+			System.out.println("matchEquation matcher.groupCount() : " + matcher.groupCount());
             if (matcher.groupCount() == 0)
-    			return str;
+    			return equation;
             
     		else
-    			str = matcher.group(2);  
+    			return matcher.group(2);  
     	}
 		
-		return str;
+		return "";
 	}
 }

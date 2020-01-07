@@ -60,7 +60,7 @@ public class Main {
 		/*afficher(new Puissance(new Variable("x"), 2));
 		afficher(deriver(new Puissance(new Variable("x"), 2), "x"));*/
 		
-		String reponse;  
+		String reponse, question;  
 		Expression e;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("> Bonjour, je suis Prof, prêt à vous aider à dériver.");
@@ -68,17 +68,17 @@ public class Main {
 		System.out.println("> entre guillemets et la varible de dérivation entre parenthèses...");    
 		  
 		while (sc.hasNextLine()) {
-			reponse = LeProf.analyse(sc.nextLine()); 
-			e = Expression.formuleToExpression(reponse);
-			System.out.print("> " + reponse + " : " );  afficher(e);
-			if(reponse.equals("exit")) {
+			question = sc.nextLine();
+			reponse = LeProf.analyse(question); 
+			System.out.print("> " + reponse); 
+			if(question.equals("exit") || reponse.equals("exit")) {
 		          break;
 		      
 			}
 		}
 		System.out.println("Au revoir");
 		sc.close();
-		
+
 		
     }
 	static void afficher(Expression expr) {
