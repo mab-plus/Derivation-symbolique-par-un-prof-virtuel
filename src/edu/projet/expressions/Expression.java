@@ -148,6 +148,7 @@ public abstract class Expression implements Formule {
       return termes;
   }
   
+  //notation normale vers postfix qui est la notation polonaise inversée qui servira à contruire l'Expression correspondante
   private static List<String> equationToPostfix(String equation) {
 	  
 	  List<String> termes = splitter(equation);

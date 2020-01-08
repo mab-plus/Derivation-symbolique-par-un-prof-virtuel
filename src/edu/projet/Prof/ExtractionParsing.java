@@ -9,12 +9,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class SujetObjet {
+
+public class ExtractionParsing {
 	
-	private static String sep = "&";
-	
+	//separateur des fichiers données
+	public static String sep = "\\|";
+
 	public static String sujetObjet (String terme) {
- 
+		 
 		Path sujetObjet = FileSystems.getDefault().getPath("src/edu/projet/Prof/sujetObjet");
 		
 		try (Stream<String> lines = Files.lines(sujetObjet)) {
@@ -26,6 +28,7 @@ public class SujetObjet {
 				if(terme.equalsIgnoreCase(items.get(i).get(0))) {
 			    	  return items.get(i).get(1);  
 			    }
+				
 				if(terme.equalsIgnoreCase(items.get(i).get(1))) {
 			    	  return items.get(i).get(0);  
 			    }
@@ -35,6 +38,21 @@ public class SujetObjet {
 			e.printStackTrace();
 		}
 		return "";
+	}
+
+	public static List<List<String>> mathsBlabla() {
+		 
+		Path mathsBlabla = FileSystems.getDefault().getPath("src/edu/projet/Prof/mathsBlabla");
+		
+		try (Stream<String> lines = Files.lines(mathsBlabla)) {
+			
+			List< List<String> > items = lines.map(line -> Arrays.asList(line.split(sep))).collect(Collectors.toList());
+			return items;
+		} 
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
 

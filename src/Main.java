@@ -74,7 +74,7 @@ public class Main {
 			reponse = Prof.analyse(question); 
 			
 			if(reponse.equals("quit")) {
-				System.out.println("> Au revoir");
+				System.out.println("> Au revoir, merci et bonne journée!");
 				break;
 			}
 			else {		

@@ -4,6 +4,7 @@ import edu.projet.expressions.*;
 import edu.projet.fonctions.*;
 
 public interface DerivationVisitor<R> {
+	
 	public R visit(Constante expr, String dx);
 	public R visit(Variable expr, String dx);
 	public R visit(Addition expr, String dx);

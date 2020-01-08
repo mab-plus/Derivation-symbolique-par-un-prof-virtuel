@@ -64,9 +64,10 @@ public class Prof {
 		return "";
 	}
 	
+	//analyse et reponse de la question, au moyen des fichiers filtres 
 	public static String analyse(String question) {
 		
-		List< List<String> > mathsBlaba = MathsBlaba.mathsBlaba();
+		List< List<String> > mathsBlaba = ExtractionParsing.mathsBlabla();
 		String reponse = "...", regex;
 		Matcher matcher;
 		question = deAccentuer(question);
@@ -110,15 +111,19 @@ public class Prof {
 		String[] termes = phrase.toLowerCase().split(" ");
 	
 	    for(int i=0; i < termes.length; i++) {
-	    	if (SujetObjet.sujetObjet(termes[i]) != "") 
-	    		termes[i] = SujetObjet.sujetObjet(termes[i]);
+	    	if (ExtractionParsing.sujetObjet(termes[i]) != "") 
+	    		termes[i] = ExtractionParsing.sujetObjet(termes[i]);
 	    }
 
-	    return String.join("", termes);
+	    return String.join(" ", termes);
 	}
 	
 	//inspiration source https://www.programcreek.com/java-api-examples/java.text.Normalizer
 	private static String deAccentuer(String text) {
+		
+		//on supprime tout separateur des fichiers données
+		text = text.replaceAll(ExtractionParsing.sep, "");
+		
 	    return text == null ? null :
 	        Normalizer.normalize(text, Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
 	}

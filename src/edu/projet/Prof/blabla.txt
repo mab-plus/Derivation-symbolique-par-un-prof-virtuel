@@ -1,0 +1,36 @@
+J'ai besoin ($$)&Pourquoi avez-vous besoin de {1} ?&Cela vous aiderait-il vraiment à obtenir {1} ?&Êtes-vous sûr d'avoir besoin de {1}?
+Pourquoi ne vous ([^ \?] *) ??&Pensez-vous vraiment que je ne le fais pas {1} ?&Peut-être finirai-je par {1}.&Voulez-vous vraiment que je {1}?
+Pourquoi ne puis-je pas ([^ \?] *) ??&Pensez-vous que vous devriez pouvoir {1} ?&Si vous pouviez {1}, que feriez-vous ?&Je ne sais pas - pourquoi ne pouvez-vous pas {1} ?&Avez-vous vraiment essayé?
+Je ne peux pas ($$)&Comment savez-vous que vous ne pouvez pas {1} ?&Vous pourriez peut-être {1} si vous essayez.&Que vous faudrait-il pour {1}?
+Je suis ($$)&Êtes-vous venu me voir parce que vous êtes {1} ?&Depuis combien de temps êtes-vous {1} ?&Que pensez-vous d'être {1}?
+Je suis ($$)&Comment vous sentez-vous {1} ?&Aimez-vous être {1} ?&Pourquoi me dites-vous que vous êtes {1} ?&Pourquoi pensez-vous que vous êtes {1}?
+êtes-vous ([^ \?] *) ??&Pourquoi est-ce important que je sois {1} ?&Préféreriez-vous que je ne sois pas {1} ?&Vous croyez peut-être que je suis {1}.&Je peux être {1} - qu'en pensez-vous?
+Qu'est ce ($$)&Pourquoi demandez-vous ?&Comment une réponse à cela vous aiderait-elle ?&Qu'est-ce que tu penses?
+Comment ($$)&Comment pensez-vous ?&Vous pouvez peut-être répondre à votre propre question.&Qu'est-ce que vous demandez vraiment?
+Parce ($$)&Est-ce la vraie raison ?&Quelles autres raisons vous viennent à l'esprit ?&Est-ce que cette raison s'applique à autre chose ?&Si {1}, quoi d'autre doit être vrai?
+($$) désolé ($$)&Il y a de nombreuses fois où aucune excuse n'est nécessaire.&Quels sentiments ressentez-vous lorsque vous vous excusez?
+Bonjour ($$)&Bonjour ... je suis content que vous ayez pu venir aujourd'hui.&Salut là ... comment vas-tu aujourd'hui ?&Bonjour, comment vous sentez-vous aujourd'hui?
+Je pense ($$)&Vous doutez de {1} ?&Est-ce que tu le penses vraiment ?&Mais vous n'êtes pas sûr {1}?
+($$) ami ($$)&Parlez-moi de vos amis.&Quand vous pensez à un ami, qu'est-ce qui vous vient à l'esprit ?&Pourquoi ne me parlez-vous pas d'un ami d'enfance?
+Oui&Vous semblez tout à fait sûr.&D'accord, mais pouvez-vous élaborer un peu?
+($$) ordinateur ($$)&Tu parles vraiment de moi ?&Cela vous semble étrange de parler à un ordinateur ?&Comment les ordinateurs vous font-ils sentir ?&Vous sentez-vous menacé par les ordinateurs?
+Est-ce ($$)&Pensez-vous que c'est {1} ?&C'est peut-être {1} - qu'en pensez-vous ?&Si c'était {1}, que feriez-vous ?&Il se pourrait bien que {1}.
+C'est ($$)&Vous semblez très certain.&Si je vous disais que ce n'est probablement pas {1}, que ressentiriez-vous?
+Pouvez-vous ([^ \?] *) ??&Qu'est-ce qui vous fait penser que je ne peux pas {1} ?&Si je pouvais {1}, alors quoi ?&Pourquoi demandez-vous si je peux {1}?
+Puis-je ([^ \?] *) ??&Peut-être que vous ne voulez pas {1}.&Voulez-vous pouvoir {1} ?&Si vous pouviez {1}, le feriez-vous?
+Tu es ($$)&Pourquoi pensez-vous que je suis {1} ?&Cela vous plaît-il de penser que je suis {1} ?&Peut-être que vous aimeriez que je sois {1}.&Peut-être que vous parlez vraiment de vous?
+Tu \ '? re ($$)&Pourquoi dites-vous que je suis {1} ?&Pourquoi pensez-vous que je suis {1} ?&Parlons-nous de vous ou de moi?
+Je ne \ '? t ($$)&N'êtes-vous pas vraiment {1} ?&Pourquoi ne faites-vous pas {1} ?&Voulez-vous {1}?
+Je sens ($$)&Bien, dis-m'en plus sur ces sentiments.&Vous sentez-vous souvent {1} ?&Quand vous sentez-vous habituellement {1} ?&Quand vous vous sentez {1}, que faites-vous?
+J'ai ($$)&Pourquoi me dites-vous que vous avez {1} ?&Avez-vous vraiment {1} ?&Maintenant que vous avez {1}, que ferez-vous ensuite?
+Je voudrais ($$)&Pourriez-vous expliquer pourquoi vous voudriez {1} ?&Pourquoi voudriez-vous {1} ?&Qui d'autre sait que vous le feriez {1}?
+Is là ($$)&Pensez-vous qu'il y a {1} ?&Il est probable qu'il y ait {1}.&Souhaitez-vous qu'il y ait {1}?
+Mon ($$)&Je vois, votre {1}.&Pourquoi dites-vous que votre {1} ?&Quand vous {1}, comment vous sentez-vous?
+Tu ($$)&Nous devrions discuter de vous, pas de moi.&Pourquoi dites-vous cela de moi ?&Pourquoi vous souciez-vous de savoir si je {1}?
+Pourquoi ($$)&Pourquoi ne me dites-vous pas pourquoi {1} ?&Pourquoi pensez-vous {1}?
+Je veux ($$)&Qu'est-ce que cela signifierait pour vous si vous obteniez {1} ?&Pourquoi voulez-vous {1} ?&Que feriez-vous si vous obteniez {1} ?&Si vous obtenez {1}, que feriez-vous?
+($$) mère ($$)&Parlez-moi de votre mère.&Comment était ta relation avec ta mère ?&Que pensez-vous de votre mère ?&Comment cela vous concerne-t-il
+($$) père ($$)&Parlez-moi de votre père.&Comment ton père t'a fait te sentir ?&Que pensez-vous de votre père ?&Votre relation avec votre père est-elle liée à vos sentiments d'aujourd'hui ?&Avez-vous du mal à montrer de l'affection pour votre famille?
+($$) enfant ($$)&Aviez-vous des amis proches quand vous étiez enfant ?&Quel est votre souvenir d'enfance préféré ?&Vous souvenez-vous de rêves ou de cauchemars d'enfance ?&Les autres enfants vous ont-ils parfois taquiné ?&Comment pensez-vous que vos expériences d'enfance sont liées à vos sentiments d'aujourd'hui?
+($$) ?&Pourquoi tu demandes ça ?&Veuillez déterminer si vous pouvez répondre à votre propre question.&Peut-être que la réponse se trouve en vous-même ?&Pourquoi tu ne me le dis pas?
+($$)&S'il vous plaît dites-moi plus.&Changeons de cap un peu ... Parle-moi de ta famille.&Pourriez-vous préciser ceci ?&Pourquoi dites-vous que {1} ?&Je vois.&Très intéressant.&{1}.&Je vois. Et qu'est-ce que cela vous dit ?&Qu'est-ce que cela te fait ressentir ?&Comment vous sentez-vous quand vous dites cela ?
