@@ -74,7 +74,7 @@ public class Derivation implements FormuleDerivation, DerivationVisitor<Expressi
 	@Override
 	public Expression visit(Log expr, String dx) {
 		Expression u = expr.exprD;
-		Expression du = expr.exprD.accept(this, dx);
+		Expression du = u.accept(this, dx);
 		
 		//log u -> u'/ u
 		return new Division(du, u);
@@ -88,13 +88,21 @@ public class Derivation implements FormuleDerivation, DerivationVisitor<Expressi
 	}
 
 	@Override
-	public Expression visit(Cos expr, String dx) {	
-		return new Multiplication(new Constante(-1), new Sin(expr.exprD));
+	public Expression visit(Cos expr, String dx) {
+		Expression u = expr.exprD;
+		Expression du = u.accept(this, dx);
+		
+		//cos(u)  -> -u' sin(u)
+		return new Soustraction(new Constante(0) , new Multiplication(du, new Sin(u)));
 	}
 
 	@Override
 	public Expression visit(Sin expr, String dx) {
-		return new Cos(expr.exprD);
+		Expression u = expr.exprD;
+		Expression du = u.accept(this, dx);
+		
+		//sin(u)  -> u' cos(u)
+		return new Multiplication(du, new Cos(u));
 	}
 	
 }

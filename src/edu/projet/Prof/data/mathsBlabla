@@ -1,0 +1,59 @@
+hello$$bonjour$$salut$$salam$$shalom|Bonjour, que puis-je pour vous ?
+non|vous êtes bien négatif
+lycée|Je pense pouvoir vous aider
+université$$prepa$$école$$MP|hmmm... peut-on parler de vous ? 
+merci$_|Il n'y a pas de quoi, je suis en apprentissage et vous m'avez beaucoup aidé.
+$eq|Vous vous voulez donc dériver {3} par rapport à {2} ?
+$fn|Vous vous voulez donc dériver {1}({2}) ?|Je vais essayer de dériver {1}({2})
+$_java|python|ruby|php$_|alors vous savez programmer|Êtes-vous programmeur ?
+un $x et un $x|hmm, très pertinent, parlez encore de {1}
+$x et $x sont$_|parlez-moi plus de {1} et {2}
+$_ans$_|remontez plus loin dans vos souvenirs
+$_années$_|cela fait bien longtemps
+$_je ne suis pas $x|pourquoi pensez-vous que vous n'êtes pas {1} ?
+$_suis $x|pourquoi pensez-vous que vous êtes {1} ?
+$_ne $_|vous en êtes sûr
+$_non$_|vous êtes très négatif
+$_vous$_|concentrez-vous sur votre problème, svp
+$_moi$_|racontez-moi en plus sur vos études...
+$_je$_|comment cela se manifeste-t-il ?
+$_j'ai$_|ce n'est pas la quantité qui compte.
+$|Cela commence bien !|c'est un peut court|Vous ne m'avez pas dit cela, il y a quelques instants.
+J'ai besoin de($_)|Pourquoi avez-vous besoin de {1} ?|Cela vous aiderait-il vraiment à obtenir {1} ?|Êtes-vous sûr d'avoir besoin de {1} ?
+Pourquoi ne le faites-vous pas ($1) \??|Pensez-vous vraiment que je ne le ferai pas {1} ?|Peut-être que finalement je le ferai {1}.|Voulez-vous vraiment que je le fasse {1} ?
+Pourquoi ne puis-je pas ($1) \ ??|Pensez-vous que vous devriez être en mesure de {1} ?|Si vous pouviez {1}, que feriez-vous ?|Je ne sais pas - pourquoi ne pouvez-vous pas {1} ?|Avez-vous vraiment essayé ?
+Je ne peux pas($_)|Comment savez-vous que vous ne pouvez pas {1} ?|Peut-être pourriez-vous {1} si vous essayez.|Que vous faudrait-il pour {1} ?
+Je suis($_)|Êtes-vous venu me voir parce que vous êtes {1} ?|Depuis combien de temps êtes-vous {1} ?|Que pensez-vous d'être {1} ?
+chui($_)|Comment vous sentez-vous lorsque vous êtes {1} ?|Aimez-vous être {1} ?|Pourquoi me dites-vous que vous êtes {1} ?|Pourquoi pensez-vous que vous êtes {1} ?
+Êtes-vous ($1) \??|Pourquoi est-ce important que je sois {1} ?|Préféreriez-vous que je ne sois pas {1} ?|Peut-être croyez-vous que je suis {1}.|I peut être {1} - qu'en pensez-vous ?
+Que($_)|Pourquoi demandez-vous ?|Comment une réponse à cela vous aiderait-elle ?|Que pensez-vous ?
+Comment($_)|Comment pensez-vous ?|Peut-être pouvez-vous répondre à votre propre question.|Qu'est-ce que vous demandez vraiment ?
+Parce que($_)|Est-ce la vraie raison ?|Quelles autres raisons me viennent à l'esprit ?|Cette raison s'applique-t-elle à autre chose ?|Si {1}, quoi d'autre doit être vrai ?
+($_)désolé($_)|Il arrive souvent qu'aucune excuse ne soit nécessaire.|Quels sentiments ressentez-vous lorsque vous vous excusez ?
+Bonjour($_)|Bonjour ... Je suis content que vous ayez pu passer aujourd'hui.|Bonjour, comment allez-vous aujourd'hui ?|Bonjour, comment vous sentez-vous aujourd'hui ?
+Je pense($_)|Vous doutez de {1} ?|Le pensez-vous vraiment ?|Mais vous n'êtes pas sûr de {1} ?
+($_)ami($_)|Parlez-moi de vos amis.|Quand vous pensez à un ami, qu'est-ce qui vous vient à l'esprit ?|Pourquoi ne me parlez-vous pas d'un ami d'enfance ?
+Oui|Vous semblez tout à fait sûr.|OK, mais pouvez-vous élaborer un peu ?
+($_)pc($_)|Parlez-vous vraiment de moi ?|Cela vous semble-t-il étrange de parler à une machine ?|Comment vous sentez-vous ?|Vous sentez-vous menacé par les ordinateurs ?
+Est-ce($_)|Pensez-vous que c'est {1} ?|Peut-être que c'est {1} - qu'en pensez-vous ?|Si c'était {1}, que feriez-vous ?|Il se pourrait bien que {1} .
+C'est($_)|Vous semblez très certain.|Si je vous disais que ce n'est probablement pas {1}, que ressentiriez-vous ?
+Pouvez-vous ($1) \ ??|Qu'est-ce qui vous fait penser que je ne peux pas {1} ?|Si je pouvais {1}, alors quoi ?|Pourquoi demandez-vous si je peux {1} ?
+Puis-je ($1) \ ??|Peut-être que vous ne voulez pas {1}.|Voulez-vous pouvoir {1} ?|Si vous pouviez {1}, le feriez-vous ?
+Vous êtes($_)|Pourquoi pensez-vous que je suis {1} ?|Cela vous plait-il de penser que je suis {1} ?|Peut-être que vous aimeriez que je sois {1}.|Peut-être que vous êtes vraiment tu parles de toi ?
+tu es($_)|Pourquoi dites-vous que je suis {1} ?|Pourquoi pensez-vous que je suis {1} ?|Parlons-nous de vous ou de mois ?
+Je ne($_)|N'est-ce pas vraiment {1} ?|Pourquoi pas {1} ?|Voulez-vous {1} ?
+Je me sens($_)|Bien, parlez-moi de ces sentiments.|Ressentez-vous souvent {1} ?|Quand vous sentez-vous habituellement {1} ?|Lorsque vous ressentez {1}, que faites-vous ?
+J'ai($_)|Pourquoi me dites-vous que vous avez {1} ?|Avez-vous vraiment {1} ?|Maintenant que vous avez {1}, que ferez-vous ensuite ?
+Je voudrais($_)|Pourriez-vous expliquer pourquoi vous feriez {1} ?|Pourquoi feriez-vous {1} ?|Qui d'autre sait que vous feriez {1} ?
+Y a-t-il($_)|Pensez-vous qu'il y a {1} ?|Il est probable qu'il y ait {1}.|Voulez-vous qu'il y ait {1} ?
+Mon($_)|Je vois, votre {1}.|Pourquoi dites-vous que votre {1} ?|Quand votre {1}, comment vous sentez-vous ?
+Vous($_)|Nous devrions discuter de vous, pas de moi.|Pourquoi dites-vous cela de moi ?|Pourquoi vous souciez-vous de savoir si je {1} ?
+Pourquoi($_)|Pourquoi ne me dites-vous pas pourquoi {1} ?|Pourquoi pensez-vous {1} ?
+Je veux($_)|Qu'est-ce que cela signifierait pour vous si vous obteniez {1} ?|Pourquoi voulez-vous {1} ?|Que feriez-vous si vous obteniez {1} ?|Si vous avez {1}, alors Qu'est-ce que tu ferais ?
+($_)prof($_)|Parlez-moi de votre prof.|Quelle a été votre relation avec votre prof ?|Que pensez-vous de votre prof ?|Quel est le lien avec vos sentiments d'aujourd'hui ?|De bonnes relations pédagigiques sont importantes.
+($_)classe($_)|Parlez-moi de votre classe.|Comment votre classe vous a-t-elle fait vous sentir ?|Que pensez-vous de votre classe ?|Votre relation avec votre classe est-elle liée à vos sentiments d'aujourd'hui ?|vous avez du mal à montrer de l'affection pour votre école ?
+($_)enfant($_)|Aviez-vous des amis proches quand vous étiez enfant ?|Quel est votre souvenir d'enfance préféré?|Vous souvenez-vous de rêves ou de cauchemars d'enfance ?|Les autres enfants vous ont-ils parfois taquiné?|Comment vous pensez que vos expériences d'enfance sont liées à vos sentiments d'aujourd'hui ?
+($_)\?|Pourquoi demandez-vous cela ?|Veuillez vous demander si vous pouvez répondre à votre propre question.|Peut-être que la réponse se trouve en vous-même ?|Pourquoi ne me le dites-vous pas ?
+au revoir$$stop$$exit$$quit$$quitter|Merci d'avoir parlé avec vous.|Au revoir.|Bonne journée !
+($_)|S'il vous plaît, dites-moi en plus.|Changeons un peu de sujet ... Parlez-moi de votre scolarité.|Pouvez-vous nous en dire plus ?|Pourquoi dites-vous que {1} ?|Je vois.|Très intéressant.|{1}.|Je vois. Et qu'est-ce que cela vous dit ?|Comment vous sentez-vous ?|Comment vous sentez-vous lorsque vous dites cela ?|je ne vous suis pas très bien
+$ $ $|hmmm..

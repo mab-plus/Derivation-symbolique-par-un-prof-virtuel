@@ -12,6 +12,18 @@ public class Addition extends Expression {
 	}       
     
 	@Override
+	public String asString() {
+		
+		if (isZero(this.exprD))
+			return this.exprG.asString();
+		
+		if (isZero(this.exprG))
+			return this.exprD.asString();
+			
+		return this.exprG.asString() + " " + this.getSymbole() + " " + this.exprD.asString();
+	}
+    
+	@Override
 	public double evaluer(HashMap<String, Double> liste) {
 		return  this.exprG.evaluer(liste) + this.exprD.evaluer(liste);
 	}

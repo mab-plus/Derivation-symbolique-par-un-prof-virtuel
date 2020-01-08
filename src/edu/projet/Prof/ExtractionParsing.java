@@ -17,7 +17,7 @@ public class ExtractionParsing {
 
 	public static String sujetObjet (String terme) {
 		 
-		Path sujetObjet = FileSystems.getDefault().getPath("src/edu/projet/Prof/sujetObjet");
+		Path sujetObjet = FileSystems.getDefault().getPath("src/edu/projet/Prof/data/sujetObjet");
 		
 		try (Stream<String> lines = Files.lines(sujetObjet)) {
 			
@@ -42,7 +42,7 @@ public class ExtractionParsing {
 
 	public static List<List<String>> mathsBlabla() {
 		 
-		Path mathsBlabla = FileSystems.getDefault().getPath("src/edu/projet/Prof/mathsBlabla");
+		Path mathsBlabla = FileSystems.getDefault().getPath("src/edu/projet/Prof/data/mathsBlabla");
 		
 		try (Stream<String> lines = Files.lines(mathsBlabla)) {
 			

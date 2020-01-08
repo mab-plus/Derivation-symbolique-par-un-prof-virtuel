@@ -50,9 +50,7 @@ public class Prof {
 				
 				fx = f +"(" + x + ")";
 				System.out.println("fx=" + fx);	
-				
 			}
-				
 	
 			System.out.println("+++++++++++++++++++++++++++++");
 			   

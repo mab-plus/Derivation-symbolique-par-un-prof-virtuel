@@ -13,6 +13,25 @@ public class Multiplication extends Expression {
      
 	@Override
 	public String asString() {	
+		
+		if (isZero(this.exprD))
+			return "0";
+		
+		if (isZero(this.exprG))
+			return "0";
+		
+		if (isUn(this.exprD))
+			return this.exprG.asString();
+		
+		if (isUn(this.exprG))
+			return this.exprD.asString();
+	
+		if (isMoinsUn(this.exprD))
+			return "-" + this.exprG.asString();	
+		
+		if (isMoinsUn(this.exprG))
+			return "-" + this.exprD.asString();	
+		
 		return this.exprG.asString() + "*" + this.exprD.asString();
 	}
 	

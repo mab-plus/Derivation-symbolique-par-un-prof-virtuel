@@ -17,7 +17,24 @@ public class Puissance extends Expression {
     
 	@Override
 	public String asString() {
+		
+		if (isZero(this.exprD))
+				return "1";
+		
+		if (isUn(this.exprD))
+			return this.exprG.asString();
+		
+		if (isMoinsUn(this.exprD))
+			return "1/" + this.exprG.asString();
+		
+		if (isConstante(this.exprD) && ((Constante) this.exprD).getValeur() < 0) {
+			
+			Constante exp = new Constante(-1 * ((Constante) this.exprD).getValeur());
+			return "(1/" + this.exprG.asString() + this.getSymbole() + "[" + exp.asString() + "])";
+		}
+		
 		return this.exprG.asString() + this.getSymbole() + "[" + this.exprD.asString() + "]";
+		
 	}
 
 	

@@ -3,11 +3,13 @@ package edu.projet.Prof;
 public enum Filtres {
 	
 	$$("|"),
+	$1("[^\\?]*"),
 	$_(".*"), 
 	$x("([a-zA-Z]+)"), // match expression pour remplacement
 	$eq("([a-zA-Z])\\s*\\(([a-zA-Z])\\)\\s*=\\s*([a-zA-Z0-9+\\-*\\/^\\(\\)\\s*]*)"), //match équation ex : f(x) = x^2 + 2
 	$fn("(sin|cos|exp|tan|log)\\s*\\((.*?)\\)\\s*"), //match fonctions usuelles
 	$("[a-zA-Z]+?");
+
 
 	public String regex = "";
 

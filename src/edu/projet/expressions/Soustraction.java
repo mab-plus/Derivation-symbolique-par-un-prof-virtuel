@@ -12,7 +12,14 @@ public class Soustraction extends Addition {
 	}
     
 	@Override
-	public String asString() {		
+	public String asString() {
+		
+		if (isZero(this.exprD))
+			return this.exprG.asString();
+		
+		if (isZero(this.exprG))
+			return "-" + this.exprD.asString();
+		
 		return this.exprG.asString() + " - " + exprD.exprD.asString();
 	}
 

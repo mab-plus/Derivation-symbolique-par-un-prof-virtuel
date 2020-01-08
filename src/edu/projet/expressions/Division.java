@@ -12,7 +12,8 @@ public class Division extends Multiplication {
 	}
     
 	@Override
-	public String asString() {		
+	public String asString() {	
+				
 		return "(" + this.exprG.asString() + "/" + exprD.exprG.asString()+ ")";
 	}
 

@@ -31,7 +31,7 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
 	   //System.out.printf("deCompose : %s\n", expressionSymbole.getSymbole());
    }
   
-	//on reprend la liste precedente pour recreer expression apres simplification des termes
+   //on reprend la liste precedente pour recreer expression apres simplification des termes
    private Expression simplifierTermes(List<Expression> termes) {
 	   Stack<Expression> pile = new Stack<Expression>(); 
        Expression expr1, expr2; 
@@ -49,9 +49,9 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
         	   expr1 = pile.pop();      
         	   expr2 = pile.pop();
         	   
-        	   /*System.out.printf("operateur : %s\n", termes.get(i).getSymbole());
+        	   System.out.printf("operateur : %s\n", termes.get(i).getSymbole());
         	   System.out.printf("expr1 : %s\n", expr1.asString());
-        	   System.out.printf("expr2 : %s\n", expr2.asString());*/
+        	   System.out.printf("expr2 : %s\n", expr2.asString());
         	
                switch(termes.get(i).getSymbole()) { 
                    case "+": 
@@ -74,7 +74,7 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
                 	   pile.push(new Puissance(expr2, expr1).accept(this)); 
                    break;
              }
-               //System.out.printf("RESULT : %s\n", pile.lastElement().asString());
+               System.out.printf("RESULT : %s\n", pile.lastElement().asString());
            }
            // fonctions cos sin exp log etc...
            else {
@@ -95,13 +95,13 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
                 	   pile.push(new Sin(expr1.accept(this))); 
                    break;
              } 
-               //System.out.printf("RESULT : %s\n", pile.lastElement().asString());
+               System.out.printf("RESULT : %s\n", pile.lastElement().asString());
            }           
        } 
        
        Expression resultat = pile.pop();
-       /*System.out.printf("pop = %s \n", resultat.asString());
-       System.out.println("-------------------");*/
+       System.out.printf("pop = %s \n", resultat.asString());
+       System.out.println("-------------------");
     	  
        return resultat;   
    }
