@@ -1,6 +1,10 @@
 package edu.projet.expressions;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import edu.projet.fonctions.*;
 import edu.projet.interfaces.Formule;
@@ -124,141 +128,146 @@ public abstract class Expression implements Formule {
       else if (op.equals("^") )
     	  return 3;
       
+      else if (isFonction(op) )
+    	  return 4;
+      
       else
-    	  return -1;   
+    	  return -1;
   }
   
-  //inspiration https://www.geeksforgeeks.org/stack-set-2-infix-to-postfix
-  //infix notation normale, postfix est la notation polonaise inversée qui servira à contruire l'Expression correspondante
-  private static String infixToPostfix(String frm) { 
+  private static List<String> splitter(String equation) {
 	  
-	  String[] termes = frm.toLowerCase().split("");
-	  String resultat = new String(""); 
-	  Stack<String> pile = new Stack<>(); 
-       
-     for (int i = 0; i < termes.length; ++i) {
-    	   String terme =termes[i].trim();
-           
-           if (!isOperateur(terme) && !terme.equals("(") && !terme.equals(")"))
-               resultat += terme; 
-           
-           else if ( terme.equals("(") )
-               pile.push(terme); 
-           
-           else if ( terme.equals(")") ) { 
-        	   
-               while ( !pile.isEmpty() && !pile.peek().equals("(") )
-                   resultat += pile.pop(); 
-                 
-               if ( !pile.isEmpty() && !pile.peek().equals("(") ) 
-            	   return "Expression non valable";  
-               
-               else
-                   pile.pop(); 
-           } 
-           
-           // si operateur 
-           else { 
-        	   while (!pile.isEmpty() && isPrioritaire(terme) <= isPrioritaire(pile.peek())) { 
-                   if( pile.peek().equals("(") ) 
-                       return "Expression non valable"; 
-                   resultat += pile.pop();             
-        	   }
-               pile.push(terme); 
-           }
-     }
-
-     //on vide la pile pour terminer
-     while (!pile.isEmpty()) { 
-    	 if( pile.peek().equals("(") ) 
-             return "Expression non valable"; 
-    	 
-         resultat += pile.pop();  
-     }
+      ArrayList<String> termes = new ArrayList<>();
+      //on essaie de bien couper l'équation en termes
+      Matcher matcher = Pattern.compile("\\(|\\)|[A-Za-z]+|\\d*\\.\\d*|\\d+|\\S+?").matcher(equation);
+     
+      while(matcher.find()) {
+        termes.add(matcher.group());
+      }
       
-     return resultat; 
+      return termes;
   }
   
-  // conversion formule donnée à LeProf en Expression:/
-  public static Expression formuleToExpression(String formule) {
-	  //System.out.println("infixToPostfix(formule) = " + infixToPostfix(formule));
-	  Stack<Expression> pile = new Stack<Expression>(); 
-      Expression expr1, expr2; 
+  private static List<String> equationToPostfix(String equation) {
+	  
+	  List<String> termes = splitter(equation);
+      Stack<String> pile = new Stack<>();
+      ArrayList<String> resultat = new ArrayList<>();
       
-	  String[] termes = infixToPostfix(formule).toLowerCase().split("");
-
-      for (int i = 0; i < termes.length; i++) {
-   	   // si operande -> la pile 
-          if ( !isOperateur( termes[i] ) && !isFonction( termes[i] ) ) { 
-   	    
-        	  try {
-        		  pile.push(new Constante(Double.valueOf(termes[i]) ));
-        	  }
-        	  catch (Exception e) {
-      	        pile.push(new Variable(termes[i]));
-        	  }
-          }
-          // operateur + - * / ^
-          else if ( isOperateur( termes[i] ) ) { 
-       	   // Pop les deux operandes de l'operateur
-       	   expr1 = pile.pop();      
-       	   expr2 = pile.pop();
-       	   
-       	   /*System.out.printf("operateur : %s\n", termes[i]);
-       	   System.out.printf("expr1 : %s\n", expr1.asString());
-       	   System.out.printf("expr2 : %s\n", expr2.asString());*/
-       	
-              switch(termes[i]) { 
-                  case "+": 
-               	   pile.push(new Addition(expr2, expr1)); 
-                  break; 
-                    
-                  case "-": 
-               	   pile.push(new Soustraction(expr2, expr1)); 
-                  break; 
-                    
-                  case "*":           	   
-               	   pile.push(new Multiplication(expr2, expr1)); 
-                  break; 
-                    
-                  case "/": 
-               	   pile.push(new Division(expr2, expr1)); 
-                  break; 
+      for(String t: termes) {
+    	  if(t.equals("("))
+              pile.push(t);
+    	  
+    	  else if(t.equals(")")) {
+              while(!pile.empty() ) {
+                  String str = pile.pop();
                   
-                  case "^": 
-               	   pile.push(new Puissance(expr2, expr1)); 
-                  break;
-            }
-              //System.out.printf("RESULT : %s\n", pile.lastElement().asString());
-          }
-          // fonctions cos sin exp log etc...
-          else {
-       	   // Pop argment e la fonction
-       	   expr1 = pile.pop();
-       	   
-              switch(termes[i]) { 
-                  case "log": 
-               	   pile.push(new Log(expr1)); 
-                  break;
-                  case "exp": 
-               	   pile.push(new Exp(expr1)); 
-                  break;
-                  case "cos": 
-               	   pile.push(new Cos(expr1)); 
-                  break;
-                  case "sin": 
-               	   pile.push(new Sin(expr1)); 
-                  break;
-            } 
-              System.out.printf("RESULT : %s\n", pile.lastElement().asString());
-          }           
-      } 
+                  if(str.equals("(")) 
+                	  break;
+                  resultat.add(str);
+              }
+          } 
+    	  else if(isPrioritaire(t) > 0) {
+              int p = isPrioritaire(t);
+              
+              while(!pile.isEmpty() && isPrioritaire(pile.peek()) >= p) 
+            	  resultat.add(pile.pop());
+              pile.push(t);
+          } 
+    	  else
+    		  resultat.add(t);
+      }
       
-      Expression resultat = pile.pop();
-      /*System.out.printf("pop = %s \n", resultat.asString());
-      System.out.println("-------------------");*/
-   	  
-      return resultat;   
+      while(!pile.isEmpty()) 
+    	  resultat.add(pile.pop());
+      
+      return resultat;
+  }
+    
+  // conversion formule donnée au Prof en Expression:/
+  public static Expression formuleToExpression(String formule) {
+	  
+	  Stack<Expression> pile = new Stack<Expression>(); 
+	  Expression expr1, expr2; 
+
+	  List<String> termes = equationToPostfix(formule);
+
+	  for (int i = 0; i < termes.size(); i++) {
+	  	  // si operande -> la pile 
+	  	  if ( !isOperateur( termes.get(i) ) && !isFonction( termes.get(i) ) ) { 
+	  	   
+	  	  	  try {
+	  			  pile.push(new Constante(Double.valueOf(termes.get(i)) ));
+	  	  	  }
+	  	  	  catch (Exception e) {
+	  	  	  	  pile.push(new Variable(termes.get(i)));
+	  	  	  }
+	  	  }
+	  	  // operateur + - * / ^
+	  	  else if ( isOperateur( termes.get(i) ) ) { 
+	  	  	  // Pop les deux operandes de l'operateur
+	  	  	  expr1 = pile.pop();	  
+	  	  	  expr2 = pile.pop();
+	  	  	  
+	  	  	  System.out.printf("operateur : %s\n", termes.get(i));
+	  	  	  System.out.printf("expr1 : %s\n", expr1.asString());
+	  	  	  System.out.printf("expr2 : %s\n", expr2.asString());
+	   	
+	  	  	  switch(termes.get(i)) { 
+	  	  	  	  case "+": 
+	  	  	  	  	  pile.push(new Addition(expr2, expr1)); 
+	  	  	  	  break; 
+	  	  	  	  	  
+	  	  	  	  case "-": 
+	  	  	  	  	  pile.push(new Soustraction(expr2, expr1)); 
+	  	  	  	  break; 
+	  	  	  	  	  
+	  	  	  	  case "*":	  	  	  	  
+	  	  	  	  	  pile.push(new Multiplication(expr2, expr1)); 
+	  	  	  	  break; 
+	  	  	  	  	  
+	  	  	  	  case "/": 
+	  	  	  	  	  pile.push(new Division(expr2, expr1)); 
+	  	  	  	  break; 
+	  	  	  	  
+	  	  	  	  case "^": 
+	  	  	  	  	  pile.push(new Puissance(expr2, expr1)); 
+	  	  	  	  break;
+	  	  	  }
+	  	  	  System.out.printf("RESULT : %s\n", pile.lastElement().asString());
+	  	  }
+	  	  // fonctions cos sin exp log etc...
+	  	  else {
+	  	  	  // Pop argment e la fonction
+	  	  	  expr1 = pile.pop();
+	  	  	  
+	  	  	  System.out.printf("fonction : %s\n", termes.get(i));
+	  	  	  System.out.printf("expr1 : %s\n", expr1.asString());
+	  	  	  
+	  	  	  switch(termes.get(i)) { 
+	  	  	  	  case "log": 
+	  	  	  	  	  pile.push(new Log(expr1)); 
+	  	  	  	  break;
+	  	  	  	  case "exp": 
+	  	  	  	  	  pile.push(new Exp(expr1)); 
+	  	  	  	  break;
+	  	  	  	  case "cos": 
+	  	  	  	  	  pile.push(new Cos(expr1)); 
+	  	  	  	  break;
+	  	  	  	  case "sin": 
+	  	  	  	  	  pile.push(new Sin(expr1)); 
+	  	  	  	  break;
+	  	  	  } 
+	  	  	  
+	  	  	  System.out.printf("RESULT : %s\n", pile.lastElement().asString());
+	  	  }	  	   
+	  } 
+	  
+	  Expression resultat = pile.pop();
+	  System.out.printf("pop = %s \n", resultat.asString());
+	  System.out.println("-------------------");
+	   
+	  return resultat;   
   }
   
 }

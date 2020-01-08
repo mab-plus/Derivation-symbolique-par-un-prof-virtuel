@@ -89,12 +89,12 @@ public class Derivation implements FormuleDerivation, DerivationVisitor<Expressi
 
 	@Override
 	public Expression visit(Cos expr, String dx) {	
-		return new Multiplication(new Constante(-1), new Sin(expr));
+		return new Multiplication(new Constante(-1), new Sin(expr.exprD));
 	}
 
 	@Override
 	public Expression visit(Sin expr, String dx) {
-		return new Cos(expr);
+		return new Cos(expr.exprD);
 	}
 	
 }

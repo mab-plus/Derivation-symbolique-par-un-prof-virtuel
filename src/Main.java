@@ -1,4 +1,9 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.Stack;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import edu.projet.Prof.*;
 import edu.projet.calcul.Derivation;
@@ -72,8 +77,7 @@ public class Main {
 				System.out.println("> Au revoir");
 				break;
 			}
-			else {
-				System.out.println("***** DEbug fin *****\n");			
+			else {		
 				System.out.println("> LeProf : " + reponse); 
 				
 				if (!Prof.getMemoire().isEmpty())
@@ -81,7 +85,6 @@ public class Main {
 			}
 		}
 		sc.close();
-
 		
     }
 	static void afficher(Expression expr) {
@@ -93,6 +96,5 @@ public class Main {
 	static Expression deriver(Expression expr, String dx) {
 		return new Derivation().deriver(expr, dx);
 	}
-
 }
 

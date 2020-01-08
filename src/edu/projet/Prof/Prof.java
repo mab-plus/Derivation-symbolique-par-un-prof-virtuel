@@ -24,19 +24,42 @@ public class Prof {
 	}
 	
 	public static String calcul (String question) {
+		String f,x, fx;
 		
 		if ( Prof.getMemoire() != null ) {
 			Simplification simp = new Simplification();
 			Derivation df = new Derivation();
 			
-			String fn = Prof.getMemoire().pop();
-			String dx = Prof.getMemoire().pop();
-			String f = Prof.getMemoire().pop();
-			
-			Expression expr = Expression.formuleToExpression(fn);
+			//filtres deux equations 2 ou 3 maximum captures
+			if( Prof.getMemoire().size() == 3) {
+				fx = Prof.getMemoire().pop();
+				System.out.println("fx=" + fx);
+				
+				x = Prof.getMemoire().pop();
+				System.out.println("x=" + x);
+				
+				f = Prof.getMemoire().pop();
+				System.out.println("f=" + f);	
+			}
+			else {
+				x = Prof.getMemoire().pop();
+				System.out.println("x=" + x);
+				
+				f = Prof.getMemoire().pop();
+				System.out.println(f);
+				
+				fx = f +"(" + x + ")";
+				System.out.println("fx=" + fx);	
+				
+			}
+				
+	
+			System.out.println("+++++++++++++++++++++++++++++");
+			   
+			Expression expr = Expression.formuleToExpression(fx);
 			expr = simp.simplifier(expr);
-			expr = df.deriver(expr, dx);
-			return f + "'" + "(" + dx + ")=" + simp.simplifier(expr).asString();
+			expr = df.deriver(expr, x);
+			return f + "'" + "(" + x + ")=" + simp.simplifier(expr).asString();
 		}
 		return "";
 	}
@@ -47,18 +70,20 @@ public class Prof {
 		String reponse = "...", regex;
 		Matcher matcher;
 		question = deAccentuer(question);
-		matchEquation(question);
 		
-		System.out.println("***** phrase = " + question);
+		System.out.println("\n***** DEbug *****");
+		System.out.println("***** question = " + question);
+		
+		//prof met en mémoire l'équation demandée
+		matchEquation(question);
 		
 	    for(int i = 0; i < mathsBlaba.size(); i++) {
 	    	regex = deAccentuer(mathsBlaba.get(i).get(0));
-	    	regex = Filtres.regex(regex);
-	    	
-	    	System.out.println("***** filtre = " + regex);
+	    	regex = Filtres.regex(regex); 	
 	    	matcher = match(regex, question);
 	    	
 	    	if (matcher.find() ) {
+		    	System.out.printf("----> filtre%d = %s\n", i, regex + " <----");
 				reponse = mathsBlaba.get(i).get( (int) (Math.random() * (mathsBlaba.get(i).size() - 1) + 1));
 	    		
 	            if (matcher.groupCount() == 0) {
@@ -73,6 +98,8 @@ public class Prof {
 					return reponse;
 	    		}
 		    }
+	    	else
+		    	System.out.printf("***** filtre%d = %s\n", i, regex);
 	    }
 		return reponse;
 	}
@@ -105,17 +132,37 @@ public class Prof {
 		String regex = Filtres.$eq.regex;
 		Matcher matcher = Pattern.compile(regex, Pattern.CASE_INSENSITIVE).matcher(eq);
 		Stack<String> equation = new Stack<String>();
-		System.out.println("\n***** DEbug *****");
+		
+		System.out.println("***** matchEquation equation : " + eq);
+		System.out.println("***** matchEquation regex : " + regex);
 		if ( matcher.find() ) {
-			System.out.println("***** matchEquation equation : " + eq);
-			System.out.println("***** matchEquation regex : " + regex);
 			System.out.println("***** matchEquation matcher.groupCount() : " + matcher.groupCount());
             if (matcher.groupCount() != 0) {
-            	equation.add(matcher.group(1));
-            	equation.add(matcher.group(2));
-            	equation.add(matcher.group(3));
+				for (int j = 1; j <= matcher.groupCount(); j++) {
+					System.out.printf("***** Groupe %d/%d: %s\n", j, matcher.groupCount(), matcher.group(j ));
+					equation.add(matcher.group(j));
+				}
             }
-    	}		
+    	}
+		else {
+			regex = Filtres.$fn.regex;
+			matcher = Pattern.compile(regex, Pattern.CASE_INSENSITIVE).matcher(eq);
+			equation = new Stack<String>();
+			
+			System.out.println("***** matchEquation regex : " + regex);
+			if ( matcher.find() ) {
+				System.out.println("***** matchEquation matcher.groupCount() : " + matcher.groupCount());
+	            if (matcher.groupCount() != 0) {
+					for (int j = 1; j <= matcher.groupCount(); j++) {
+						System.out.printf("***** Groupe %d/%d: %s\n", j, matcher.groupCount(), matcher.group(j ));
+						equation.add(matcher.group(j));
+					}
+	            }
+	    	}
+			
+		}
+		
 		Prof.setMemoire(equation);
 	}
+	
 }
