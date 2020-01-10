@@ -29,9 +29,6 @@ public abstract class Expression implements Formule {
 		
 		if (this.exprG == null)	
 			return this.getSymbole() + "(" + this.exprD.asString() + ")";
-		
-		if (this.getSymbole()  == "/")	
-			return this.exprG.asString() + this.getSymbole() + this.exprD.asString();
 			
 		return this.exprG.asString() + " " + this.getSymbole() + " " + this.exprD.asString();
 	}
@@ -149,7 +146,7 @@ public abstract class Expression implements Formule {
   }
   
   //notation normale vers postfix qui est la notation polonaise inversée qui servira à contruire l'Expression correspondante
-  private static List<String> equationToPostfix(String equation) {
+  public static List<String> equationToPostfix(String equation) {
 	  
 	  List<String> termes = splitter(equation);
       Stack<String> pile = new Stack<>();
@@ -194,6 +191,7 @@ public abstract class Expression implements Formule {
 	  List<String> termes = equationToPostfix(formule);
 
 	  for (int i = 0; i < termes.size(); i++) {
+		  System.out.printf("termes.get(%d) : %s\n", i, termes.get(i));
 	  	  // si operande -> la pile 
 	  	  if ( !isOperateur( termes.get(i) ) && !isFonction( termes.get(i) ) ) { 
 	  	   

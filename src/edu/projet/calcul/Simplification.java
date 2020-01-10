@@ -41,7 +41,7 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
     	   // si operande -> la pile 
            if ( !Expression.isOperateur( termes.get(i).getSymbole() )  && !Expression.isFonction( termes.get(i).getSymbole() ) ) { 
                pile.push(termes.get(i));
-               //System.out.printf("operande : %s\n", termes.get(i).getSymbole());
+               System.out.printf("operande : %s\n", termes.get(i).getSymbole());
            }
            // operateur + - * / ^
            else if ( Expression.isOperateur( termes.get(i).getSymbole() ) ) { 
@@ -155,6 +155,14 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
 		if (add.exprD.equals(add.exprG))
 			return new Multiplication(new Constante(2), add.exprG.accept(this));	
 		
+		// e - e       -> 0
+		if (add.exprD instanceof Moins && add.exprD.exprD.equals(add.exprG))
+			return new Constante(0);	
+		
+		// -e + e       -> 0
+		if (add.exprG instanceof Moins && add.exprG.exprD.equals(add.exprD))
+			return new Constante(0);
+		
 		// e + (-1) * e = e - e = 0     -> 0
 		if ( add.exprD instanceof Multiplication && add.exprG.equals(add.exprD.exprD) && Expression.isMoinsUn(add.exprD.exprG) )		
 			return new Constante(0);	
@@ -170,6 +178,13 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
 		// Addition (expr1, expr2)                 -> Addition (simplifier expr1, simplifier expr2)
 		return new Addition( add.exprG.accept(this), add.exprD.accept(this));
 	}
+	
+
+	@Override
+	public Expression visit(Moins expr) {
+		return new Moins(expr.exprD.accept(this));
+	}
+
 
 	@Override
 	public Expression visit(Multiplication mult) {
@@ -185,6 +200,14 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
 		// 1 * e = e
 		if (Expression.isUn(mult.exprG))
 			return mult.exprD.accept(this);
+		
+		// e *(- e)       -> -e^2
+		if (mult.exprD instanceof Moins && mult.exprD.exprD.equals(mult.exprG))
+			return new Moins(new Puissance(mult.exprG.accept(this), 2));
+		
+		// (-e) * e       -> -e^2
+		if (mult.exprG instanceof Moins && mult.exprG.exprD.equals(mult.exprD))
+			return new Moins(new Puissance(mult.exprG.accept(this), 2));
 
 		
 		// (-1) * (-1) * e = e

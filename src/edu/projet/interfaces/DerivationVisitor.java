@@ -9,6 +9,7 @@ public interface DerivationVisitor<R> {
 	public R visit(Variable expr, String dx);
 	public R visit(Addition expr, String dx);
 	public R visit(Soustraction expr, String dx);
+	public R visit(Moins expr, String dx);
 	public R visit(Multiplication expr, String dx);
 	public R visit(Division expr, String dx);
 	public R visit(Puissance expr, String dx);

@@ -1,4 +1,4 @@
-package edu.projet.Prof;
+package edu.projet.Prof.data;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;

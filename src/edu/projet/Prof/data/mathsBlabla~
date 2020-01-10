@@ -8,7 +8,7 @@ lycée|Je pense pouvoir vous aider|Sans être une expert, je peux aider un lycé
 non$_|vous êtes bien négatif
 merci$_|Il n'y a pas de quoi, je suis en apprentissage et vous m'avez beaucoup aidé|Je vous en prie, ce fut un plaisir|Merci à vous
 $_java$$python$$perl$$caml$_|alors vous savez programmer|Êtes-vous programmeur ?|Vous l'apparence d'un codeur !|Petit geek, va...
-un $x et un \1|hmm, très pertinent, parlez encore de {0}|Pourquoi un ${0} et un {0} ?
+un $x et un $x|hmm, très pertinent, parlez encore de {0}
 $x et $x sont$_|parlez-moi plus de {0} et {1}
 $_ans$_|remontez plus loin dans vos souvenirs
 $_années$_|cela fait bien longtemps

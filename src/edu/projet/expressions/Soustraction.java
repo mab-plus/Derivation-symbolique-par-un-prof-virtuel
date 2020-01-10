@@ -8,7 +8,7 @@ import edu.projet.interfaces.SimplificationVisitor;
 public class Soustraction extends Addition {
 	
     public Soustraction(Expression exprG, Expression exprD) {
-		super(exprG, new Multiplication(new Constante(-1), exprD));
+		super(exprG, new Moins(exprD));
 	}
     
 	@Override

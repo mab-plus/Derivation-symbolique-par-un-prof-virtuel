@@ -35,7 +35,11 @@ public class Derivation implements FormuleDerivation, DerivationVisitor<Expressi
 		return visit((Addition) expr, dx);
 	}
 
-
+	@Override
+	public Expression visit(Moins expr, String dx) {
+		return new Moins(expr.exprD.accept(this,dx));
+	}
+	
 	@Override
 	public Expression visit(Multiplication expr, String dx) {
 		Expression u = expr.exprG;
@@ -93,7 +97,7 @@ public class Derivation implements FormuleDerivation, DerivationVisitor<Expressi
 		Expression du = u.accept(this, dx);
 		
 		//cos(u)  -> -u' sin(u)
-		return new Soustraction(new Constante(0) , new Multiplication(du, new Sin(u)));
+		return new Moins(new Multiplication(du, new Sin(u)));
 	}
 
 	@Override
