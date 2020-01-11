@@ -14,17 +14,13 @@ public class Addition extends Expression {
 	@Override
 	public String asString() {
 		
-		String addition;
-		
 		if (isZero(this.exprD))
-			addition =this.exprG.asString();
+			return this.exprG.asString();
 		
-		else if (isZero(this.exprG))
-			addition = this.exprD.asString();
+		if (isZero(this.exprG))
+			return this.exprD.asString();
 		
-		else 
-			addition = this.exprG.asString() + " " + this.getSymbole() + " " + this.exprD.asString();
-		
+		String addition = this.exprG.asString() + " " + this.getSymbole() + " " + this.exprD.asString();
 		addition = addition.replaceAll("\\+ \\-", "- ");
 			
 		return addition;

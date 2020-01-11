@@ -40,7 +40,7 @@ public class Prof {
 		Collections.sort(termes, Collections.reverseOrder()); 
 		String tmp ="";
 		
-		for (int i = 0; i < termes.size(); i++) {			 
+		for (int i = 0; i < termes.size(); i++) {		
 			// si operande -> la pile 
 			if ( !Expression.isOperateur( termes.get(i) ) && !Expression.isFonction( termes.get(i) )) { 	
 				 
@@ -103,78 +103,50 @@ public class Prof {
 		return reponse;
 	}
 	
-	//prof renvoie l équation trouvée et la variable ou les variables de cette équation
-	public static String calcul (String question) {
+	//prof renvoie l équation trouvée et la variable ou les variables de cette équation	
+	public static String calcul(String question) {
 		String variable, equation;
+		String reponse ="Voici le résultat petit scarabé : \n";
 		Expression eEquation;
-		String reponse ="Voici le résultat petite tête :=), ";
+		Simplification simp = new Simplification();
+		Derivation df = new Derivation();
 		
-		System.out.println("getMemoireEquation()=" + getMemoireEquation().size() );
+		if ( getMemoireEquation().size() == 2)
+			equation = getMemoireEquation().get(1);
+		else
+			equation = getMemoireEquation().get(getMemoireEquation().size() - 1);
 		
-		if ( getMemoireEquation().size() == 0)
-			return "";
-		else {
-			Simplification simp = new Simplification();
-			Derivation df = new Derivation();
+		getVariables(equation);
+		
+	    if(getMemoireVariable().size() == 0)
+			return reponse + "(" + equation + ")' = 0";
+	    
+		if(getMemoireVariable().size() == 1) {
+			variable = getMemoireVariable().pop();
+			eEquation = Expression.formuleToExpression(equation);
+			eEquation = df.deriver(eEquation, variable);
+			reponse += "(" + equation + ")' = " + simp.simplifier(eEquation).asString();
+		}
+		
+		if(getMemoireVariable().size() > 1) {
+			eEquation = Expression.formuleToExpression(equation);
+			int memoireVariable = getMemoireVariable().size();
+			Expression expr; 
 			
-			if ( getMemoireEquation().size() == 1) {
-				
-                equation = Prof.getMemoireEquation().pop();
-                getVariables(equation);
-                System.out.println(equation);
-				if(getMemoireVariable() == null )
-					return reponse + "(" + equation + ")' = 0";
-				
-				else if(getMemoireVariable().size() == 1) {
-					variable = getMemoireVariable().pop();
-					eEquation = Expression.formuleToExpression(equation);
-					eEquation = df.deriver(eEquation, variable);
-					return  reponse + "(" + equation + ")' = " + simp.simplifier(eEquation).asString();
-				}
-				
-				else {
-					reponse = "J'ai plusieurs variables pour cette équation ! ";
-					int g = getMemoireVariable().size();
-					for(int i = 0; i < g - 1 ; i++)
-						reponse+= ", " + getMemoireVariable().pop();
-					reponse+= " et " + getMemoireVariable().pop();
-					
-					return reponse;
-				}
-			}
-			
-			else {
-				equation = Prof.getMemoireEquation().pop();
-				getVariables(equation);
-				
-                System.out.println(equation);
-				if(getMemoireVariable() == null )
-					return reponse + "(" + equation + ")' = 0";
-				
-				else if(getMemoireVariable().size() == 1) {
-					variable = getMemoireVariable().pop();
-					eEquation = Expression.formuleToExpression(equation);
-					eEquation = df.deriver(eEquation, variable);
-					return  reponse + "(" + equation + ")' = " + simp.simplifier(eEquation).asString();
-				}
-				
-				else {
-					reponse = "J'ai plusieurs variables pour cette équation : \n";
-					int g = getMemoireVariable().size();
-					eEquation = Expression.formuleToExpression(equation);
-					Expression e;
-					for(int i = 0; i < g; i++) {
-						variable = getMemoireVariable().pop();
-						e = df.deriver(eEquation, variable);
-						reponse += "dérivée par rapport  à " + variable + " : (" + equation + ")' = " + simp.simplifier(e).asString() + "\n";
-					}
-
-					return reponse;
-				}
+			for(int i = 0; i < memoireVariable; i++) {
+				variable = getMemoireVariable().pop();
+				expr = df.deriver(eEquation, variable);
+				reponse +="d/d" + variable + "(" + equation + ") = " + simp.simplifier(expr).asString() + "\n";
 			}
 		}
-
+		
+		getMemoireEquation().clear();
+		getMemoireVariable().clear();
+		return reponse;
+		
 	}
+	
+
 	
 	
 	//inspiration source https://www.programcreek.com/java-api-examples/java.text.Normalizer
@@ -184,6 +156,9 @@ public class Prof {
 		texte = texte.trim();
 		//on supprime tout separateur des fichiers données
 		texte = texte.replaceAll(ExtractionParsing.sep, "");
+		//on supprime tous les "[" ou "]"
+		texte = texte.replaceAll("\\[", "");
+		texte = texte.replaceAll("\\]", "");
 		// on désaccentue
 	    return texte == null ? null :
 	        Normalizer.normalize(texte, Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");

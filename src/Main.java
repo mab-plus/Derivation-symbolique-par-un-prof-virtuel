@@ -80,7 +80,6 @@ public class Main {
 		}
 		sc.close();
 		
-		
 		/*ProfBot bot=new ProfBot("Prof");
 		try{		
 	        // Enable debugging output.

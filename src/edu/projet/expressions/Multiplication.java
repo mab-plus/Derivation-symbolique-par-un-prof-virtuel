@@ -32,7 +32,9 @@ public class Multiplication extends Expression {
 		if (isMoinsUn(this.exprG))
 			return "-" + this.exprD.asString();	
 		
-		return this.exprG.asString() + "*" + this.exprD.asString();
+		String mult = this.exprG.asString() + "*" + this.exprD.asString();
+		mult = mult.replaceAll("\\*1\\/", "/");
+		return mult;
 	}
 	
 	@Override

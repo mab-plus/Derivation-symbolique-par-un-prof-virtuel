@@ -18,7 +18,7 @@ $_ne$$non$_|vous en êtes sûr|vous êtes bien négatif...
 $_vous$_|concentrez-vous sur votre problème, svp|On ne parle pas de moi, merci|Je ne suis pas le centre de cette discussion
 $_moi$_|racontez-moi en plus sur vos études...
 $_je$_|comment cela se manifeste-t-il ?
-$µ|Cela commence bien, car je ne comprends pas!|c'est un peut court !|Soyez plus explicite !
+$µ|Cela commence bien, car je ne comprends pas!|c'est un peu bizarre, non ?!|Soyez plus explicite !
 J'ai besoin de($_)|Pourquoi avez-vous besoin de {1} ?|Cela vous aiderait-il vraiment à obtenir {1} ?|Êtes-vous sûr d'avoir besoin de {1} ?
 Pourquoi ne le faites-vous pas ($1) \??|Pensez-vous vraiment que je ne le ferai pas {1} ?|Peut-être que finalement je le ferai {1}.|Voulez-vous vraiment que je le fasse {1} ?
 Pourquoi ne puis-je pas ($1) \ ??|Pensez-vous que vous devriez être en mesure de {1} ?|Si vous pouviez {1}, que feriez-vous ?|Je ne sais pas - pourquoi ne pouvez-vous pas {1} ?|Avez-vous vraiment essayé ?

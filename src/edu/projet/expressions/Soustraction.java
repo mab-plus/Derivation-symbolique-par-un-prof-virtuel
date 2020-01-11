@@ -20,6 +20,9 @@ public class Soustraction extends Addition {
 		if (isZero(this.exprG))
 			return "-" + this.exprD.asString();
 		
+		String soustraction = this.exprG.asString() + " " + this.getSymbole() + " " + this.exprD.asString();
+		soustraction = soustraction.replaceAll("\\- \\+", "- ");
+		
 		return this.exprG.asString() + " - " + exprD.exprD.asString();
 	}
 

@@ -152,28 +152,28 @@ public abstract class Expression implements Formule {
       Stack<String> pile = new Stack<>();
       ArrayList<String> resultat = new ArrayList<>();
       
-      for(String t: termes) {
-    	  if(t.equals("("))
-              pile.push(t);
+      for(String str: termes) {
+    	  if(str.equals("("))
+              pile.push(str);
     	  
-    	  else if(t.equals(")")) {
+    	  else if(str.equals(")")) {
               while(!pile.empty() ) {
-                  String str = pile.pop();
+                  String s = pile.pop();
                   
-                  if(str.equals("(")) 
+                  if(s.equals("(")) 
                 	  break;
-                  resultat.add(str);
+                  resultat.add(s);
               }
           } 
-    	  else if(isPrioritaire(t) > 0) {
-              int p = isPrioritaire(t);
+    	  else if(isPrioritaire(str) > 0) {
+              int p = isPrioritaire(str);
               
               while(!pile.isEmpty() && isPrioritaire(pile.peek()) >= p) 
             	  resultat.add(pile.pop());
-              pile.push(t);
+              pile.push(str);
           } 
     	  else
-    		  resultat.add(t);
+    		  resultat.add(str);
       }
       
       while(!pile.isEmpty()) 
@@ -187,9 +187,9 @@ public abstract class Expression implements Formule {
 	  
 	  Stack<Expression> pile = new Stack<Expression>(); 
 	  Expression expr1, expr2; 
-
+	  	
 	  List<String> termes = equationToPostfix(formule);
-
+	  System.out.println("equationToPostfix=" + termes);
 	  for (int i = 0; i < termes.size(); i++) {
 		  System.out.printf("termes.get(%d) : %s\n", i, termes.get(i));
 	  	  // si operande -> la pile 

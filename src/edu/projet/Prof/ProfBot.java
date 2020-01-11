@@ -14,8 +14,8 @@ public class ProfBot extends PircBot {
 		String reponse = Prof.reponse(message); 		
 		
 		sendMessage(channel, reponse);
-		/*if (!Prof.getMemoireEquation().isEmpty())
-			sendMessage(channel, "Voici le résultat : " + Prof.calcul (message));*/
+		if (!Prof.getMemoireEquation().isEmpty())
+			sendMessage(channel, Prof.calcul (message));
 		
     }
 }
