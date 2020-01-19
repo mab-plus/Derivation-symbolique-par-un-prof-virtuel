@@ -13,10 +13,11 @@ public class Reponse {
     private static Stack<String> memoireReponse;
 
 	
-	/**
-	* Pour un mot-clé donné, un regex correspondant est recherché.
+	/*
+	* Pour un mot-clé donné, un filtre correspondant est recherché, un regex composé, une question extraite est construite
+	* par les résultats du match du regex sur la question de l'utilisateur.
 	* Le premier trouvé est sélectionné. Si le match ne rend rien, on passe au  mot clé suivant
-	**/
+	*/
 	public static String getReponse (Map<String, Integer> getMotsClesQuestion, String question) {
 		
 		//on récupère les mots-clés de la question pour trouver la réponse adéquate
@@ -42,10 +43,11 @@ public class Reponse {
 	
 	private static String setReponse (String motsClesQuestion, String question) {
 		/**
-		* Décomposer une chaîne selon la clé donnée.
-		* Essayez chaque regex si match alors on renvoie la réponse
-		* Si le match du regex échoue, essayez un autre regex
+		* Essayez chaque filtre et son regex si match alors on renvoie la réponse
+		* Si le match du regex échoue, essayez un autre filtre
 		* Si la réponse contient goto, traiter la clé du goto comme une question et on recommence
+		* Si le filtre contient @ddériver on cherche une fonction à dériver, si oui, le résultat de la dérivation sera ajoutée à la réponse
+		* Si le filtre contient @ à extraire  les synonymes pour composer les regex correspondants
 		* Sinon renvoyez la réponse;
 		*/
 		System.out.println("3- motsClesQuestion=" + motsClesQuestion);
