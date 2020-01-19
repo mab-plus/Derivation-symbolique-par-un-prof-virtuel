@@ -1,8 +1,8 @@
-package edu.projet.Prof;
+package edu.projet.professeur;
 
 import org.jibble.pircbot.PircBot;
 
-//inspiration http://www.jibble.org/pircbot.php
+// http://www.jibble.org/pircbot.php
 public class ProfBot extends PircBot {
 	
 	public ProfBot(String name){
@@ -11,11 +11,7 @@ public class ProfBot extends PircBot {
 	
     public void onMessage(String channel, String sender, String login, String hostname, String message) {
     	
-		String reponse = Prof.reponse(message); 		
-		
-		sendMessage(channel, reponse);
-		if (!Prof.getMemoireEquation().isEmpty())
-			sendMessage(channel, Prof.calcul (message));
-		
+		String reponse = Professeur.reponse(message); 		
+		sendMessage(channel, reponse);		
     }
 }

@@ -189,7 +189,7 @@ public abstract class Expression implements Formule {
 	  Expression expr1, expr2; 
 	  	
 	  List<String> termes = equationToPostfix(formule);
-	  System.out.println("equationToPostfix=" + termes);
+	  //System.out.println("equationToPostfix=" + termes);
 	  for (int i = 0; i < termes.size(); i++) {
 		  System.out.printf("termes.get(%d) : %s\n", i, termes.get(i));
 	  	  // si operande -> la pile 
@@ -233,7 +233,7 @@ public abstract class Expression implements Formule {
 	  	  	  	  	  pile.push(new Puissance(expr2, expr1)); 
 	  	  	  	  break;
 	  	  	  }
-	  	  	  System.out.printf("RESULT : %s\n", pile.lastElement().asString());
+	  	  	  //System.out.printf("RESULT : %s\n", pile.lastElement().asString());
 	  	  }
 	  	  // fonctions cos sin exp log etc...
 	  	  else {
@@ -263,8 +263,8 @@ public abstract class Expression implements Formule {
 	  } 
 	  
 	  Expression resultat = pile.pop();
-	  System.out.printf("pop = %s \n", resultat.asString());
-	  System.out.println("-------------------");
+	  //System.out.printf("pop = %s \n", resultat.asString());
+	  //System.out.println("-------------------");
 	   
 	  return resultat;   
   }

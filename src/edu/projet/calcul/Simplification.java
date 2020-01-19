@@ -28,7 +28,7 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
 	   deCompose(termes, expr.exprG);
 	   deCompose(termes, expr.exprD);
 	   termes.add(expressionSymbole);  
-	   //System.out.printf("deCompose : %s\n", expressionSymbole.getSymbole());
+	   ////System.out.printf("deCompose : %s\n", expressionSymbole.getSymbole());
    }
   
    //on reprend la liste precedente pour recreer expression apres simplification des termes
@@ -37,11 +37,11 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
        Expression expr1, expr2; 
  
        for (int i = 0; i < termes.size(); i++) {
-    	   //System.out.printf("postfixe : %s\n", termes.get(i).getSymbole());
+    	   ////System.out.printf("postfixe : %s\n", termes.get(i).getSymbole());
     	   // si operande -> la pile 
            if ( !Expression.isOperateur( termes.get(i).getSymbole() )  && !Expression.isFonction( termes.get(i).getSymbole() ) ) { 
                pile.push(termes.get(i));
-               System.out.printf("operande : %s\n", termes.get(i).getSymbole());
+               //System.out.printf("operande : %s\n", termes.get(i).getSymbole());
            }
            // operateur + - * / ^
            else if ( Expression.isOperateur( termes.get(i).getSymbole() ) ) { 
@@ -49,9 +49,9 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
         	   expr1 = pile.pop();      
         	   expr2 = pile.pop();
         	   
-        	   System.out.printf("operateur : %s\n", termes.get(i).getSymbole());
-        	   System.out.printf("expr1 : %s\n", expr1.asString());
-        	   System.out.printf("expr2 : %s\n", expr2.asString());
+        	   //System.out.printf("operateur : %s\n", termes.get(i).getSymbole());
+        	   //System.out.printf("expr1 : %s\n", expr1.asString());
+        	   //System.out.printf("expr2 : %s\n", expr2.asString());
         	
                switch(termes.get(i).getSymbole()) { 
                    case "+": 
@@ -74,7 +74,7 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
                 	   pile.push(new Puissance(expr2, expr1).accept(this)); 
                    break;
              }
-               System.out.printf("RESULT : %s\n", pile.lastElement().asString());
+               //System.out.printf("RESULT : %s\n", pile.lastElement().asString());
            }
            // fonctions cos sin exp log etc...
            else {
@@ -95,13 +95,13 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
                 	   pile.push(new Sin(expr1.accept(this))); 
                    break;
              } 
-               System.out.printf("RESULT : %s\n", pile.lastElement().asString());
+               //System.out.printf("RESULT : %s\n", pile.lastElement().asString());
            }           
        } 
        
        Expression resultat = pile.pop();
-       System.out.printf("pop = %s \n", resultat.asString());
-       System.out.println("-------------------");
+       //System.out.printf("pop = %s \n", resultat.asString());
+       //System.out.println("-------------------");
     	  
        return resultat;   
    }
@@ -109,7 +109,7 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
 	@Override
 	public Expression simplifier(Expression expression) {
 		
-		//System.out.printf("expression = %s \n", expression.asString());
+		////System.out.printf("expression = %s \n", expression.asString());
 		List<Expression> termesDecomposition = new ArrayList<>();
 		
 		this.deCompose(termesDecomposition, expression);

@@ -4,6 +4,7 @@ import edu.projet.expressions.*;
 import edu.projet.fonctions.*;
 
 public interface SimplificationVisitor<R> {
+	
 	public R visit(Constante expr);
 	public R visit(Variable expr);
 	public R visit(Addition expr);
