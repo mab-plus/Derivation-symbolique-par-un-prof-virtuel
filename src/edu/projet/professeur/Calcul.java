@@ -27,7 +27,11 @@ public class Calcul {
 		return memoireEquation;
 	}
 	
-	//une fois une expression trouvée, extraction des variables :exemple x^2 + y --> x,y
+	/**
+	 * une fois l'équation trouvée, extraction des variables :
+	 * exemple x^2 + y --> x,y
+	 * 
+	 **/
 	static void getVariables(String equation) {
 		//on tranforme l'expression  trouvée en notation polonaise inversée
 		//exemple x^2 + y  ---> x2^y+
@@ -56,9 +60,12 @@ public class Calcul {
 		}
 	}
 
+
 	/**
-	* Pour un regex correspondant une équation est recherchée.
-	**/
+	 * une fois l'équation et ses variables trouvées, calcul de la dérivée :
+	 * exemple x^2 + y --> x,y --> d/dx(^2 + y) = 2*x, d/dy(^2 + y) = 1,
+	 * 
+	 **/
 	static String getDerivee(String question) {
 
 		List<String> fichierFiltresEquations= Fichier.getFichierFiltresEquations();
@@ -90,8 +97,9 @@ public class Calcul {
 		return null;
     }
 	
-	
-	//prof renvoie l'équation trouvée et la variable ou les variables de cette équation	
+	/**
+	 * Professeur renvoie le résultat sous forme d'une réponse
+	 **/
 	static String derivation() {
 		String variable, equation;
 		String resultat ="Voici le résultat petit scarabée : ";

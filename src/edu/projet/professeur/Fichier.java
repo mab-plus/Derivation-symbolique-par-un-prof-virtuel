@@ -22,6 +22,7 @@ public class Fichier {
 		Path path = FileSystems.getDefault().getPath(chemin);
 		
 		try (Stream<String> stream = Files.lines(path)) {
+			//on ne prend les lignes vides du fichier
 			return stream.filter(x -> !x.trim().equals("")).collect(Collectors.toList());
 		}
 		catch (IOException e) {		

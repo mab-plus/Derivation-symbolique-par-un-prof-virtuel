@@ -9,10 +9,10 @@ import java.util.stream.Collectors;
 
 public class MotsCles {
 	
+	
 	public static Map<String, Integer> getMotsClesQuestion (String question) {
 		
-		question= Regex.nettoyerQuestion(question);   		
-		
+		question= Regex.nettoyerQuestion(question);   				
      	question=  Conjugaison.conjuger(question, Fichier.getCheminFichierConjugaison());
      	
      	List< String>  termesQuestion = enleverDoublon(question);
@@ -47,7 +47,7 @@ public class MotsCles {
 	private static List<String> enleverDoublon(String question) {
 		
 		List<String> termesQuestion = Arrays.asList(question.toLowerCase().split("\\s+"));
-		//on retourne en supprimant les doublons
+
 		return  termesQuestion.stream().distinct().collect(Collectors.toList());
 	}
 
