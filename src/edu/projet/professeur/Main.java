@@ -2,12 +2,20 @@ package edu.projet.professeur;
 
 import java.util.Scanner;
 
+import edu.projet.calcul.*;
+import edu.projet.expressions.*;
+import edu.projet.interfaces.*;
+
 public class Main {
 
 	public static void main(String[] args) {
 		
-		/*
-		String reponse, question;  
+		//test
+		//System.out.println("> Professeur : " + Professeur.reponse("je suis étudiant et j'ai besoin d'aide et je veux dériver sin(x)"));
+		
+		System.out.println("> Professeur : " + Professeur.reponse("j'ai besoin de dériver cette fonction sin(1/x)"));
+		
+		/*String reponse, question;  
 		Scanner sc = new Scanner(System.in);	 
 		System.out.println("> Professeur :" + Professeur.reponse("xdebut"));
 		while (sc.hasNextLine()) {
@@ -22,8 +30,7 @@ public class Main {
 				System.out.println("> Professeur : " + reponse); 
 			}
 		}
-		sc.close();
-		*/
+		sc.close();*/
 		
 		
 		/*ProfBot bot=new ProfBot("Prof");
@@ -40,10 +47,6 @@ public class Main {
 		catch (Exception e) {
 			e.printStackTrace();
 		}*/
-		
-		//test
-		System.out.println("> Professeur : " + Professeur.reponse("je suis étudiant et j'ai besoin d'aide et je veux dériver sin(x)")); 
-		
 		
 	}
 

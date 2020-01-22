@@ -40,7 +40,10 @@ public class Regex {
         
         return in;
     }  
-     
+    
+	/**
+     * https://www.drillio.com/en/2011/java-remove-accent-diacritic/
+    */
     static String desaccentuer(String in) {  	
     	
 		return Normalizer.normalize(in, Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
@@ -48,7 +51,7 @@ public class Regex {
     
     /**
      * On fabrique l'expression régulière (regex) à partir du filtre
-     */   
+    */   
     static String getRegex(String filtre) {
     	
     	//Expressions régulières pour matcher expressions mathématiques
@@ -62,7 +65,8 @@ public class Regex {
     		return "(sin|cos|exp|tan|log)\\s*\\((.*?)\\)\\s*";
     	
     	//Expressions régulières pour matcher autres sauf celles commençant par @
-    	return match("\\s*\\*\\s*|\\$\\s*[^@]", filtre).replaceAll(  "([\\p{L}\\s\\']*)"   );
+    	String regex = "([\\\\p{L}\\\\s']*)";
+    	return match("\\s*\\*\\s*|\\$\\s*[^@]", filtre).replaceAll(  regex   );
     	
     }
     
