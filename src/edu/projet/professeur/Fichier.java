@@ -1,34 +1,32 @@
 package edu.projet.professeur;
-
-import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
+	
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Fichier {
 	
-    private static String cheminFichierConjugaison = "src/edu/projet/professeur/Data/conjugaison-traduction.csv";
-    private static String cheminFichierSujetObjet = "src/edu/projet/professeur/Data/sujet-objet.csv";
-    private static String cheminSynonymes = "src/edu/projet/professeur/Data/synonymes.csv";
-    private static String cheminFiltresReponses = "src/edu/projet/professeur/Data/filtres-reponses.csv";
-    private static String cheminFiltresEquations = "src/edu/projet/professeur/Data/filtres-equations.csv";
+    private static String cheminFichierConjugaison = "/conjugaison-traduction.csv";
+    private static String cheminFichierSujetObjet = "/sujet-objet.csv";
+    private static String cheminSynonymes = "/synonymes.csv";
+    private static String cheminFiltresReponses = "/filtres-reponses.csv";
+    private static String cheminFiltresEquations = "/filtres-equations.csv";
+     
     
     //extraction des fichiers
 	static List< String>  getfichier(String chemin ) {
+			
+		InputStream s = Fichier.class.getResourceAsStream(chemin);
 		
-		Path path = FileSystems.getDefault().getPath(chemin);
-		
-		try (Stream<String> stream = Files.lines(path)) {
+		try (Stream<String> stream = new BufferedReader(new InputStreamReader(s, Charset.forName("UTF-8"))).lines()) {
 			//on ne prend les lignes vides du fichier
 			return stream.filter(x -> !x.trim().equals("")).collect(Collectors.toList());
 		}
-		catch (IOException e) {		
-			e.printStackTrace();
-		}
-		return null;
+		
 	}
 	
 	static List< String>  getFichierConjugaison() {
