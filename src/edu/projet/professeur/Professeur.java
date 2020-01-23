@@ -34,17 +34,4 @@ public class Professeur {
      	 
      	return laReponse;
      }
-	
-
-	
-
-			
-	
-
-
-	
-
-
-
-
 }
