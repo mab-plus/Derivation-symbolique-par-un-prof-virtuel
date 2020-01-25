@@ -7,9 +7,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * @author BAKHTAOUI Michel
+ * @version 1.0
+ */
 public class MotsCles {
 	
-	
+	/**
+	 * @param question
+	 * @return les mots-clés d'une entrée utilisateur. 
+	 */
 	public static Map<String, Integer> getMotsClesQuestion (String question) {
 		
 		question= Regex.nettoyerQuestion(question);   				
@@ -37,6 +44,10 @@ public class MotsCles {
 	}
 	
 	
+	/**
+	 * @param motsClesQuestion
+	 * @return la collection (mots-clés, poids) triés par ordre croissant.
+	 */
 	private static Map<String, Integer> trieParValeur(final Map<String, Integer> motsClesQuestion) {
 
         return motsClesQuestion.entrySet().stream()
@@ -44,6 +55,10 @@ public class MotsCles {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (q1, q2) -> q1, LinkedHashMap::new));
     }
 	
+	/**
+	 * @param question
+	 * @return retourne une liste des mots d'une entrée utilisateur sans doublons.
+	 */
 	private static List<String> enleverDoublon(String question) {
 		
 		List<String> termesQuestion = Arrays.asList(question.toLowerCase().split("\\s+"));
