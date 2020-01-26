@@ -1,7 +1,15 @@
 package edu.projet.professeur;
 
+/**
+ * Application Professeur qui se connecte sur l'irc.
+ * @author BAKHTAOUI Michel
+ * @version 1.0
+ */
 public class Main {
 
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		
 		/*test
