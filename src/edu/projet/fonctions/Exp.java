@@ -6,18 +6,8 @@ import edu.projet.expressions.Expression;
 import edu.projet.interfaces.DerivationVisitor;
 import edu.projet.interfaces.SimplificationVisitor;
 
-/**
- * Exp @see Expression
- * 
- * @author BAKHTAOUI Michel
- * @version 1.0
- */
 public class Exp  extends Expression {
 
-	/**
-	 * constructeur
-	 * @param argument
-	 */
 	public Exp(Expression argument) {
 		super(null, "exp", argument);
 	}

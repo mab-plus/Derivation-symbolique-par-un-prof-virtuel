@@ -5,17 +5,8 @@ import java.util.HashMap;
 import edu.projet.interfaces.DerivationVisitor;
 import edu.projet.interfaces.SimplificationVisitor;
 
-/**
- * Variable @see Expression
- * 
- * @author BAKHTAOUI Michel
- * @version 1.0
- */
 public class Variable extends Expression {
 	
-	/**
-	 * Expression de la variable en chaîne de caractère
-	 */
 	private String variable;
 
 	public Variable ( String variable) {

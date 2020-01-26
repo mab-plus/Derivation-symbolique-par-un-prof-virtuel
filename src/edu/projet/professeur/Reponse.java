@@ -9,26 +9,16 @@ import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * @author BAKHTAOUI Michel
- * @version 1.0
- */
 public class Reponse {
 	
-    /**
-     * Pile mémoire de la réponse
-     */
     private static Stack<String> memoireReponse;
-	
 
+	
 	/**
-	 * @param getMotsClesQuestion
-	 * @param question
-	 * @return
-	 * Pour un mot-clé donné, un filtre correspondant est recherché, un regex composé, une question extraite est construite
-	 * par les résultats du match du regex sur la question de l'utilisateur.
-	 * Le premier trouvé est sélectionné. Si le match ne rend rien, on passe au  mot clé suivant.
-	 */
+	* Pour un mot-clé donné, un filtre correspondant est recherché, un regex composé, une question extraite est construite
+	* par les résultats du match du regex sur la question de l'utilisateur.
+	* Le premier trouvé est sélectionné. Si le match ne rend rien, on passe au  mot clé suivant
+	*/
 	public static String getReponse (Map<String, Integer> getMotsClesQuestion, String question) {
 		
 		//on récupère les mots-clés de la question pour trouver la réponse adéquate
@@ -52,11 +42,7 @@ public class Reponse {
         return "Quoi vous dire.... !";
 	}
 	
-
 	/**
-	 * @param motCleQuestion
-	 * @param question
-	 * @return
 	* Pour chaque ligne du fichier filtres réponses on extrait un un mot-clé pour comparaison au mot-clé utilisateur
 	* si la comparaison réussi, on extrait le filtre pour fabriquer l'expression régulière (regex)
 	* 
@@ -79,9 +65,10 @@ public class Reponse {
 	* * * si il y a une dérivée on renvoie la réponse avec le résultat de la dérivée
 	* * * Sinon juste la réponse
 	* * on essaie une autre regex de la pile
-	* Renvoyez la réponse.
+	* Renvoyez la réponse;
 	*/
-	private static String setReponse (String motCleQuestion, String question) {	
+	private static String setReponse (String motCleQuestion, String question) {
+		
 		
 		List<String> filtreReponse = getFiltreReponse(motCleQuestion);
 		
@@ -95,7 +82,7 @@ public class Reponse {
 			
 		//Si le filtre commence par $ 
     	if (filtre.matches("^\\$")) {
-    		//System.out.println("le filtre commence par $  = filtresReponses.get(2)= " + filtre);
+    		System.out.println("le filtre commence par $  = filtresReponses.get(2)= " + filtre);
     		matcher = Regex.match(Regex.getRegex(filtre), question); 
         	memoireReponse.push(assemblageReponse(matcher, question)); 
     	} 	
@@ -104,11 +91,11 @@ public class Reponse {
 		Pattern p = Pattern.compile("goto\\s+(\\p{L}+)");
 		Matcher m = p.matcher(reponse);
         if(m.find()) {
-        	//System.out.println("goto= " + m.group(1));
+        	System.out.println("goto= " + m.group(1));
         	//setReponse(m.group(1), question);
-        	//System.out.println("***filtre= " + filtre);
-			//System.out.println("***question= " + question);
-			//System.out.println("***reponse= " + reponse);
+        	System.out.println("***filtre= " + filtre);
+			System.out.println("***question= " + question);
+			System.out.println("***reponse= " + reponse);
 			
 			filtreReponse = getFiltreReponse(m.group(1));
 			filtre = filtreReponse.get(0);
@@ -117,30 +104,30 @@ public class Reponse {
         
     	//Si le filtre contient @dériver 
 		if (filtre.equals("@dériver")) {
-        	//System.out.println("le filtre contient @dériver = filtresReponses.get(2)= " + filtre);
+        	System.out.println("le filtre contient @dériver = filtresReponses.get(2)= " + filtre);
 			regex.push("*");
 			derivee = Calcul.getDerivee(question);
     	}
 		
 		//Si le filtre contient @
 		if (filtre.matches("^.*\\@")) {
-        	//System.out.println("le filtre contient @ = getRegexSynonymes = " + regex);
+        	System.out.println("le filtre contient @ = getRegexSynonymes = " + regex);
 			regex = Regex.getRegexSynonymes(filtre);
     	}
 		else {
 			regex.push(filtre);
-			//System.out.println("getRegex " + regex  + " ligne ");
+			System.out.println("getRegex " + regex  + " ligne ");
 		}
 		
-		//System.out.println("------------On parcourt la pile des regex----------------");
+		System.out.println("------------On parcourt la pile des regex----------------");
 		Iterator<String> regexiTerator = regex.iterator();
 		while (regexiTerator.hasNext()) { 
 			filtre = regexiTerator.next();
 			filtre = Regex.getRegex(filtre);
 			
-        	//System.out.println("w + Regex= " + filtre);
+        	System.out.println("w + Regex= " + filtre);
             matcher = Regex.match(filtre, question);
-        	//System.out.println("w + reponse =" + reponse);
+        	System.out.println("w + reponse =" + reponse);
         	reponse = assemblageReponse(matcher, reponse);
    			/* * Si le match donne une reponse non null
 			* * * si il y a une dérivée on renvoie la réponse avec le résultat de la dérivée
@@ -154,17 +141,13 @@ public class Reponse {
             	else
             		return reponse; 
             }
-			//System.out.println("-------------On parcourt la pile des regex ---------------");
+			System.out.println("-------------On parcourt la pile des regex ---------------");
 		}	
 		// Renvoyez la réponse
         return reponse;
     }
 	
 	
-	/**
-	 * @param motCleQuestion
-	 * @return le filtre du mot-clé correspondant.
-	 */
 	private static List<String> getFiltreReponse(String motCleQuestion) {
 		List<String> fichierFiltresReponses = Fichier.getFichierFiltresReponses();
 		List<String> resultat = new ArrayList<>();
@@ -188,12 +171,8 @@ public class Reponse {
 	
 	
 
-
 	/**
-	 * @param matcher
-	 * @param reponse
-	 * @return
-	 * à partir du matching du regex réussi, on construit la réponse en matchant la numérotation entre parenthèses.
+	 * à partir du matching du regex réussi, on construit la réponse en matchant la numérotation entre parenthèses
 	 */
 	private static String assemblageReponse(Matcher matcher, String reponse) {
 		 

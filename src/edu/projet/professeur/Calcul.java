@@ -10,48 +10,26 @@ import edu.projet.calcul.*;
 import edu.projet.expressions.Expression;
 
 
-/**
- * @author BAKHTAOUI Michel
- * @version 1.0
- */
 public class Calcul {
 	
-	/**
-	 * pour stocker l'équation trouvée dans l'entrée utilisateur.
-	 */
 	private static Stack<String> memoireEquation = new Stack<String>();
-	
-	/**
-	 * pour stocker les variables de l'équation trouvée dans l'entrée utilisateur
-	 */
 	private static Stack<String> memoireVariable = new Stack<String>();
 		
-	/**
-	 * @return une pile contenant toutes les variables de l'équation trouvée dans l'entrée utilisateur
-	 */
 	static Stack<String> getMemoireVariable() {
 		return memoireVariable;
 	}
-	
-	/**
-	 * @param data, eneregistre les variables de l'équation dans memoireVariable.
-	 */
+
 	static void setMemoireVariable(String data) {
 		memoireVariable.add(data);
 	}
 	
-	/**
-	 * @return une pile contenantle le ou les équations trouvées dans l'entrée utilisateur
-	 */
 	static Stack<String> getMemoireEquation() {
 		return memoireEquation;
 	}
 	
-
 	/**
-	 * @param equation
 	 * une fois l'équation trouvée, extraction des variables :
-	 * exemple x^2 + y --> x,y.
+	 * exemple x^2 + y --> x,y
 	 * 
 	 **/
 	static void getVariables(String equation) {
@@ -83,11 +61,10 @@ public class Calcul {
 	}
 
 
-
 	/**
-	 * @param question
-	 * @return	la dérivée de l'équation  par rapport à ses variables trouvées :
-	 * exemple x^2 + y --> x,y --> d/dx(^2 + y) = 2*x, d/dy(^2 + y) = 1.
+	 * une fois l'équation et ses variables trouvées, calcul de la dérivée :
+	 * exemple x^2 + y --> x,y --> d/dx(^2 + y) = 2*x, d/dy(^2 + y) = 1,
+	 * 
 	 **/
 	static String getDerivee(String question) {
 
@@ -101,14 +78,14 @@ public class Calcul {
 
 			//matching équation
 			String reg = filtresEquations.get(0);
-			//System.out.println("Equation - reg= " + reg);
+			System.out.println("Equation - reg= " + reg);
 			matcher = Regex.match(reg, question);
 			//on retourne l'équation
 			while (matcher.find()) {
 	            for (int j = 0; j <= matcher.groupCount() ; j++) {
 	                // sous groupe j
 		    		if (matcher.group(j) != null) {	    					
-			    		//System.out.printf("!!!!!!!!!!!!! Groupe %d/%d: %s\n", j, matcher.groupCount(), matcher.group(j).trim() );
+			    		System.out.printf("!!!!!!!!!!!!! Groupe %d/%d: %s\n", j, matcher.groupCount(), matcher.group(j).trim() );
 		    			memoireEquation.push(matcher.group(j));
 		    		}
 	            }
@@ -120,10 +97,8 @@ public class Calcul {
 		return null;
     }
 	
-
 	/**
-	 * @return le résultat de la dérivée sous forme d'une réponse
-	 *
+	 * Professeur renvoie le résultat sous forme d'une réponse
 	 **/
 	static String derivation() {
 		String variable, equation;
@@ -165,6 +140,8 @@ public class Calcul {
 		getMemoireEquation().clear();
 		getMemoireVariable().clear();
 		return resultat;
+		
 	}
+
 	
 }

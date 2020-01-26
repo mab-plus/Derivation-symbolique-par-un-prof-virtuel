@@ -5,19 +5,8 @@ import java.util.HashMap;
 import edu.projet.interfaces.DerivationVisitor;
 import edu.projet.interfaces.SimplificationVisitor;
 
-/**
- * Multiplication @see Expression
- * 
- * @author BAKHTAOUI Michel
- * @version 1.0
- */
 public class Multiplication extends Expression {
-	
-    /**
-     * constructeur
-     * @param exprG
-     * @param exprD
-     */
+
     public Multiplication(Expression exprG, Expression exprD) {
 		super(exprG, "*", exprD);
 	}

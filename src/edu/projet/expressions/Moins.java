@@ -5,18 +5,8 @@ import java.util.HashMap;
 import edu.projet.interfaces.DerivationVisitor;
 import edu.projet.interfaces.SimplificationVisitor;
 
-/**
- * Moins @see Expression
- * 
- * @author BAKHTAOUI Michel
- * @version 1.0
- */
 public class Moins extends Multiplication {
 
-	/**
-	 * constructeur
-	 * @param expr
-	 */
 	public Moins(Expression expr) {
 		super(new Constante(-1), expr);
 	}

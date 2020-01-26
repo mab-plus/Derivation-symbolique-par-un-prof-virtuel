@@ -6,18 +6,8 @@ import edu.projet.expressions.Expression;
 import edu.projet.interfaces.DerivationVisitor;
 import edu.projet.interfaces.SimplificationVisitor;
 
-/**
- * Cos @see Expression
- * 
- * @author BAKHTAOUI Michel
- * @version 1.0
- */
 public class Cos  extends Expression {
 
-	/**
-	 * constructeur
-	 * @param argument
-	 */
 	public Cos(Expression argument) {
 		super(null, "cos", argument);
 	}

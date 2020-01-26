@@ -6,18 +6,8 @@ import edu.projet.expressions.Expression;
 import edu.projet.interfaces.DerivationVisitor;
 import edu.projet.interfaces.SimplificationVisitor;
 
-/**
- * Log @see Expression
- * 
- * @author BAKHTAOUI Michel
- * @version 1.0
- */
 public class Sin  extends Expression {
 
-	/**
-	 * constructeur
-	 * @param argument
-	 */
 	public Sin(Expression argument) {
 		super(null, "sin", argument);
 	}
