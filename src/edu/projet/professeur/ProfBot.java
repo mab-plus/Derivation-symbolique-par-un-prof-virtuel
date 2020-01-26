@@ -8,6 +8,7 @@ import org.jibble.pircbot.PircBot;
 * @see PircBot, http://www.jibble.org/pircbot.php
 * @commentaire
 * ProfBot utilise l'API IRC PircBot qui est un framework Java pour écrire des bots IRC rapidement et facilement. 
+// http://www.jibble.org/pircbot.php
 * Ses fonctionnalités incluent une architecture événementielle pour gérer les événements IRC courants.
 * Le package pircbot contient (entre autres) une classe abstraite nommée PircBot dont on peut étendre et hériter les fonctionnalités.
 */

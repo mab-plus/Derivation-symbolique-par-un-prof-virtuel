@@ -3,21 +3,28 @@ package edu.projet.professeur;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * @author BAKHTAOUI Michel
+ * @version 1.0
+ */
 public class Conjugaison {
 	
 
+
 	/**
+	 * @param cheminFichierDeTraitement
+	 * @param question
 	 * l'entrée utilisateur est formatée de façon à améliorer la formulation exemple : 
 	 * tu --> vous 
 	 * pk --> pourquoi 
 	 * etc ... 
-	 * voir fichier "conjugaison-traduction.csv"
+	 * voir fichier "conjugaison-traduction.csv".
 	 * 
-	 * En sortie, la réponse est formatée de façon refleter le sujet en objet d'une partie de l'entrée utilisateur exemple :
+	 * @return la réponse est formatée de façon refleter le sujet en objet d'une partie de l'entrée utilisateur exemple :
 	 * entrée : je pense que je suis perdu
 	 * Professeur match (je suis perdu) -> traitement (vous êtes perdu)
 	 * réponse: Pourqoui pensez-vous que (vous êtes perdu) 
-	 * voir fichier "sujet-objet.csv"
+	 * voir fichier "sujet-objet.csv".
 	 * 
 	 **/
 	static String conjuger(String question, String cheminFichierDeTraitement) {

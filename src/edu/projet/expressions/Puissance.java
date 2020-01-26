@@ -5,12 +5,28 @@ import java.util.HashMap;
 import edu.projet.interfaces.DerivationVisitor;
 import edu.projet.interfaces.SimplificationVisitor;
 
+/**
+ * Puissance @see Expression
+ * 
+ * @author BAKHTAOUI Michel
+ * @version 1.0
+ */
 public class Puissance extends Expression {
 	    
+	/**
+	 * constructeur
+	 * @param exprG
+	 * @param exprD
+	 */
 	public Puissance(Expression exprG, Expression exprD) {
 		super(exprG, "^", exprD);
 	}
     
+    /**
+     * constructeur
+     * @param exprG
+     * @param exposant
+     */
     public Puissance(Expression exprG, int exposant) {
 		super(exprG, "^", new Constante(exposant));
 	}

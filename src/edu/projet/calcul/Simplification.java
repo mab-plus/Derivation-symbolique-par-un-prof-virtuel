@@ -10,9 +10,12 @@ import edu.projet.interfaces.*;
 
 public class Simplification implements FormuleSimplification, SimplificationVisitor<Expression> {
 	
-	
-	//on parcourt l'expression de gauche à droite en stockant les termes dans une liste
-	//exemple new Addition(new Addition(x, un), deux);	x 1 + 2 +
+
+	/**
+	 * Parcourt récursif de l'expression, de gauche à droite pour stocker les termes dans une liste
+	 * exemple x + 1 + 2 = new Addition(new Addition(x, un), deux);	x1+2+
+	 *
+	*/	
    private void deCompose(List<Expression> termes, Expression expr) {
 	   
 	   Expression expressionSymbole;
@@ -28,30 +31,25 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
 	   deCompose(termes, expr.exprG);
 	   deCompose(termes, expr.exprD);
 	   termes.add(expressionSymbole);  
-	   ////System.out.printf("deCompose : %s\n", expressionSymbole.getSymbole());
    }
   
-   //on reprend la liste precedente pour recreer expression apres simplification des termes
+	/**
+	 * Simplification des termes de la liste d'expressions générée par la méthode @see deCompose en une instance d'Expression
+	*/
    private Expression simplifierTermes(List<Expression> termes) {
 	   Stack<Expression> pile = new Stack<Expression>(); 
        Expression expr1, expr2; 
  
        for (int i = 0; i < termes.size(); i++) {
-    	   ////System.out.printf("postfixe : %s\n", termes.get(i).getSymbole());
     	   // si operande -> la pile 
            if ( !Expression.isOperateur( termes.get(i).getSymbole() )  && !Expression.isFonction( termes.get(i).getSymbole() ) ) { 
                pile.push(termes.get(i));
-               //System.out.printf("operande : %s\n", termes.get(i).getSymbole());
            }
-           // operateur + - * / ^
+           // si operateur + - * / ^
            else if ( Expression.isOperateur( termes.get(i).getSymbole() ) ) { 
         	   // Pop les deux operandes de l'operateur
         	   expr1 = pile.pop();      
         	   expr2 = pile.pop();
-        	   
-        	   //System.out.printf("operateur : %s\n", termes.get(i).getSymbole());
-        	   //System.out.printf("expr1 : %s\n", expr1.asString());
-        	   //System.out.printf("expr2 : %s\n", expr2.asString());
         	
                switch(termes.get(i).getSymbole()) { 
                    case "+": 
@@ -74,11 +72,10 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
                 	   pile.push(new Puissance(expr2, expr1).accept(this)); 
                    break;
              }
-               //System.out.printf("RESULT : %s\n", pile.lastElement().asString());
            }
-           // fonctions cos sin exp log etc...
+           // si fonctions cos sin exp log etc...
            else {
-        	   // Pop argment e la fonction
+        	   // Pop argument de la fonction
         	   expr1 = pile.pop();
         	   
                switch(termes.get(i).getSymbole()) { 
@@ -95,21 +92,17 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
                 	   pile.push(new Sin(expr1.accept(this))); 
                    break;
              } 
-               //System.out.printf("RESULT : %s\n", pile.lastElement().asString());
            }           
        } 
-       
        Expression resultat = pile.pop();
-       //System.out.printf("pop = %s \n", resultat.asString());
-       //System.out.println("-------------------");
-    	  
        return resultat;   
    }
-
+	/**
+	 * On simplifie tant que le résultat est simplifiable
+	 */
 	@Override
 	public Expression simplifier(Expression expression) {
-		
-		////System.out.printf("expression = %s \n", expression.asString());
+
 		List<Expression> termesDecomposition = new ArrayList<>();
 		
 		this.deCompose(termesDecomposition, expression);
@@ -121,17 +114,23 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
 		}
 
 	}
-	
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Constante, la méthode visit(Constante expr) est invoquée pour cet élément
+	*/
 	@Override
 	public Expression visit(Constante cste) {
 		return cste;
 	}
-	
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Variable, la méthode visit(Variable expr) est invoquée pour cet élément
+	*/
 	@Override
 	public Expression visit(Variable var) {
 		return var;
 	}
-
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Addition, la méthode visit(Addition expr) est invoquée pour cet élément
+	*/
 	@Override
 	public Expression visit(Addition add) {
 		
@@ -179,13 +178,17 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
 		return new Addition( add.exprG.accept(this), add.exprD.accept(this));
 	}
 	
-
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Moins, la méthode visit(Moins expr) est invoquée pour cet élément
+	*/
 	@Override
 	public Expression visit(Moins expr) {
 		return new Moins(expr.exprD.accept(this));
 	}
 
-
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Multiplication, la méthode visit(Multiplication expr) est invoquée pour cet élément
+	*/
 	@Override
 	public Expression visit(Multiplication mult) {
 		
@@ -253,7 +256,9 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
 	
 		return new Multiplication(mult.exprG.accept(this), mult.exprD.accept(this));
 	}
-	
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Puissance, la méthode visit(Puissance expr) est invoquée pour cet élément
+	*/
 	@Override
 	public Expression visit(Puissance pw) {
 		
@@ -284,22 +289,30 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
 		return new Puissance(pw.exprG.accept(this) , pw.exprD.accept(this));
 
 	}
-
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Log, la méthode visit(Log expr) est invoquée pour cet élément
+	*/
 	@Override
 	public Expression visit(Log expr) {
 		return new Log(expr.exprD.accept(this));
 	}
-
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Exp, la méthode visit(Exp expr) est invoquée pour cet élément
+	*/
 	@Override
 	public Expression visit(Exp expr) {
 		return new Exp(expr.exprD.accept(this));
 	}
-
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Cos, la méthode visit(Cos expr) est invoquée pour cet élément
+	*/
 	@Override
 	public Expression visit(Cos expr) {		
 		return new Cos(expr.exprD.accept(this));
 	}
-
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Sin, la méthode visit(Sin expr) est invoquée pour cet élément
+	**/
 	@Override
 	public Expression visit(Sin expr) {	
 		return new Sin(expr.exprD.accept(this));

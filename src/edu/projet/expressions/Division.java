@@ -5,12 +5,24 @@ import java.util.HashMap;
 import edu.projet.interfaces.DerivationVisitor;
 import edu.projet.interfaces.SimplificationVisitor;
 
+
+/**
+ * Division @see Expression
+ * 
+ * @author BAKHTAOUI Michel
+ * @version 1.0
+ */
 public class Division extends Multiplication {
 	
-    public Division(Expression exprG, Expression exprD) {
+    /**
+     * constructeur
+     * @param exprG
+     * @param exprD
+     */
+	public Division(Expression exprG, Expression exprD) {
 		super(exprG, new Puissance(exprD, -1));
 	}
-    
+	
 	@Override
 	public String asString() {	
 				

@@ -8,12 +8,18 @@ import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author BAKHTAOUI Michel
+ * @version 1.0
+ */
 public class Regex {
 	
 	/**
-	 * entrée(in) utilisateur en minuscule
+	 * @param in
+	 * entrée utilisateur en minuscule.
+	 * @return
 	 * espace de début et de fin supprimés
-	 * suppression de tous les meta caracteres
+	 * suppression de tous les meta caracteres.
 	 */
 	static String nettoyerQuestion(String in) {
 
@@ -24,9 +30,16 @@ public class Regex {
         return in = remplacerMetaCaractere(in, ",?!", "...");
 	}	
 	
-    /**
-     * On parcourir l'entrée, caractère par caractère
-     * on remplace le caractère d'entrée (src) par celui de destination (dest)
+
+	/**
+	 * @param in
+	 *  On parcourir l'entrée, caractère par caractère.
+	 * @param src
+	 * on remplace le caractère d'entrée.
+	 * @param dest
+	 * par celui de destination.
+	 * @return chaîne formatée.
+     * 
      */
 	private static String remplacerMetaCaractere(String in, String src, String dest) {
         
@@ -41,8 +54,11 @@ public class Regex {
         return in;
     }  
     
-	/**
-     * https://www.drillio.com/en/2011/java-remove-accent-diacritic/
+
+    /**
+     * source : https://www.drillio.com/en/2011/java-remove-accent-diacritic/
+     * @param in
+     * @return chaîne désaccentuée.
     */
     static String desaccentuer(String in) {  	
     	
@@ -50,7 +66,9 @@ public class Regex {
     }  
     
     /**
-     * On fabrique l'expression régulière (regex) à partir du filtre
+     * @param filtre
+     * @return
+     * l'expression régulière (regex) à partir du filtre.
     */   
     static String getRegex(String filtre) {
     	
@@ -71,11 +89,15 @@ public class Regex {
     }
     
     /**
-     * Filtres commençant par @
-     * On récupère les synonymes
-     * On fabrique les expressions régulières (regex) à partir de chaque synonyme
+
      */ 
     
+    /**
+     * @param filtre
+     * Filtres commençant par @.
+     * On récupère les synonymes
+     * @return les expressions régulières à partir de chaque synonyme.
+     */
     static Stack< String> getRegexSynonymes(String filtre) { 
     	
     	List<String> fichierSynonymes = Fichier.getFichierSynonymes();
@@ -100,6 +122,9 @@ public class Regex {
 		return regex;
     }
     
+    /**
+     * @return les expressions régulières du fichier FiltresEquations
+     */
     static Stack< String> getRegexEquations() { 
     	
     	List<String> fichierFiltresEquations = Fichier.getFichierFiltresEquations();
@@ -114,8 +139,11 @@ public class Regex {
 		return regex;
     }
     
+
 	/**
-	 * fonction de matching à partir d'une expression régulière
+	 * @param regex
+	 * @param expression
+	 * @return match d'une expression régulière
 	 */
 	static Matcher match(String regex, String expression) {
 		
