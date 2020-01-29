@@ -23,7 +23,7 @@ public class Regex {
 	 */
 	static String nettoyerQuestion(String in) {
 
-		in  =in.toLowerCase();	
+		in = in.toLowerCase();	
 		in = in.trim();
         in = remplacerMetaCaractere(in, "@#$%^&*()_-+=~`{[}]|:;<>\\\"","                          "  );
         
@@ -68,29 +68,14 @@ public class Regex {
     /**
      * @param filtre
      * @return
-     * l'expression régulière (regex) à partir du filtre.
+     * l'expression régulière (regex) construite à partir du filtre.
     */   
-    static String getRegex(String filtre) {
-    	
-    	//Expressions régulières pour matcher expressions mathématiques
-    	if (filtre.equals("$expression"))
-    		return "^([a-zA-Z0-9+\\-*\\/^\\(\\)\\s*]+)$";
-    	
-    	if (filtre.equals("$equation")) 
-    		return "([a-zA-Z])\\s*\\(([a-zA-Z])\\)\\s*=\\s*([a-zA-Z0-9+\\-*\\/^\\(\\)\\s*]+)";
-    	
-    	if (filtre.equals("$fonction"))   
-    		return "(sin|cos|exp|tan|log)\\s*\\((.*?)\\)\\s*";
-    	
+    static String getRegex(String filtre) {    	
     	//Expressions régulières pour matcher autres sauf celles commençant par @
     	String regex = "([\\\\p{L}\\\\s']*)";
     	return match("\\s*\\*\\s*|\\$\\s*[^@]", filtre).replaceAll(  regex   );
     	
     }
-    
-    /**
-
-     */ 
     
     /**
      * @param filtre
@@ -102,18 +87,15 @@ public class Regex {
     	
     	List<String> fichierSynonymes = Fichier.getFichierSynonymes();
     	Stack<String> regex = new Stack<>();
-    	System.out.println("filtre  =" +  filtre);
-   		Pattern p = Pattern.compile("\\@(\\p{L}+)");
+   		Pattern p = Pattern.compile("@(\\p{L}+)");
 		Matcher m = p.matcher(filtre);
         if(m.find()) {
         	
             for (int i =0; i < fichierSynonymes.size(); i++) {  
             	List<String> synonymes = Arrays.asList(fichierSynonymes.get(i).split("\\|"));
-            	
-            	
             	if (synonymes.get(0).equals(m.group(1))) {
             		for (int j =0; j < synonymes.size(); j++) { 
-            			regex.push( filtre.replaceAll("\\@(\\p{L}+)", "(" + synonymes.get(j) + ")") );
+            			regex.push( filtre.replaceAll("@(\\p{L}+)", "(" + synonymes.get(j) + ")") );
             		}
                 }
             } 
@@ -131,8 +113,7 @@ public class Regex {
     	Stack<String> regex = new Stack<>();
     	
     	for (int i =0; i < fichierFiltresEquations.size(); i++) {
-    		List<String> eq = Arrays.asList(fichierFiltresEquations.get(i).split("\\n"));
-    		
+    		List<String> eq = Arrays.asList(fichierFiltresEquations.get(i).split("\\n"));		
     		regex.push(eq.get(0));		
     	}
 
@@ -146,7 +127,6 @@ public class Regex {
 	 * @return match d'une expression régulière
 	 */
 	static Matcher match(String regex, String expression) {
-		
 		return Pattern.compile(regex, Pattern.CASE_INSENSITIVE).matcher(expression);
 	}
  

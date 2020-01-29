@@ -1,7 +1,12 @@
 xdebut|-1|*|Bonjour, que puis-je pour vous?
 xrepetition|-1|*|Pourquoi vous vous répètez?|S'il vous plaît ne vous répètez pas!|Perroquet...|bla...bla ...bla
-dériver|-1|@dériver|Humm... (1)... 
-fonction|-1|*|goto dériver
+dériver|-1|@dériver|Humm... (1)...|Attendez voir... (1) ...|Je dois réfléchir... (1) ....|Laissez-moi voir... (1) ...|Ok, je cherche... (1) ...
+dérivée|-1|*|goto dériver
+dérivé|-1|*|goto dériver
+dérivation|-1|*|goto dériver
+différentier|-1|*|goto dériver
+différentiation|-1|*|goto dériver
+fonction|-1|@dériver|Humm... une fonction...|Attendez voir... vous parlez de fonction ...|Je dois réfléchir... à votre fonction ....|Laissez-moi voir votre fonction.|Ok, je cherche... votre fonction ...
 mathématiques|-1|*|goto dériver
 polynôme|-1|*|goto dériver
 domaine|-1|*|goto dériver
@@ -63,7 +68,7 @@ vous|0|* vous *|Nous parlions de vous - pas de moi.|Oh, je (2)?|Vous ne parlez p
 oui|0|*|Vous semblez être assez positif.|Vous êtes sûr.|Je vois.|Je comprends.
 non|0|* @personne *|Êtes-vous sûr, personne (3)?|Sûrement quelqu'un (3).|Pouvez-vous penser à quelqu'un en particulier?|Pensez-vous à une personne très spéciale?|À qui puis-je demander?|Avez-vous une personne en tête, non?|De qui pensez-vous parler?
 non|0|*|Êtes-vous en train de dire non simplement pour être négatif?|Vous êtes un peu négatif.|Pourquoi pas ?|Pourquoi 'non'?
-mon|2|$ * mon *|Voyons pourquoi votre (2).|Plus tôt, vous avez dit votre (2).|Mais votre (2).|Est-ce que cela a quelque chose à voir avec le fait que votre (2)?
+mon|2|$  * mon *|Voyons pourquoi votre (2).|Plus tôt, vous avez dit votre (2).|Mais votre (2).|Est-ce que cela a quelque chose à voir avec le fait que votre (2)?
 ma|2|* ma * @famille *|Parlez-moi de votre (4).|Qui d'autre dans votre (4) (4)?|Votre (4)?|À quoi pensez-vous d'autre lorsque vous pensez à votre (4)?
 mon|2|* @mon *|Votre (3)?|Pourquoi dites-vous votre (3)?|Cela suggère-t-il autre chose qui vous appartient?|Est-ce important pour vous que votre (3)?
 pouvez|0|* pouvez vous *|Croyez-vous que je puisse (2) non?|goto que|Vous voulez que je puisse (2).|Vous aimeriez peut-être (2) vous-même.

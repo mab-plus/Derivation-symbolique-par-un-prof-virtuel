@@ -1,5 +1,12 @@
 package edu.projet.professeur;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Stack;
+
+import edu.projet.expressions.Expression;
+
 /**
  * Application Professeur qui se connecte sur l'irc.
  * @author BAKHTAOUI Michel
@@ -12,11 +19,13 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
-		/*test
-		System.out.println("> Professeur : " + Professeur.reponse("je suis étudiant et j'ai besoin d'aide et je veux dériver sin(x)"));
+		//test
+		/*System.out.println("> Professeur : " + Professeur.reponse("je suis étudiant et j'ai besoin d'aide et je veux dériver sin(x)"));
 		System.out.println("> Professeur : " + Professeur.reponse("j'ai besoin de dériver cette fonction sin(1/x)"));
+		System.out.println("> Professeur : " + Professeur.reponse("oui la dérivée de x^2 + 1"));*/
+		System.out.println("> Professeur : " + Professeur.reponse("c'est f(x)=sin(1/log(x)) + 2"));
 		
-		String reponse, question;  
+		/*String reponse, question;  
 		Scanner sc = new Scanner(System.in);	 
 		System.out.println("> Professeur :" + Professeur.reponse("xdebut"));
 		while (sc.hasNextLine()) {
@@ -34,10 +43,10 @@ public class Main {
 		sc.close();*/
 		
 		
-		ProfBot bot=new ProfBot("Prof");
+		/*ProfBot bot=new ProfBot("Prof");
 		try {		
 			// Enable debugging output.
-	        bot.setVerbose(false);
+	        bot.setVerbose(true);
 	        
 	        // Connect to the IRC server.
 	        bot.connect("michel-bakhtaoui.fr");
@@ -47,8 +56,8 @@ public class Main {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 	}
-
+ 
 }

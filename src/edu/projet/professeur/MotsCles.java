@@ -28,7 +28,7 @@ public class MotsCles {
 		Hashtable<String, Integer> motsClesQuestion = new Hashtable<String, Integer>();
 		
 		for(int i = 0; i < termesQuestion.size(); i++) {
-			
+						
 			for(int j = 0; j < fichierFiltresReponses.size(); j++) {		
 				
 				List<String> filtresReponses = Arrays.asList(fichierFiltresReponses.get(j).split("\\|"));	
@@ -39,7 +39,6 @@ public class MotsCles {
 				}
 			}
 		}
-
 		return  trieParValeur(motsClesQuestion);
 	}
 	

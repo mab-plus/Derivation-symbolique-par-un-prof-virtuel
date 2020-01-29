@@ -93,7 +93,6 @@ public class Derivation implements FormuleDerivation, DerivationVisitor<Expressi
 		if (v instanceof Constante ) {
 			int exposant = (int)((Constante) v).getValeur();
 			Expression du = u.accept(this, dx);
-			
 			return new Multiplication(v, new Multiplication(du, new Puissance(u, exposant - 1)) );
 		}
 		
@@ -138,7 +137,7 @@ public class Derivation implements FormuleDerivation, DerivationVisitor<Expressi
 	public Expression visit(Sin expr, String dx) {
 		Expression u = expr.exprD;
 		Expression du = u.accept(this, dx);
-		
+
 		//sin(u)  -> u' cos(u)
 		return new Multiplication(du, new Cos(u));
 	}

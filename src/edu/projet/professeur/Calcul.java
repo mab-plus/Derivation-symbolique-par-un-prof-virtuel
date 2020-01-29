@@ -101,16 +101,17 @@ public class Calcul {
 
 			//matching équation
 			String reg = filtresEquations.get(0);
-			//System.out.println("Equation - reg= " + reg);
 			matcher = Regex.match(reg, question);
+			System.out.println("Calcul " + i + " : reg=" + reg);
+			System.out.println("     matcher.groupCount()=" + matcher.groupCount());
 			//on retourne l'équation
-			while (matcher.find()) {
+			if (matcher.find()) {
 	            for (int j = 0; j <= matcher.groupCount() ; j++) {
 	                // sous groupe j
-		    		if (matcher.group(j) != null) {	    					
-			    		//System.out.printf("!!!!!!!!!!!!! Groupe %d/%d: %s\n", j, matcher.groupCount(), matcher.group(j).trim() );
+		    		if (matcher.group(j) != null) {
 		    			memoireEquation.push(matcher.group(j));
 		    		}
+
 	            }
 	            // Si réponse, on la retourne
 	            if (!memoireEquation.isEmpty())
@@ -137,7 +138,9 @@ public class Calcul {
 		else
 			equation = getMemoireEquation().get(getMemoireEquation().size() - 1);
 		
+		System.out.println("Calcul : derivation() : equation=" + equation);
 		getVariables(equation);
+		System.out.println("Calcul : derivation() : getMemoireVariable()=" + getMemoireVariable());
 		
 	    if(getMemoireVariable().size() == 0)
 			return resultat + "(" + equation + ")' = 0";
@@ -145,13 +148,16 @@ public class Calcul {
 		if(getMemoireVariable().size() == 1) {
 			variable = getMemoireVariable().pop();
 			eEquation = Expression.formuleToExpression(equation);
+			eEquation = simp.simplifier(eEquation);
 			eEquation = df.deriver(eEquation, variable);
+			System.out.println("Calcul : derivation() : eEquation=" + eEquation.asString());
 			resultat += "(" + equation + ")' = " + simp.simplifier(eEquation).asString();
 		}
 		
 		if(getMemoireVariable().size() > 1) {
 			resultat ="Voici les résultats petit scarabée : ";
 			eEquation = Expression.formuleToExpression(equation);
+			eEquation = simp.simplifier(eEquation);
 			int memoireVariable = getMemoireVariable().size();
 			Expression expr; 
 			

@@ -1,4 +1,4 @@
+(sin|cos|exp|tan|log)\s*\((.*)\)\s*
 ([a-zA-Z])\s*\(([a-zA-Z])\)\s*=\s*([a-zA-Z0-9+\-*\/^\(\)\s*]+)
 ^([a-zA-Z0-9+\-*\/^\(\)\s*]+)$
-(sin|cos|exp|tan|log)\s*\((.*?)\)\s*
-
+\s+([wuvwxyz+\-*\/\^\d\s*]+[\s*wuvxyz+\-*\/\^\d]*)\s*
