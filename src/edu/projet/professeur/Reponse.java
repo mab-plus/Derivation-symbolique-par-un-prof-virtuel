@@ -50,7 +50,6 @@ public class Reponse {
         else        
         	//si rien de rien alors.
         	return getReponse("xrien", question);
-
 	}
 	
 
@@ -115,8 +114,8 @@ public class Reponse {
 		    		reponse = getReponse(m.group(1), question);
 		    	}
 		      
-		    	//Si le filtre contient @dériver 
-		    	if (filtre.equals("@dériver")) {
+		    	//Si le filtre contient dériver 
+		    	if (filtre.equals("dériver")) {
 		    		regex.push("*");        
 		    		derivee = Calcul.getDerivee(question);
 		    	}
@@ -125,13 +124,12 @@ public class Reponse {
 		    	if (motCleQuestion.equals("xrien"))
 		    	{
 			    	String eq = Expression.formuleToExpression(question).asString();
-			    	if (eq != "") {
+			    	if (eq != "" && !eq.equals(question)) {
 			    		System.out.println("eq=" + eq);
 			    		regex.push("*");
 			    		derivee = Calcul.getDerivee(eq);
 			    	}
 		    	}
-
 
 		    	//Si la réponse contient @, on tous les synonymes du terme derrière @
 		    	//m.group(1) correspond au terme derrière @
@@ -167,8 +165,6 @@ public class Reponse {
 		}
 		return reponse;
 	}
-	
-
 
 	/**
 	 * @param matcher

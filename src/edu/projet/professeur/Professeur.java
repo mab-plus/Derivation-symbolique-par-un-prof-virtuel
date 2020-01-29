@@ -1,5 +1,6 @@
 package edu.projet.professeur;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -9,15 +10,26 @@ import java.util.Map;
 public class Professeur {
 	
     /**
+     * Pour tester s'il répète la même question
+     */
+    private static String QuestionPrecedente ="";
+	
+    /**
      * @param question
      * @return la réponse du Professeur.
      */
     public static String reponse (String question) {
-    		
-     	Map<String, Integer> motsClesQuestion = MotsCles.getMotsClesQuestion (question);
-     	
-     	String laReponse = Reponse.getReponse(motsClesQuestion, question);
-     	 
-     	return laReponse;
+    	
+    	Map<String, Integer> motsClesQuestion = new HashMap<>();
+    	
+    	if (QuestionPrecedente.equals(question))
+         	motsClesQuestion.put("xrepetition", -1);
+    	else {
+         	motsClesQuestion = MotsCles.getMotsClesQuestion (question);
+         	QuestionPrecedente = question;
+    	}
+
+
+    	return Reponse.getReponse(motsClesQuestion, question);
      }
 }

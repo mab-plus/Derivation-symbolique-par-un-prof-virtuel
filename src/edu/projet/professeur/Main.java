@@ -23,7 +23,7 @@ public class Main {
 		/*System.out.println("> Professeur : " + Professeur.reponse("je suis étudiant et j'ai besoin d'aide et je veux dériver sin(x)"));
 		System.out.println("> Professeur : " + Professeur.reponse("j'ai besoin de dériver cette fonction sin(1/x)"));
 		System.out.println("> Professeur : " + Professeur.reponse("oui la dérivée de x^2 + 1"));*/
-		System.out.println("> Professeur : " + Professeur.reponse("c'est f(x)=sin(1/log(x)) + 2"));
+		//System.out.println("> Professeur : " + Professeur.reponse("c'est f(x)=sin(1/log(x)) + 2"));
 		
 		/*String reponse, question;  
 		Scanner sc = new Scanner(System.in);	 
@@ -43,7 +43,7 @@ public class Main {
 		sc.close();*/
 		
 		
-		/*ProfBot bot=new ProfBot("Prof");
+		ProfBot bot=new ProfBot("Prof");
 		try {		
 			// Enable debugging output.
 	        bot.setVerbose(true);
@@ -56,7 +56,7 @@ public class Main {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-		}*/
+		}
 		
 	}
  

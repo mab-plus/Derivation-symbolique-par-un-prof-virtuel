@@ -128,7 +128,7 @@ public class Calcul {
 	 **/
 	static String derivation() {
 		String variable, equation;
-		String resultat ="Voici le résultat petit scarabée : ";
+		String resultat="";
 		Expression eEquation;
 		Simplification simp = new Simplification();
 		Derivation df = new Derivation();
@@ -147,11 +147,14 @@ public class Calcul {
 	    
 		if(getMemoireVariable().size() == 1) {
 			variable = getMemoireVariable().pop();
-			eEquation = Expression.formuleToExpression(equation);
-			eEquation = simp.simplifier(eEquation);
-			eEquation = df.deriver(eEquation, variable);
-			System.out.println("Calcul : derivation() : eEquation=" + eEquation.asString());
-			resultat += "(" + equation + ")' = " + simp.simplifier(eEquation).asString();
+			//on suppose que la variable est du style x, y ou n'importe quelle lettre mais pas un mot
+			if (variable.length() == 1) {
+				eEquation = Expression.formuleToExpression(equation);
+				eEquation = simp.simplifier(eEquation);
+				eEquation = df.deriver(eEquation, variable);
+				System.out.println("Calcul : derivation() : eEquation=" + eEquation.asString());
+				resultat += "(" + equation + ")' = " + simp.simplifier(eEquation).asString();
+			}
 		}
 		
 		if(getMemoireVariable().size() > 1) {
@@ -163,8 +166,11 @@ public class Calcul {
 			
 			for(int i = 0; i < memoireVariable; i++) {
 				variable = getMemoireVariable().pop();
-				expr = df.deriver(eEquation, variable);
-				resultat +="(d/d" + variable + ")(" + equation + ") = " + simp.simplifier(expr).asString() + ", ";
+				//on suppose que la variable est du style x, y ou n'importe quelle lettre mais pas un mot
+				if (variable.length() == 1) {
+					expr = df.deriver(eEquation, variable);
+					resultat +="(d/d" + variable + ")(" + equation + ") = " + simp.simplifier(expr).asString() + ", ";
+				}
 			}
 		}
 		
