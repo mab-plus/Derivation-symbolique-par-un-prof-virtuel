@@ -18,7 +18,7 @@ public class Main {
 		/*System.out.println("> Professeur : " + Professeur.reponse("je suis étudiant et j'ai besoin d'aide et je veux dériver sin(x)"));
 		System.out.println("> Professeur : " + Professeur.reponse("j'ai besoin de dériver cette fonction sin(1/x)"));
 		System.out.println("> Professeur : " + Professeur.reponse("oui la dérivée de x^2 + 1"));
-		System.out.println("> Professeur : " + Professeur.reponse("tu as une grande gueule"));
+		System.out.println("> Professeur : " + Professeur.reponse("je ne comprends pas"));
 		
 		String reponse, question;  
 		Scanner sc = new Scanner(System.in);	 

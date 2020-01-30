@@ -133,34 +133,37 @@ public class Reponse {
 
 		    	//Si la réponse contient @, on tous les synonymes du terme derrière @
 		    	//m.group(1) correspond au terme derrière @
-		    	p = Pattern.compile("(@\\p{L}+)");
+		    	p = Pattern.compile("@\\p{L}+");
 		    	m = p.matcher(filtre);
 		    	if(m.find()) {
-		    		regex = Regex.getRegexSynonymes(m.group(1));
+		    		regex = Regex.getRegexSynonymes(filtre);
 		    	}
 		    	else
 		    		regex.push(filtre);
-    			
+		    	
+		    	/*System.out.println("regex=" + regex);
+		    	System.out.println("filtre=" + filtre);
+		    	System.out.println("i=" + i);*/
+		    	
 		    	Iterator<String> regexiTerator = regex.iterator();
-		    	while (regexiTerator.hasNext()) { 	    			
-		        filtre = regexiTerator.next();
-		        filtre = Regex.getRegex(filtre);
-		         
-		        /* * Si le match donne une reponse non null
-		        * * * si il y a une dérivée on renvoie la réponse avec le résultat de la dérivée
-		        * * * Sinon juste la réponse
-		        * * on essaie une autre regex de la pile
-		        * */
-		        matcher = Regex.match(filtre, question);
-		        String tmp = assemblageReponse(matcher, reponse);
-		        if ( tmp != null) {
-		        	reponse =tmp;
-		        	if (derivee != null)
-		        		return reponse + " " + derivee;
-		        	else
-		        		return reponse; 
-		        }
-		      }
+		    	while (regexiTerator.hasNext()) { 		    	
+			        filtre= regexiTerator.next();
+			        filtre = Regex.getRegex(filtre);
+			        /* * Si le match donne une reponse non null
+			        * * * si il y a une dérivée on renvoie la réponse avec le résultat de la dérivée
+			        * * * Sinon juste la réponse
+			        * * on essaie une autre regex de la pile
+			        * */
+			        matcher = Regex.match(filtre, question);
+			        String tmp = assemblageReponse(matcher, reponse);
+			        if ( tmp != null) {
+			        	reponse =tmp;
+			        	if (derivee != null)
+			        		return reponse + " " + derivee;
+			        	else
+			        		return reponse; 
+			        }
+		    	}
 		    }
 		}
 		return reponse;
@@ -173,16 +176,16 @@ public class Reponse {
 	 * à partir du matching du regex réussi, on construit la réponse en matchant la numérotation entre parenthèses.
 	 */
 	private static String assemblageReponse(Matcher matcher, String reponse) {
+		
 		while (matcher.find()) {
             for (int j = 0; j <= matcher.groupCount() ; j++) {
                 
             	// sous groupe j matché
 	    		if (matcher.group(j) != null) {
-	    			System.out.println("matcher.group(j) =" + matcher.group(j) );
+	    			//System.out.println("matcher.group(j) =" + matcher.group(j) + ":" + j);
 	    			
 	    			//Seconde substitution, elle permute le sujet et l'objet
 	    			String sousReponse = Conjugaison.conjuger(matcher.group(j).trim() , Fichier.getCheminFichierSujetObjet());
-	    			
 	    			//On remplace la numérotation entre parenthèses avec les groupes trouvés
 	    			reponse = reponse.replaceAll("\\(" + Integer.toString(j) + "\\)", String.join(" ", sousReponse) );
 	    		}
