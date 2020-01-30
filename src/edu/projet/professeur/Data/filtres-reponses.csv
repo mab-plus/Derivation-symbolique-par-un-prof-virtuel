@@ -10,7 +10,7 @@ bjr|-1|*|goto bonjour
 slm|-1|*|goto bonjour
 salam|-1|*|goto bonjour
 shalom|-1|*|goto bonjour
-dériver|-1|dériver|Humm... (1)...|Attendez voir... (1) ...|Je dois réfléchir... (1) ....|Laissez-moi voir... (1) ...|Ok, je cherche... (1) ...|Un mathématicien utilise la dérivée pour la connaissance, jamais pour fanfaronner (1)|Je ne suis pas sûr, mais je dirais que (1)|Nonobstant le fait que tout est relatif, je dirais que (1)|alors là, c'est facile, (1)|J'ai un doute, mais je dirais que : (1)|Au hasard, je dirai : (1)
+dériver|-1|dériver|Humm... |Attendez voir... euh ...|Je dois réfléchir... cependant : |Laissez-moi voir ...|Ok, je cherche... : |Un mathématicien utilise la dérivée pour la connaissance, jamais pour fanfaronner. Voilà |Je ne suis pas sûr, mais je dirais que :|Nonobstant le fait que tout est relatif, je dirais que |alors là, c'est facile |J'ai un doute, mais je dirais que : |Au hasard, je dirai :
 fonction|-1|dériver|Humm... une fonction...|Attendez voir... vous parlez de fonction ...|Je dois réfléchir... à votre fonction ....|Laissez-moi voir votre fonction.|Ok, je cherche... votre fonction ...|Quoi donc ?|Toujours par deux elles vont. Ni plus, ni moins. La fonction et ses variables.
 dérivée|-1|*|goto dériver
 dérivé|-1|*|goto dériver

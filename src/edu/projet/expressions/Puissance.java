@@ -60,14 +60,12 @@ public class Puissance extends Expression {
 		char[] exposant = {'\u2070', '\u00b9', '\u00b2', '\u00b3', '\u2074', '\u2075', '\u2076', '\u2077', '\u2078', '\u2079'};
 		char[] c = e.toCharArray();
 		
-		for(int i =0; i < c.length; i++) {
+		for(int i = 0; i < c.length; i++) {
 			e = e.replace(c[i], exposant[Character.getNumericValue(c[i])]);
 		}
 		return e;
 	}
 
-
-	
 	@Override
 	public double evaluer(HashMap<String, Double> liste) {
 		return  Math.pow(this.exprG.evaluer(liste), this.exprD.evaluer(liste));

@@ -84,9 +84,9 @@ public class Regex {
      * @return les expressions régulières à partir de chaque synonyme.
      */
     static Stack< String> getRegexSynonymes(String filtre) { 
-    	
     	List<String> fichierSynonymes = Fichier.getFichierSynonymes();
     	Stack<String> regex = new Stack<>();
+    	
    		Pattern p = Pattern.compile("@(\\p{L}+)");
 		Matcher m = p.matcher(filtre);
         if(m.find()) {

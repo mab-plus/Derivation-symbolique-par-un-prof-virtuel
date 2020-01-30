@@ -61,7 +61,7 @@ public class Conjugaison {
 	
 	/**
 	 * @param reponse
-	 * @return un emeilleure orthographe de la réponse
+	 * @return une meilleure orthographe de la réponse
 	 */
 	static String orthographe(String reponse) {
 		
