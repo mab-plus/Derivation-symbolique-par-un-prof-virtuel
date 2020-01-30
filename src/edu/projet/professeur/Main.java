@@ -1,11 +1,6 @@
 package edu.projet.professeur;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import java.util.Stack;
-
-import edu.projet.expressions.Expression;
 
 /**
  * Application Professeur qui se connecte sur l'irc.
@@ -22,10 +17,10 @@ public class Main {
 		//test
 		/*System.out.println("> Professeur : " + Professeur.reponse("je suis étudiant et j'ai besoin d'aide et je veux dériver sin(x)"));
 		System.out.println("> Professeur : " + Professeur.reponse("j'ai besoin de dériver cette fonction sin(1/x)"));
-		System.out.println("> Professeur : " + Professeur.reponse("oui la dérivée de x^2 + 1"));*/
-		//System.out.println("> Professeur : " + Professeur.reponse("c'est f(x)=sin(1/log(x)) + 2"));
+		System.out.println("> Professeur : " + Professeur.reponse("oui la dérivée de x^2 + 1"));
+		System.out.println("> Professeur : " + Professeur.reponse("tu as une grande gueule"));
 		
-		/*String reponse, question;  
+		String reponse, question;  
 		Scanner sc = new Scanner(System.in);	 
 		System.out.println("> Professeur :" + Professeur.reponse("xdebut"));
 		while (sc.hasNextLine()) {

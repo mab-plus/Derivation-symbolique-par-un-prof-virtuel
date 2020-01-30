@@ -145,7 +145,7 @@ public class Reponse {
 		    	while (regexiTerator.hasNext()) { 	    			
 		        filtre = regexiTerator.next();
 		        filtre = Regex.getRegex(filtre);
-		          
+		         
 		        /* * Si le match donne une reponse non null
 		        * * * si il y a une dérivée on renvoie la réponse avec le résultat de la dérivée
 		        * * * Sinon juste la réponse
@@ -178,16 +178,18 @@ public class Reponse {
                 
             	// sous groupe j matché
 	    		if (matcher.group(j) != null) {
+	    			System.out.println("matcher.group(j) =" + matcher.group(j) );
 	    			
-	    			//Seconde substitution, elle permute le sujet et l’objet
+	    			//Seconde substitution, elle permute le sujet et l'objet
 	    			String sousReponse = Conjugaison.conjuger(matcher.group(j).trim() , Fichier.getCheminFichierSujetObjet());
-	    			//On match la numérotation entre parenthèses avec les groupes trouvés
-	    			reponse = Regex.match("\\(" + Integer.toString(j) + "\\)", reponse).replaceAll( String.join(" ", sousReponse)   );
+	    			
+	    			//On remplace la numérotation entre parenthèses avec les groupes trouvés
+	    			reponse = reponse.replaceAll("\\(" + Integer.toString(j) + "\\)", String.join(" ", sousReponse) );
 	    		}
             }
             // Si réponse, on la retourne
             if (reponse != null)
-            		return reponse;
+            		return Conjugaison.orthographe(reponse);;
 		}
 		//Sinon null
 		return null; 

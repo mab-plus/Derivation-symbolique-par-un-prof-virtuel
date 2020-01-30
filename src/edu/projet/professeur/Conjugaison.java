@@ -59,5 +59,16 @@ public class Conjugaison {
 		return  question;
 	}
 	
+	/**
+	 * @param reponse
+	 * @return un emeilleure orthographe de la réponse
+	 */
+	static String orthographe(String reponse) {
+		
+		reponse = reponse.replaceAll("(j)e\\s+([aeiou])", "$1'$2");
+		reponse = reponse.replaceAll("(m)e\\s+([aeiou])", "$1'$2");
+		return  reponse;
+	}
+	
 
 }

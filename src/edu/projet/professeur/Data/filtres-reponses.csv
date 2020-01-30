@@ -78,7 +78,7 @@ je|0|*|Vous dites (1)?|Pourriez-vous préciser ?|Dites-vous (1) pour une raison 
 vous|0|* vous me rappellez  *|goto pareil
 vous|0|* vous êtes *|Qu'est-ce qui vous fait penser que je suis (2)?|Cela vous plait-il de croire que je suis (2)?|Souhaitez-vous parfois être (2)?|Peut-être que vous aimeriez être (2).
 vous|0|* vous * m'avez *|Pourquoi pensez-vous que je vous ai (3)?|Vous aimez penser que je vous ai (3) - n'est-ce pas?|Qu'est-ce qui vous fait penser que je vous ai (3)?|Vraiment, je vous ai (3)?|Souhaitez-vous croire que je vous ai (3)?|Supposons que je vous ai (3) - qu'est-ce que cela signifie?|Est-ce que quelqu'un d'autre croit que je vous ai (3)?
-vous|0|* vous *|Nous parlions de vous - pas de moi.|Oh, je (2)?|Vous ne parlez pas vraiment de moi - n'est-ce pas?|Quels sont vos sentiments maintenant?|Quand vous saurez comme moi, vous parlerez beaucoup moins.
+vous|0|* vous *|Nous parlions de vous - pas de moi.|Oh, je (2)?|Vous ne parlez pas vraiment de moi - n'est-ce pas?|Quels sont vos sentiments maintenant?|Quand vous serez comme moi, vous parlerez beaucoup moins.
 oui|0|*|Vous semblez être assez positif.|Vous êtes sûr.|Je vois.|Je comprends.
 non|0|* @personne *|Êtes-vous sûr, personne (3)?|Sûrement quelqu'un (3).|Pouvez-vous penser à quelqu'un en particulier?|Pensez-vous à une personne très spéciale?|À qui puis-je demander?|Avez-vous une personne en tête, non?|De qui pensez-vous parler?
 non|0|*|Êtes-vous en train de dire non simplement pour être négatif?|Vous êtes un peu négatif.|Pourquoi pas ?|Pourquoi 'non'?

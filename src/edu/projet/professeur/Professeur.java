@@ -21,6 +21,7 @@ public class Professeur {
     public static String reponse (String question) {
     	
     	Map<String, Integer> motsClesQuestion = new HashMap<>();
+    	question=  Conjugaison.conjuger(question, Fichier.getCheminFichierConjugaison());
     	
     	if (QuestionPrecedente.equals(question))
          	motsClesQuestion.put("xrepetition", -1);

@@ -20,8 +20,6 @@ public class MotsCles {
 	public static Map<String, Integer> getMotsClesQuestion (String question) {
 		
 		question= Regex.nettoyerQuestion(question);   				
-     	question=  Conjugaison.conjuger(question, Fichier.getCheminFichierConjugaison());
-     	
      	List< String>  termesQuestion = enleverDoublon(question);
      	
 		List< String> fichierFiltresReponses = Fichier.getFichierFiltresReponses();
