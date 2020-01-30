@@ -1,7 +1,7 @@
 xdebut|-1|*|Bonjour, que puis-je pour vous?
-xrepetition|-1|*|Pourquoi vous vous répètez?|Perroquet...|bla...bla ...bla|Ha, ha ! S'il vous plaît ne vous répètez pas car la pédagogie inversée ponctue les besoins caractéristiques du métacontexte.
+xrepetition|-1|*|Pourquoi vous vous répètez?|Perroquet...|Remettez le CD au début (da capo).|bla...bla ...bla|Ha, ha ! S'il vous plaît ne vous répètez pas car la pédagogie inversée ponctue les besoins caractéristiques du métacontexte.|Si le message ne me plait pas, je l'efface.|C'est une bonne démarche de se répéter mais jusqu'à quand?|La forme est essentielle du moment qu'elle exprime l'essentiel : le fond.
 xrien|0|*|Je ne suis pas sûr de bien vous comprendre.|S'il vous plaît continuez.|Qu'est-ce que cela vous suggère?|Pensez-vous fortement à discuter de telles choses?|C'est intéressant. Continuez s'il vous plaît.|Dites-m'en plus.|Est-ce que cela vous dérange?|Hé hé, la méthode renforce les paramètres caractéristiques de la problématique.|L'expérimentation identifie les penchants institutionnels des acteurs comme vous.
-bonjour|0|*|Comment allez-vous ? Veuillez indiquer votre problème.|Salut. Quel semble être votre problème?
+bonjour|0|*|Comment allez-vous ? Veuillez indiquer votre problème.|Bonjour, quel est votre problème ?|Bonjour, que puis-je pour vous ?|Bonjour, je suis le professeur.
 hello|-1|*|goto bonjour
 salut|-1|*|goto bonjour
 slt|-1|*|goto bonjour
@@ -10,7 +10,7 @@ bjr|-1|*|goto bonjour
 slm|-1|*|goto bonjour
 salam|-1|*|goto bonjour
 shalom|-1|*|goto bonjour
-dériver|-1|dériver|Humm... (1)...|Attendez voir... (1) ...|Je dois réfléchir... (1) ....|Laissez-moi voir... (1) ...|Ok, je cherche... (1) ...|Un mathématicien utilise la dérivée pour la connaissance, jamais pour fanfaronner (1)|Je ne suis pas sûr, mais je dirais que (1)|Nonobstant le fait que tout est relatif, je dirais que (1)|alors là, cest facile, la réponse est (1)|J'ai un doute, mais je dirais que (1)|Au hasard, je dirai (1)
+dériver|-1|dériver|Humm... (1)...|Attendez voir... (1) ...|Je dois réfléchir... (1) ....|Laissez-moi voir... (1) ...|Ok, je cherche... (1) ...|Un mathématicien utilise la dérivée pour la connaissance, jamais pour fanfaronner (1)|Je ne suis pas sûr, mais je dirais que (1)|Nonobstant le fait que tout est relatif, je dirais que (1)|alors là, c'est facile, (1)|J'ai un doute, mais je dirais que : (1)|Au hasard, je dirai : (1)
 fonction|-1|dériver|Humm... une fonction...|Attendez voir... vous parlez de fonction ...|Je dois réfléchir... à votre fonction ....|Laissez-moi voir votre fonction.|Ok, je cherche... votre fonction ...|Quoi donc ?|Toujours par deux elles vont. Ni plus, ni moins. La fonction et ses variables.
 dérivée|-1|*|goto dériver
 dérivé|-1|*|goto dériver
@@ -104,5 +104,5 @@ toujours|1|*|Pouvez-vous penser à un exemple spécifique?|Quand ?|À quel incid
 pareil|10|@pareil|De quelle manière?|Quelle ressemblance voyez-vous?|Que vous suggère cette similitude?|Quelles autres connexions voyez-vous?|Que pensez-vous que la ressemblance signifie?|Quelle connexion, supposez-vous?|Pourrait-il vraiment y avoir un lien?|Comment ?
 comme|10|* @être *comme *|goto pareil
 différent|0|@différent|En quoi est-ce (1)?|Quelles différences voyez-vous?|Que vous suggère cette différence?|Quelles autres distinctions voyez-vous?|À votre avis, que signifie cette disparité?|Pourrait-il y avoir une connexion, pensez-vous?|Comment ?
-c'est|-1|* c'est *|C'est à dire ?|Soyez-plus explicite|Vous pensez que c'est (2)?
+c'est|-1|* c'est *|C'est à dire ?|Soyez-plus explicite sur (2)|Vous pensez que c'est (2)?
 n'importe|-3|* n'importe *| Pourquoi n'importe (2) ?|Facile, de penser que c'est n'importe (2)|(1) n'importe (2)... et pourquoi donc ?
