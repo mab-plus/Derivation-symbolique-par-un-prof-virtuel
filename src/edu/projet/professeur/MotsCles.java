@@ -29,8 +29,7 @@ public class MotsCles {
 						
 			for(int j = 0; j < fichierFiltresReponses.size(); j++) {		
 				
-				List<String> filtresReponses = Arrays.asList(fichierFiltresReponses.get(j).split("\\|"));	
-
+				List<String> filtresReponses = Arrays.asList(fichierFiltresReponses.get(j).split("\\|"));					
 				if (termesQuestion.get(i).equals(filtresReponses.get(0))) {	
 					motsClesQuestion.put(filtresReponses.get(0), Integer.parseInt(filtresReponses.get(1)));
 					break;

@@ -33,7 +33,7 @@ public class Reponse {
 	 * Le premier trouvé est sélectionné. Si le match ne rend rien, on passe au  mot clé suivant.
 	 */
 	public static String getReponse (Map<String, Integer> motsClesQuestion, String question) {
-		
+
 		//on récupère les mots-clés de la question pour trouver la réponse adéquate
 		String reponse = null;
 		for (Map.Entry<String, Integer> motCle : motsClesQuestion.entrySet()) {	
@@ -87,7 +87,8 @@ public class Reponse {
 		for(int i = 0; i < fichierFiltresReponses.size(); i++) {
 			//on splitte chaque ligne du fichier FiltresReponses
 			List<String> filtresReponses = Arrays.asList(fichierFiltresReponses.get(i).split("\\|"));
-	   
+			
+			
 		    //si le mot-clé de la question est égale au mot-clé de la ligne du fichier
 		    if ( motCleQuestion.equals( filtresReponses.get(0) ) ) { 
 		    	//on recupère le filtre

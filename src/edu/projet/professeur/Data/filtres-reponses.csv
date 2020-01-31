@@ -1,6 +1,6 @@
 xdebut|-1|*|Bonjour, que puis-je pour vous?
 xrepetition|-1|*|Pourquoi vous vous répètez?|Perroquet...|Remettez le CD au début (da capo).|bla...bla ...bla|Ha, ha ! S'il vous plaît ne vous répètez pas car la pédagogie inversée ponctue les besoins caractéristiques du métacontexte.|Si le message ne me plait pas, je l'efface.|C'est une bonne démarche de se répéter mais jusqu'à quand?|La forme est essentielle du moment qu'elle exprime l'essentiel : le fond.
-xrien|0|*|Je ne suis pas sûr de bien vous comprendre.|S'il vous plaît continuez.|Qu'est-ce que cela vous suggère?|Pensez-vous fortement à discuter de telles choses?|C'est intéressant. Continuez s'il vous plaît.|Dites-m'en plus.|Est-ce que cela vous dérange?|Hé hé, la méthode renforce les paramètres caractéristiques de la problématique.|L'expérimentation identifie les penchants institutionnels des acteurs comme vous.
+xrien|0|*|Je ne suis pas sûr de bien vous comprendre.|S'il vous plaît continuez.|Qu'est-ce que cela vous suggère?|Pensez-vous fortement à discuter de telles choses?|C'est intéressant. Continuez s'il vous plaît.|Dites-m'en plus.|Est-ce que cela vous dérange?|Hé hé, ma méthode atténue les paramètres caractéristiques de votre problématique.|L'expérimentation identifie les penchants des personnes comme vous.
 bonjour|0|*|Comment allez-vous ? Veuillez indiquer votre problème.|Bonjour, quel est votre problème ?|Bonjour, que puis-je pour vous ?|Bonjour, je suis le professeur.
 hello|-1|*|goto bonjour
 salut|-1|*|goto bonjour
@@ -10,8 +10,9 @@ bjr|-1|*|goto bonjour
 slm|-1|*|goto bonjour
 salam|-1|*|goto bonjour
 shalom|-1|*|goto bonjour
-dériver|-1|dériver|Humm... |Attendez voir... euh ...|Je dois réfléchir... cependant : |Laissez-moi voir ...|Ok, je cherche... : |Un mathématicien utilise la dérivée pour la connaissance, jamais pour fanfaronner. Voilà |Je ne suis pas sûr, mais je dirais que :|Nonobstant le fait que tout est relatif, je dirais que |alors là, c'est facile |J'ai un doute, mais je dirais que : |Au hasard, je dirai :
-fonction|-1|dériver|Humm... une fonction...|Attendez voir... vous parlez de fonction ...|Je dois réfléchir... à votre fonction ....|Laissez-moi voir votre fonction.|Ok, je cherche... votre fonction ...|Quoi donc ?|Toujours par deux elles vont. Ni plus, ni moins. La fonction et ses variables.
+dériver|-1|dériver|Humm... |Attendez voir... euh ...|Je dois réfléchir... cependant : |Laissez-moi voir ...|Ok, je cherche... : |Un mathématicien utilise la dérivée pour la connaissance, jamais pour fanfaronner. Voilà |Je ne suis pas sûr, mais je dirais que :|Nonobstant le fait que tout est relatif, je dirais que |alors là, c'est facile |J'ai un doute, mais je dirais que : |Au hasard, je dirai :|Je croyais ne plus aimer dériver :|La dérivée est très importante car on s’en sert tout le temps dans les études de fonction :
+fonction|-1|dériver|Humm... une fonction...|Attendez voir... vous parlez de fonction ...|Je dois réfléchir... à votre fonction ....|Laissez-moi voir votre fonction.|Ok, je cherche... votre fonction ...|Quoi donc ?|Toujours par deux elles vont. Ni plus, ni moins. La fonction et ses variables.|Quand on a une fonction f, on peut calculer une autre fonction que l’on note f' etqu’on appelle la dérivée:
+dérivez|-1|*|goto dériver
 dérivée|-1|*|goto dériver
 dérivé|-1|*|goto dériver
 dérivation|-1|*|goto dériver
@@ -104,5 +105,6 @@ toujours|1|*|Pouvez-vous penser à un exemple spécifique?|Quand ?|À quel incid
 pareil|10|@pareil|De quelle manière?|Quelle ressemblance voyez-vous?|Que vous suggère cette similitude?|Quelles autres connexions voyez-vous?|Que pensez-vous que la ressemblance signifie?|Quelle connexion, supposez-vous?|Pourrait-il vraiment y avoir un lien?|Comment ?
 comme|10|* @être *comme *|goto pareil
 différent|0|@différent|En quoi est-ce (1)?|Quelles différences voyez-vous?|Que vous suggère cette différence?|Quelles autres distinctions voyez-vous?|À votre avis, que signifie cette disparité?|Pourrait-il y avoir une connexion, pensez-vous?|Comment ?
-c'est|-1|* c'est *|C'est à dire ?|Soyez-plus explicite sur (2)|Vous pensez que c'est (2)?
+c'est|-1|* c'est *|C'est à dire ?|Soyez-plus explicite sur (2)|Vous pensez que c'est (2)?|C’est-à-dire que tout ce qui vient de moi vous est (2)
 n'importe|-3|* n'importe *| Pourquoi n'importe (2) ?|Facile, de penser que c'est n'importe (2)|(1) n'importe (2)... et pourquoi donc ?
+sert|-1|* sert *|Cela sert (2)|Ça peut servir...(2)|Et vous, vous servez (2)

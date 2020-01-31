@@ -1,6 +1,6 @@
 package edu.projet.professeur;
 
-import java.util.Scanner;
+//import java.util.Scanner;
 
 /**
  * Application Professeur qui se connecte sur l'irc.
@@ -17,10 +17,10 @@ public class Main {
 		//test
 		/*System.out.println("> Professeur : " + Professeur.reponse("je suis étudiant et j'ai besoin d'aide et je veux dériver sin(x)"));
 		System.out.println("> Professeur : " + Professeur.reponse("j'ai besoin de dériver cette fonction sin(1/x)"));
-		System.out.println("> Professeur : " + Professeur.reponse("oui la dérivée de x^2 + 1"));
-		System.out.println("> Professeur : " + Professeur.reponse("je ne comprends pas"));*/
+		System.out.println("> Professeur : " + Professeur.reponse("oui la dérivée de x^2 + 1"));*/
+		//System.out.println("> Professeur : " + Professeur.reponse("Bon la dérivée c'est bien jolie mais à quoi ça sert ??"));
 		
-		String reponse, question;  
+		/*String reponse, question;  
 		Scanner sc = new Scanner(System.in);	 
 		System.out.println("> Professeur :" + Professeur.reponse("xdebut"));
 		while (sc.hasNextLine()) {
@@ -35,10 +35,10 @@ public class Main {
 				System.out.println("> Professeur : " + reponse); 
 			}
 		}
-		sc.close();
+		sc.close();*/
 		
 		
-		/*ProfBot bot=new ProfBot("Prof");
+		ProfBot bot=new ProfBot("Prof");
 		try {		
 			// Enable debugging output.
 	        bot.setVerbose(true);
@@ -51,7 +51,7 @@ public class Main {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-		}*/
+		}
 		
 	}
  

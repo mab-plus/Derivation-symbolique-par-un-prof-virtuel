@@ -147,7 +147,11 @@ public class Calcul {
 				eEquation = Expression.formuleToExpression(equation);
 				eEquation = simp.simplifier(eEquation);
 				eEquation = df.deriver(eEquation, variable);
-				resultat += "(" + equation + ")' = " + simp.simplifier(eEquation).asString();
+				
+				if (equation.equals(variable))
+					resultat += "Je suis le professeur et voilà la dérivée d'u e lettre de te ton blabla, (d"+ equation + "/d" + variable + ") = 1";
+				else
+					resultat += "(" + equation + ")' = " + simp.simplifier(eEquation).asString();
 			}
 		}
 		
