@@ -149,7 +149,7 @@ public class Calcul {
 				eEquation = df.deriver(eEquation, variable);
 				
 				if (equation.equals(variable))
-					resultat += "Je suis le professeur et voilà la dérivée d'u e lettre de te ton blabla, (d"+ equation + "/d" + variable + ") = 1";
+					resultat += "Je suis le professeur et voilà la dérivée d'une lettre de ton blabla, (d"+ equation + "/d" + variable + ") = 1";
 				else
 					resultat += "(" + equation + ")' = " + simp.simplifier(eEquation).asString();
 			}

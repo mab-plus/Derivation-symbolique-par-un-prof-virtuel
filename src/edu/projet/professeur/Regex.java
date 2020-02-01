@@ -70,7 +70,9 @@ public class Regex {
      * @return
      * l'expression régulière (regex) construite à partir du filtre.
     */   
-    static String getRegex(String filtre) {    	
+    static String getRegex(String filtre) {
+    	//on supprime le $ s'il existe
+    	filtre = filtre.replaceFirst("$", "");
     	//Expressions régulières pour matcher autres sauf celles commençant par @
     	String regex = "([\\\\p{L}\\\\s']*)";
     	return match("\\s*\\*\\s*|\\$\\s*[^@]", filtre).replaceAll(  regex   );

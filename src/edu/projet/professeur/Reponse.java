@@ -19,11 +19,21 @@ public class Reponse {
 	static List<String> fichierFiltresReponses = Fichier.getFichierFiltresReponses();
 	
     /**
-     * Pile mémoire de la réponse
+     * Pile mémoire des réponses des filtres $, utilisées en cas d'absences totales de réponses
      */
     private static Stack<String> memoireReponse;
-	
-
+    
+    
+    /**
+     * pour stocker l'index de la derniere réponse récupérée d'un filtre, 3 étant la première réponse possible 
+     * voir fichier filtres-reponses.csv
+     */
+    private static int indexDerniereReponse = 3;
+    /**
+     * idem index du filtre
+     */
+    private static int indexDernierFiltre= 0;
+    
 	/**
 	 * @param getMotsClesQuestion
 	 * @param question
@@ -37,14 +47,13 @@ public class Reponse {
 		//on récupère les mots-clés de la question pour trouver la réponse adéquate
 		String reponse = null;
 		for (Map.Entry<String, Integer> motCle : motsClesQuestion.entrySet()) {	
-
-			reponse = getReponse(motCle.getKey(), question);
 			
-			if ( reponse != null) {
+			reponse = getReponse(motCle.getKey(), question);
+			if ( reponse != null)
 				return reponse;
-			}
-		}	
-        //Pas de réponse, on regarde la dernière stocké en mémoire.
+		}
+		
+        //Pas de réponse, on retourne une réponse $ stockée 
         if (memoireReponse != null)
         	return memoireReponse.pop();
         else        
@@ -88,15 +97,36 @@ public class Reponse {
 			//on splitte chaque ligne du fichier FiltresReponses
 			List<String> filtresReponses = Arrays.asList(fichierFiltresReponses.get(i).split("\\|"));
 			
-			
 		    //si le mot-clé de la question est égale au mot-clé de la ligne du fichier
 		    if ( motCleQuestion.equals( filtresReponses.get(0) ) ) { 
+		    	
+    			//on choisit la réponse suivante dans la liste des réponses du filtre avant de revenir au point de départ
+		    	int indexEnCours = 3;      
+	    		if (indexDernierFiltre == i) {
+
+	    			if (indexDerniereReponse + 1 < filtresReponses.size())
+	    				indexEnCours = indexDerniereReponse + 1;
+	    			else
+	    				indexEnCours = indexDerniereReponse + 1 - filtresReponses.size() + 3;
+	    			
+	    			System.out.println("indexEnCours=" + indexEnCours);
+	    		}
+	    		else {
+			    	//sinon on choisit au hasard une réponse dans la liste des réponses du filtre
+	    			indexEnCours = (int) (Math.random() * (filtresReponses.size() - 3) + 3);
+		   			indexDernierFiltre = i;
+	    		}
+			    indexDerniereReponse = indexEnCours;
+			    
+		    	//si le filtre n'a qu'une réponse (après les 3 premiers champs)
+		    	if (filtresReponses.size() == 4 ) 
+		    		reponse = filtresReponses.get(3);
+		    	else
+				    reponse = filtresReponses.get(indexEnCours);
+
 		    	//on recupère le filtre
 		    	String filtre = filtresReponses.get(2);
-		      
-		    	//on choisit au hasard une réponse dans la lite des réponses du filtre
-		    	reponse = filtresReponses.get( (int) (Math.random() * (filtresReponses.size() - 3) + 3));
-		      
+		    	
 		    	String derivee = null;
 		    	Stack<String> regex = new Stack<>();
 		    	Matcher matcher;
@@ -132,7 +162,7 @@ public class Reponse {
 			    	}
 		    	}
 
-		    	//Si la réponse contient @, on tous les synonymes du terme derrière @
+		    	//Si le filtre contient @, on récupère tous les synonymes du terme derrière @
 		    	//m.group(1) correspond au terme derrière @
 		    	p = Pattern.compile("@\\p{L}+");
 		    	m = p.matcher(filtre);

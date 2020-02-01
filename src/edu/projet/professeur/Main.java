@@ -1,6 +1,6 @@
 package edu.projet.professeur;
 
-//import java.util.Scanner;
+import java.util.Scanner;
 
 /**
  * Application Professeur qui se connecte sur l'irc.
@@ -17,21 +17,20 @@ public class Main {
 		//test
 		/*System.out.println("> Professeur : " + Professeur.reponse("je suis étudiant et j'ai besoin d'aide et je veux dériver sin(x)"));
 		System.out.println("> Professeur : " + Professeur.reponse("j'ai besoin de dériver cette fonction sin(1/x)"));
-		System.out.println("> Professeur : " + Professeur.reponse("oui la dérivée de x^2 + 1"));*/
-		//System.out.println("> Professeur : " + Professeur.reponse("Bon la dérivée c'est bien jolie mais à quoi ça sert ??"));
-		
-		/*String reponse, question;  
+		System.out.println("> Professeur : " + Professeur.reponse("oui la dérivée de x^2 + 1"));
+		System.out.println("> Professeur : " + Professeur.reponse("mon cousin est décédé"));
+
 		Scanner sc = new Scanner(System.in);	 
 		System.out.println("> Professeur :" + Professeur.reponse("xdebut"));
 		while (sc.hasNextLine()) {
-			question = sc.nextLine();
-			reponse = Professeur.reponse(question); 
-			
-			if(reponse.equals("quitter")) {
-				System.out.println("> Professeur : Au revoir, merci et bonne journée!");
-				break;
-			}
-			else {		
+			String question = sc.nextLine();			
+
+			if (!question.trim().equals("")){	
+				String reponse = Professeur.reponse(question);
+				if(reponse.equals("quitter")) {
+					System.out.println("> Professeur : Au revoir, merci et bonne journée!");	
+					break;
+				}
 				System.out.println("> Professeur : " + reponse); 
 			}
 		}

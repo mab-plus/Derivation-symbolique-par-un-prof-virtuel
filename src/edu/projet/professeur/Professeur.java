@@ -10,10 +10,10 @@ import java.util.Map;
 public class Professeur {
 	
     /**
-     * Pour tester s'il répète la même question
+     * Pour tester si l'utilisateur répète la même question
      */
-    private static String QuestionPrecedente ="";
-	
+    private static String questionPrecedente ="";
+    	
     /**
      * @param question
      * @return la réponse du Professeur.
@@ -21,13 +21,13 @@ public class Professeur {
     public static String reponse (String question) {
     	
     	Map<String, Integer> motsClesQuestion = new HashMap<>();
-    	question=  Conjugaison.conjuger(question, Fichier.getCheminFichierConjugaison());
+    	question = Conjugaison.conjuger(question, Fichier.getCheminFichierConjugaison());
     	
-    	if (QuestionPrecedente.equals(question))
+    	if (questionPrecedente.equals(question))
          	motsClesQuestion.put("xrepetition", -1);
     	else {
          	motsClesQuestion = MotsCles.getMotsClesQuestion (question);
-         	QuestionPrecedente = question;
+         	questionPrecedente = question;
     	}
 
 

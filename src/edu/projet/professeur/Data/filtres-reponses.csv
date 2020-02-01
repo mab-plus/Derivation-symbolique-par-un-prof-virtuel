@@ -41,11 +41,19 @@ rêvé|4|* @rêvé *|Vraiment, (3)?|Avez-vous déjà fantasmé (3) pendant que v
 rêve|3|*|Que vous suggère ce rêve?|Rêvez-vous souvent?|Quelles personnes apparaissent dans vos rêves?|Croyez-vous que les rêves ont quelque chose à voir avec votre problème?
 peut-être|0|@peut-être|Vous ne semblez pas tout à fait certain.|Pourquoi ce ton incertain?|Vous ne pouvez pas être plus positif?|En êtes vous sûr?|Vous ne savez pas ?|Selon vous, quelle est la probabilité?
 nom|15|*|Je ne m'intéresse pas aux noms.|Je vous l'ai déjà dit, je me fiche des noms - veuillez continuer.
-allemand|0|*|goto xforeign|Je vous l'ai déjà dit, je ne comprends pas l'allemand.
-anglais|0|*|goto xforeign|Je vous l'ai déjà dit, je ne comprends pas l'anglais.
-italien|0|*|goto xforeign|Je vous l'ai déjà dit, je ne comprends pas l'italien.
-espagnol|0|*|goto xforeign|Je vous l'ai déjà dit, je ne comprends pas l'espagnol.
-xforeign|0|*|Je parle seulement le françawi.
+allemand|-10|*|goto xforeign
+anglais|-10|*|goto xforeign.
+italien|-10|*|goto xforeign
+espagnol|-10|*|goto xforeign
+i|-10|*|goto xforeign
+you|-10|*|goto xforeign
+ich|-10|*|goto xforeign
+sie|-10|*|goto xforeign
+usted|-10|*|goto xforeign
+yo|-10|*|goto xforeign
+io|-10|*|goto xforeign
+voi|-10|*|goto xforeign
+xforeign|-10|*|Je parle seulement le françawi.|Je suis français !|Je ne parle que la langue de Molière.
 computer|50|*|Les ordinateurs vous inquiètent-ils?|Pourquoi mentionnez-vous les ordinateurs?|Que pensez-vous que les machines ont à voir avec votre problème?|Ne pensez-vous pas que les ordinateurs peuvent aider les gens?|Et les machines vous inquiètent?|Que pensez-vous des machines?|Vous ne pensez pas que je suis un programme informatique, n'est-ce pas?|Il faut parfois vous fier à vos intuitions car le numérique peut bouleverser vos besoins cognitifs primordiaux.
 pc|50|*|goto computer
 ordinateur|50|*|goto computer
@@ -59,7 +67,6 @@ suis|0|*|Pourquoi dites-vous «suis»?|Je ne comprends pas.
 êtes|0|* êtes-vous *|Pourquoi voulez-vous que je sois (3) ou non?|Préféreriez-vous si je n'étais pas (3)?|Je suis peut-être (3) dans vos fantasmes.|Pensez-vous parfois que je suis (3)?|goto que|Cela vous importerait-il?|Et si j'étais (3)?
 êtes|0|* vous êtes *|goto vous
 sont|0|* sont *|Pensiez-vous qu'ils pourraient ne pas l'être (2)?|Aimeriez-vous qu'ils ne soient pas (2)?|Et s'ils ne l'étaient pas (2)?|Sont-ils toujours (2)?|Ils sont peut-être (2).|Are you positive they are (2) ?
-votre|0|* votre *|Pourquoi êtes-vous préoccupé par mon (2)?|Et le vôtre (2)?|Êtes-vous inquiet pour quelqu'un d'autre (2)?|Vraiment, mon (2)?|Qu'est-ce qui vous fait penser à mon (2)?|Voulez-vous mon (2)?
 étais|2|* étais * \?|Et si vous étiez (2)?|Pensez-vous que vous étiez (2)?|Étiez-vous (2)?|Qu'est-ce que cela signifierait si vous étiez (2)?|Que vous suggère «(2)»?|goto que
 étais|2|* étais *|Étiez-vous vraiment?|Pourquoi me dites-vous maintenant que vous étiez (2)?|Peut-être que je sais déjà que vous étiez (2).
 étiez|2|* étiez * \?|Aimeriez-vous croire que j'étais (2)?|Qu'est-ce qui suggère que j'étais (2)?|Qu'est-ce que tu penses ?|J'étais peut-être (2).|Et si j'avais été (2)?
@@ -79,13 +86,14 @@ je|0|*|Vous dites (1)?|Pourriez-vous préciser ?|Dites-vous (1) pour une raison 
 vous|0|* vous me rappellez  *|goto pareil
 vous|0|* vous êtes *|Qu'est-ce qui vous fait penser que je suis (2)?|Cela vous plait-il de croire que je suis (2)?|Souhaitez-vous parfois être (2)?|Peut-être que vous aimeriez être (2).
 vous|0|* vous * m'avez *|Pourquoi pensez-vous que je vous ai (3)?|Vous aimez penser que je vous ai (3) - n'est-ce pas?|Qu'est-ce qui vous fait penser que je vous ai (3)?|Vraiment, je vous ai (3)?|Souhaitez-vous croire que je vous ai (3)?|Supposons que je vous ai (3) - qu'est-ce que cela signifie?|Est-ce que quelqu'un d'autre croit que je vous ai (3)?
-vous|0|* vous *|Nous parlions de vous - pas de moi.|Oh, je (2)?|Vous ne parlez pas vraiment de moi - n'est-ce pas?|Quels sont vos sentiments maintenant?|Quand vous serez comme moi, vous parlerez beaucoup moins.
+vous|0|* vous êtes *|Oh ! je suis (2)|Et vous, vous n'êtes pas (2)|Nous parlions de vous - pas de moi.|Vous ne parlez pas vraiment de moi - n'est-ce pas?|Quels sont vos sentiments maintenant?|Quand vous serez comme moi, vous parlerez beaucoup moins.
+votre|0|* votre *|Pourquoi êtes-vous préoccupé par mon (2)?|Et vôtre (2)?|Êtes-vous inquiet mon (2)?|Vraiment, mon (2)?|Qu'est-ce qui vous fait penser à mon (2)?|Voulez-vous mon (2)?
 oui|0|*|Vous semblez être assez positif.|Vous êtes sûr.|Je vois.|Je comprends.
 non|0|* @personne *|Êtes-vous sûr, personne (3)?|Sûrement quelqu'un (3).|Pouvez-vous penser à quelqu'un en particulier?|Pensez-vous à une personne très spéciale?|À qui puis-je demander?|Avez-vous une personne en tête, non?|De qui pensez-vous parler?
 non|0|*|Êtes-vous en train de dire non simplement pour être négatif?|Vous êtes un peu négatif.|Pourquoi pas ?|Pourquoi 'non'?
-mon|2|$  * mon *|Voyons pourquoi votre (2).|Plus tôt, vous avez dit votre (2).|Mais votre (2).|Est-ce que cela a quelque chose à voir avec le fait que votre (2)?
+mon|2|$* mon *|Voyons pourquoi votre (2).|Plus tôt, vous avez dit votre (2).|Mais votre (2).|Est-ce que cela a quelque chose à voir avec le fait que votre (2)?
 ma|2|* ma * @famille *|Parlez-moi de votre (4).|Qui d'autre dans votre (4) (4)?|Votre (4)?|À quoi pensez-vous d'autre lorsque vous pensez à votre (4)?
-mon|2|* @mon *|Votre (3)?|Pourquoi dites-vous votre (3)?|Cela suggère-t-il autre chose qui vous appartient?|Est-ce important pour vous que votre (3)?
+mon|2|* @mon *|Votre (3)?|Pourquoi dites-vous que votre (3)?|Cela suggère-t-il autre chose qui vous soit proche?|Est-ce important pour vous que votre (3)?
 pouvez|0|* pouvez vous *|Croyez-vous que je puisse (2) non?|goto que|Vous voulez que je puisse (2).|Vous aimeriez peut-être (2) vous-même.
 can|0|* @puisje * \?|Que vous le puissiez ou non (3) dépend de vous plus que de moi.|Voulez-vous pouvoir (3)?|Peut-être que vous ne voulez pas (3).|goto que
 que|0|@que|Pourquoi demandez-vous ?|Cette question vous intéresse-t-elle?|Qu'est-ce que vous voulez vraiment savoir?|Ces questions vous préoccupent-elles beaucoup?|Quelle réponse vous plairait le plus?|Qu'est-ce que vous pensez ?|Qu'est-ce qui vous vient à l'esprit lorsque vous demandez cela?|Avez-vous déjà posé de telles questions?|Avez-vous demandé à quelqu'un d'autre?
