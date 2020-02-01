@@ -18,7 +18,9 @@ public class ProfBot extends PircBot {
 	
     public void onMessage(String channel, String sender, String login, String hostname, String message) {
     	
-		String reponse = Professeur.reponse(message); 		
-		sendMessage(channel, reponse);		
+    	if (!message.trim().equals("") && channel.equals("#ircprojet")) {
+        	String reponse = Professeur.reponse(message, sender); 		
+    		sendMessage(channel, reponse);
+    	}
     }
 }

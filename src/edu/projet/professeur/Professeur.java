@@ -9,6 +9,8 @@ import java.util.Map;
  */
 public class Professeur {
 	
+	public static String user;
+	
     /**
      * Pour tester si l'utilisateur répète la même question
      */
@@ -18,8 +20,9 @@ public class Professeur {
      * @param question
      * @return la réponse du Professeur.
      */
-    public static String reponse (String question) {
+    public static String reponse (String question, String sender) {
     	
+    	Professeur.user = sender;
     	Map<String, Integer> motsClesQuestion = new HashMap<>();
     	question = Conjugaison.conjuger(question, Fichier.getCheminFichierConjugaison());
     	

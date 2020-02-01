@@ -34,10 +34,10 @@ public class Calcul {
 	}
 	
 	/**
-	 * @param data, eneregistre les variables de l'équation dans memoireVariable.
+	 * @param data, enregistre les variables de l'équation dans memoireVariable.
 	 */
 	static void setMemoireVariable(String data) {
-		memoireVariable.add(data);
+		memoireVariable.push(data);
 	}
 	
 	/**
@@ -45,6 +45,13 @@ public class Calcul {
 	 */
 	static Stack<String> getMemoireEquation() {
 		return memoireEquation;
+	}
+	
+	/**
+	 * @param data, enregistre l'équation dans memoireEquation.
+	 */
+	static void setMemoireEquation(String data) {
+		memoireEquation.push(data);
 	}
 	
 
@@ -79,7 +86,7 @@ public class Calcul {
 					tmp = termes.get(i);
 				}
 			}
-		}
+		}	
 	}
 
 	/**

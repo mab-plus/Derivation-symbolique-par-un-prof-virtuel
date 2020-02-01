@@ -1,7 +1,7 @@
-xdebut|-1|*|Bonjour, que puis-je pour vous?
+xdebut|-1|*|Bonjour, que puis-je pour vous ? (user)|Cher tchatcheur, peut-on vous aider ? (user)|Bonjour, vous avez l'air de me chercher ? (user)|Qu'y-a-t-il pour votre service ? (user)|Que puis-je faire pour vous ? (user)
 xrepetition|-1|*|Pourquoi vous vous répètez?|Perroquet...|Remettez le CD au début (da capo).|bla...bla ...bla|Ha, ha ! S'il vous plaît ne vous répètez pas car la pédagogie inversée ponctue les besoins caractéristiques du métacontexte.|Si le message ne me plait pas, je l'efface.|C'est une bonne démarche de se répéter mais jusqu'à quand?|La forme est essentielle du moment qu'elle exprime l'essentiel : le fond.
-xrien|0|*|Je ne suis pas sûr de bien vous comprendre.|S'il vous plaît continuez.|Qu'est-ce que cela vous suggère?|Pensez-vous fortement à discuter de telles choses?|C'est intéressant. Continuez s'il vous plaît.|Dites-m'en plus.|Est-ce que cela vous dérange?|Hé hé, ma méthode atténue les paramètres caractéristiques de votre problématique.|L'expérimentation identifie les penchants des personnes comme vous.
-bonjour|0|*|Comment allez-vous ? Veuillez indiquer votre problème.|Bonjour, quel est votre problème ?|Bonjour, que puis-je pour vous ?|Bonjour, je suis le professeur.
+xrien|0|*|(user), je ne suis pas sûr de bien vous comprendre.|S'il vous plaît continuez (user)|(user), qu'est-ce que cela vous suggère ? |(user), pensez-vous réellement capable de discuter de telles sujets ?|C'est intéressant. Continuez s'il vous plaît.|(user) dites-m'en plus.|(user), est-ce que cela vous dérange ?|Hé hé (user), ma méthode atténue les paramètres caractéristiques de votre problématique.|L'expérimentation identifie les penchants des personnes comme vous, (user).
+bonjour|0|*|Comment allez-vous ? (user) Veuillez indiquer votre problème.|Bonjour (user), quel est votre problème ?|Bonjour (user), que puis-je pour vous ?|Bonjour (user), je suis le professeur.
 hello|-1|*|goto bonjour
 salut|-1|*|goto bonjour
 slt|-1|*|goto bonjour
@@ -10,6 +10,7 @@ bjr|-1|*|goto bonjour
 slm|-1|*|goto bonjour
 salam|-1|*|goto bonjour
 shalom|-1|*|goto bonjour
+xfin|-1|@fin|Avec mes salutations|Avec mes remerciements|En vous souhaitant cordialement une excellente journée|Bien à vous|Veuillez croire à mon meilleur souvenir.|Recevez, cher ami, mes sincères salutations.|Votre problème a-t-il été résolu  ?|Au revoir et passez une bonne fin de journée,
 dériver|-1|dériver|Humm... |Attendez voir... euh ...|Je dois réfléchir... cependant : |Laissez-moi voir ...|Ok, je cherche... : |Un mathématicien utilise la dérivée pour la connaissance, jamais pour fanfaronner. Voilà |Je ne suis pas sûr, mais je dirais que :|Nonobstant le fait que tout est relatif, je dirais que |alors là, c'est facile |J'ai un doute, mais je dirais que : |Au hasard, je dirai :|Je croyais ne plus aimer dériver :|La dérivée est très importante car on s’en sert tout le temps dans les études de fonction :
 fonction|-1|dériver|Humm... une fonction...|Attendez voir... vous parlez de fonction ...|Je dois réfléchir... à votre fonction ....|Laissez-moi voir votre fonction.|Ok, je cherche... votre fonction ...|Quoi donc ?|Toujours par deux elles vont. Ni plus, ni moins. La fonction et ses variables.|Quand on a une fonction f, on peut calculer une autre fonction que l’on note f' etqu’on appelle la dérivée:
 dérivez|-1|*|goto dériver
@@ -32,7 +33,7 @@ variations|-1|*|goto dériver
 question|-1|*|goto dériver
 désolé|0|* je suis @désolé *|Veuillez ne pas vous excuser.|Les excuses ne sont pas nécessaires.|Je vous ai dit que les excuses ne sont pas nécessaires.|Cela ne m'a pas dérangé. Continuez s'il vous plaît.
 excuser|0|*|goto désolé
-souvenez|5|* @souvenez *|Pensiez-vous que j'oublierais (3)?|Pourquoi pensez-vous que je devrais me rappeler (3) maintenant?|qui y a-t-il à propos de (3)?|goto que|Avez-vous mentionné (3)?|Comment pourrais-je oublier (3)?|Qu'en est-il de (3), dois-je m'en souvenir?|goto vous
+souvenez|5|* @souvenez *|(user), pensiez-vous que j'oublierais (3)?|Pourquoi pensez-vous que je devrais me rappeler (3) maintenant?|qui y a-t-il à propos de (3)?|goto que|Avez-vous mentionné (3)?|Comment pourrais-je oublier (3)?|Qu'en est-il de (3), dois-je m'en souvenir?|goto vous
 souviens|5|* @souviens *|Pensez-vous souvent à (3)?|Penser à (3) vous rappelle-t-il autre chose?|Que retenez-vous d'autre?|Pourquoi vous souvenez-vous (3), maintenant?|Dans la situation actuelle, qu'est-ce qui vous rappelle (3)?|Quel est le lien entre (3) et moi ?|À quoi d'autre (3) vous fait-il penser?
 oublie|5|* @oublie *|Pouvez-vous imaginer pourquoi vous pourriez oublier (3)?|Pourquoi tu ne te souviens pas (3)?|À quelle fréquence pensez-vous (3)?|Cela vous dérange-t-il d'oublier cela?|Serait-ce un blocage mental?|Généralement avez-vous tendance à oublier?|Pensez-vous que vous supprimerez (3)?|goto souvenez?
 oublie|5|* @oubliez *|Pourquoi demandez-vous ?|Vous êtes sûr de me l'avoir dit?|Cela vous dérangerait-il si j'oubliais (3)?|Pourquoi devrais-je me rappeler maintenant de (3)?|goto que|Parlez-moi de (3).
@@ -53,7 +54,7 @@ usted|-10|*|goto xforeign
 yo|-10|*|goto xforeign
 io|-10|*|goto xforeign
 voi|-10|*|goto xforeign
-xforeign|-10|*|Je parle seulement le françawi.|Je suis français !|Je ne parle que la langue de Molière.
+xforeign|-10|*|(user), je parle seulement le françawi.|Je suis français ! (user)|(user), je ne parle que la langue de Molière.
 computer|50|*|Les ordinateurs vous inquiètent-ils?|Pourquoi mentionnez-vous les ordinateurs?|Que pensez-vous que les machines ont à voir avec votre problème?|Ne pensez-vous pas que les ordinateurs peuvent aider les gens?|Et les machines vous inquiètent?|Que pensez-vous des machines?|Vous ne pensez pas que je suis un programme informatique, n'est-ce pas?|Il faut parfois vous fier à vos intuitions car le numérique peut bouleverser vos besoins cognitifs primordiaux.
 pc|50|*|goto computer
 ordinateur|50|*|goto computer
@@ -63,7 +64,7 @@ smartphone|50|*|goto computer
 IA|50|*|goto computer
 suis-je|0|* @suis-je *|Croyez-vous que vous êtes (3)?|Voudriez-vous être (3)?|Souhaitez-vous que je vous dise que vous êtes (3)?|Qu'est-ce que cela signifierait si vous étiez (3)?|goto que
 suis|0|* je suis *|goto je
-suis|0|*|Pourquoi dites-vous «suis»?|Je ne comprends pas.
+suis|0|*|Pourquoi dites-vous «suis» ?|(user), je ne comprends pas.
 êtes|0|* êtes-vous *|Pourquoi voulez-vous que je sois (3) ou non?|Préféreriez-vous si je n'étais pas (3)?|Je suis peut-être (3) dans vos fantasmes.|Pensez-vous parfois que je suis (3)?|goto que|Cela vous importerait-il?|Et si j'étais (3)?
 êtes|0|* vous êtes *|goto vous
 sont|0|* sont *|Pensiez-vous qu'ils pourraient ne pas l'être (2)?|Aimeriez-vous qu'ils ne soient pas (2)?|Et s'ils ne l'étaient pas (2)?|Sont-ils toujours (2)?|Ils sont peut-être (2).|Are you positive they are (2) ?
@@ -73,16 +74,15 @@ sont|0|* sont *|Pensiez-vous qu'ils pourraient ne pas l'être (2)?|Aimeriez-vous
 je|0|* je @desire *|Qu'est-ce que cela signifierait pour vous si vous aviez (3)?|Pourquoi voulez-vous (3)?|Supposons que vous ayez bientôt (3).|Et si vous n'aviez jamais (3)?|Que signifierait (3) pour vous?|Qu'est-ce que vouloir (3) à voir avec cette discussion?
 je|0|* je suis * @triste *|Je suis désolé d'apprendre que vous êtes (3).|Pensez-vous que venir ici vous aidera à ne pas être (3)?|Je suis sûr que ce n'est pas agréable d'être (3).|Pouvez-vous expliquer ce qui vous a fait (3)?
 je|0|* je suis * @heureux *|Comment t'ai-je aidé à être (3)?|Est-ce que votre traitement vous a fait (3)?|Qu'est-ce que vous fait (3) maintenant?|Pouvez-vous expliquer pourquoi vous êtes soudainement (3)?
-je|0|* je suis *|Êtes-vous venu me voir parce que vous êtes uniquement (2).
-je|0|* je suis *||Is it because you are (2) that you came to me ?|How long have you been (2) ?|Do you believe it is normal to be (2) ?|Do you enjoy being (2) ?|Do you know anyone else who is (2) ?||||
-je|0|* je @crois que je *|Est-ce que tu le penses vraiment ?|Mais vous n'êtes pas sûr de vous (3).|Vous doutez vraiment de vous (3)?
+je|0|* je suis *|(user), êtes-vous venu me voir parce que vous êtes uniquement (2).|Combien de temps avez-vous été (2) ? (user)|(user), croyez-vous qu'il est normal d'être (2) ? |Aimez-vous être (2)?|(user), connaissez-vous quelqu'un d'autre qui est (2)?
+je|0|* je @crois que je *|Est-ce que tu le penses vraiment ? (user)|Mais vous n'êtes pas sûr de vous (3).|(user), vous doutez vraiment de vous (3) ?
 je|0|* je @crois que vous *|goto vous
 je|0|* je suis *|Est-ce parce que vous-êtes (2) que vous êtes venu me voir?|Depuis combien de temps êtes-vous (2)?|Croyez-vous qu'il est normal d'être (2)?|Aimez-vous être (2)?|Connaissez-vous quelqu'un d'autre qui soit (2)?
 je|0|* je @peuxpas *|Comment savez-vous que vous ne pouvez pas (3)?|As-tu essayé ?|Peut-être pourriez-vous (3) maintenant.|Réellement, voulez-vous être capable de (3)?|Et si vous pouviez (3)?
 je|0|* je @ne *|Pas possible,  (3)?|Pourquoi pas (3)?|Souhaitez-vous pouvoir (3)?|Cela vous dérange-t-il?
 je|0|* je @sens *|Parlez-moi de ces sentiments.|Vous sentez-vous souvent (3)?|Aimez-vous ressentir (3)?|Quels souvenirs, ce sentiment (3) vous remémore?
 je|0|* je vous *|Peut-être que dans vos fantasmes, vous me (2)|Souhaitez-vous me (2)?|Vous semblez avoir besoin de me (2).|Avez-vous (2) quelqu'un d'autre?
-je|0|*|Vous dites (1)?|Pourriez-vous préciser ?|Dites-vous (1) pour une raison particulière?|C'est assez intéressant.
+je|0|*|Vous dites (1)?|Pourriez-vous préciser ?|Dites-vous (1) pour une raison particulière?|C'est assez intéressant.|(user), vous ne m'avez pas dit que vous m'avez dit (1)
 vous|0|* vous me rappellez  *|goto pareil
 vous|0|* vous êtes *|Qu'est-ce qui vous fait penser que je suis (2)?|Cela vous plait-il de croire que je suis (2)?|Souhaitez-vous parfois être (2)?|Peut-être que vous aimeriez être (2).
 vous|0|* vous * m'avez *|Pourquoi pensez-vous que je vous ai (3)?|Vous aimez penser que je vous ai (3) - n'est-ce pas?|Qu'est-ce qui vous fait penser que je vous ai (3)?|Vraiment, je vous ai (3)?|Souhaitez-vous croire que je vous ai (3)?|Supposons que je vous ai (3) - qu'est-ce que cela signifie?|Est-ce que quelqu'un d'autre croit que je vous ai (3)?
@@ -105,7 +105,7 @@ parce|0|@parce|Est-ce la vraie raison?|Aucune autre raison ne vous vient à l'es
 pourquoi|0|* pourquoi vous ne *|Croyez-vous que je ne le fais pas (2)?|Je vais peut-être (2) en temps utile.|Devriez-vous (2) vous-même?|Tu veux que je (2)?|goto que
 pourquoi|0|* pourquoi je ne peux pas *|Pensez-vous que vous devriez pouvoir (2)?|Voulez-vous pouvoir (2)?|Croyez-vous que cela vous aidera à (2)?|Avez-vous une idée pourquoi vous ne pouvez pas (2)?|goto que
 pourquoi|0|*|goto que
-gens|2|* @gens *|Vraiment, (2)?|Sûrement pas (2).|Pouvez-vous penser à quelqu'un en particulier?|Qui, par exemple?|Pensez-vous à une personne très spéciale?|À qui puis-je demander?|Quelqu'un de spécial peut-être?|Vous avez une personne en tête, non?|À qui pensez-vous que vous parlez?|L'excellence améliore les effets cognitifs de votre négativité.
+gens|2|* @gens *|Vraiment, (2) ? (user)|Sûrement pas (2).|Pouvez-vous penser à quelqu'un en particulier?|Qui, par exemple?|Pensez-vous à une personne très spéciale?|À qui puis-je demander?|Quelqu'un de spécial peut-être?|Vous avez une personne en tête, non?|À qui pensez-vous que vous parlez?|L'excellence améliore les effets cognitifs de votre négativité.
 monde|2|*|goto gens
 personne|2|*|goto gens
 aucun|2|*|goto gens
@@ -115,4 +115,4 @@ comme|10|* @être *comme *|goto pareil
 différent|0|@différent|En quoi est-ce (1)?|Quelles différences voyez-vous?|Que vous suggère cette différence?|Quelles autres distinctions voyez-vous?|À votre avis, que signifie cette disparité?|Pourrait-il y avoir une connexion, pensez-vous?|Comment ?
 c'est|-1|* c'est *|C'est à dire ?|Soyez-plus explicite sur (2)|Vous pensez que c'est (2)?|C’est-à-dire que tout ce qui vient de moi vous est (2)
 n'importe|-3|* n'importe *| Pourquoi n'importe (2) ?|Facile, de penser que c'est n'importe (2)|(1) n'importe (2)... et pourquoi donc ?
-sert|-1|* sert *|Cela sert (2)|Ça peut servir...(2)|Et vous, vous servez (2)
+sert|-1|* sert *|Cela sert (2)|Ça peut servir...(2)|Et vous, (user), vous servez (2)

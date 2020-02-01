@@ -2,6 +2,10 @@ package edu.projet.professeur;
 
 import java.util.Scanner;
 
+import edu.projet.calcul.Derivation;
+import edu.projet.expressions.*;
+import edu.projet.fonctions.Cos;
+
 /**
  * Application Professeur qui se connecte sur l'irc.
  * @author BAKHTAOUI Michel
@@ -14,13 +18,20 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
+		/*Variable x = new Variable("x");
+		Constante un = new Constante(1);
+		Division fx  = new Division(un, new Cos(x));
+		
+		Derivation d = new Derivation();	
+		System.out.println(d.deriver(fx, "x").asString());*/
+		
 		//test
 		/*System.out.println("> Professeur : " + Professeur.reponse("je suis étudiant et j'ai besoin d'aide et je veux dériver sin(x)"));
 		System.out.println("> Professeur : " + Professeur.reponse("j'ai besoin de dériver cette fonction sin(1/x)"));
 		System.out.println("> Professeur : " + Professeur.reponse("oui la dérivée de x^2 + 1"));
-		System.out.println("> Professeur : " + Professeur.reponse("mon cousin est décédé"));
+		System.out.println("> Professeur : " + Professeur.reponse("1/cos(x)", ""));*/
 
-		Scanner sc = new Scanner(System.in);	 
+		/*Scanner sc = new Scanner(System.in);	 
 		System.out.println("> Professeur :" + Professeur.reponse("xdebut"));
 		while (sc.hasNextLine()) {
 			String question = sc.nextLine();			

@@ -154,11 +154,12 @@ public class Reponse {
 		    	//Si on peut encore extraire une équation de la question
 		    	if (motCleQuestion.equals("xrien"))
 		    	{
-			    	String eq = Expression.formuleToExpression(question).asString();
+		    		String eq = Expression.formuleToExpression(question).asString();
 			    	if (eq != "" && !eq.equals(question)) {
 			    		System.out.println("eq=" + eq);
+			    		Calcul.setMemoireEquation(eq);
 			    		regex.push("*");
-			    		derivee = Calcul.getDerivee(eq);
+			    		derivee = Calcul.derivation();
 			    	}
 		    	}
 
@@ -208,6 +209,7 @@ public class Reponse {
 	 */
 	private static String assemblageReponse(Matcher matcher, String reponse) {
 		
+		reponse = reponse.replaceAll("\\(user\\)", Professeur.user);
 		while (matcher.find()) {
             for (int j = 0; j <= matcher.groupCount() ; j++) {
                 
