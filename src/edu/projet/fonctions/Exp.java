@@ -24,7 +24,7 @@ public class Exp  extends Expression {
 
 	@Override
 	public double evaluer(HashMap<String, Double> liste) {
-		return Math.log(this.exprD.evaluer(liste));
+		return Math.exp(this.exprD.evaluer(liste));
 	}
 
 	@Override

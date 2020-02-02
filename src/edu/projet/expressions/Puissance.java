@@ -51,19 +51,18 @@ public class Puissance extends Expression {
 		}
 			
 		//expression = this.exprG.asString() + this.getSymbole() + "[" + this.exprD.asString() + "]";
-		return this.exprG.asString() + exposant( this.exprD.asString() ) ;
-		
+		return this.exprG.asString() + exposant( this.exprD.asString() ) ;	
 	}
 	
 	private String exposant(String e) {
 		//encodage exposant unicode ⁰, ¹, ² ...
-		char[] exposant = {'\u2070', '\u00b9', '\u00b2', '\u00b3', '\u2074', '\u2075', '\u2076', '\u2077', '\u2078', '\u2079'};
+		/*char[] exposant = {'\u2070', '\u00b9', '\u00b2', '\u00b3', '\u2074', '\u2075', '\u2076', '\u2077', '\u2078', '\u2079'};
 		char[] c = e.toCharArray();
 		
 		for(int i = 0; i < c.length; i++) {
 			e = e.replace(c[i], exposant[Character.getNumericValue(c[i])]);
-		}
-		return e;
+		}*/
+		return "^" + e;
 	}
 
 	@Override

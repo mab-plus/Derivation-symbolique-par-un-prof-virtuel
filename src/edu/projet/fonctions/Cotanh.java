@@ -7,24 +7,24 @@ import edu.projet.interfaces.DerivationVisitor;
 import edu.projet.interfaces.SimplificationVisitor;
 
 /**
- * Log @see Expression
+ * Cos @see Expression
  * 
  * @author BAKHTAOUI Michel
  * @version 1.0
  */
-public class Sin  extends Expression {
+public class Cotanh  extends Expression {
 
 	/**
 	 * constructeur
 	 * @param argument
 	 */
-	public Sin(Expression argument) {
-		super(null, "sin", argument);
+	public Cotanh(Expression argument) {
+		super(null, "coth", argument);
 	}
 
 	@Override
 	public double evaluer(HashMap<String, Double> liste) {
-		return Math.sin(this.exprD.evaluer(liste));
+		return 1 / Math.tanh(this.exprD.evaluer(liste));
 	}
 
 	@Override

@@ -141,5 +141,74 @@ public class Derivation implements FormuleDerivation, DerivationVisitor<Expressi
 		//sin(u)  -> u' cos(u)
 		return new Multiplication(du, new Cos(u));
 	}
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Tan, la méthode visit(Tan expr, String dx) est invoquée pour cet élément
+	*/
+	@Override
+	public Expression visit(Tan expr, String dx) {
+		Expression u = expr.exprD;
+		Expression du = u.accept(this, dx);
+
+		//tan(u)  -> u'/cos²(u)
+		return new Division(du, new Puissance(new Cos(u), 2));
+	}
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Cotan, la méthode visit(Cotan expr, String dx) est invoquée pour cet élément
+	*/
+	@Override
+	public Expression visit(Cotan expr, String dx) {
+		Expression u = expr.exprD;
+		Expression du = u.accept(this, dx);
+
+		//cotan(u)  -> -u'/sin²(u)
+		return new Division(new Moins(du), new Puissance(new Sin(u), 2));
+	}
 	
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Ch, la méthode visit(Ch expr, String dx) est invoquée pour cet élément
+	*/
+	@Override
+	public Expression visit(Cosh expr, String dx) {
+		Expression u = expr.exprD;
+		Expression du = u.accept(this, dx);
+		
+		//ch(u)  -> u' sh(u)
+		return new Multiplication(du, new Sinh(u));
+	}
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Sh, la méthode visit(Sh expr, String dx) est invoquée pour cet élément
+	*/
+	@Override
+	public Expression visit(Sinh expr, String dx) {
+		Expression u = expr.exprD;
+		Expression du = u.accept(this, dx);
+
+		//sh(u)  -> u' ch(u)
+		return new Multiplication(du, new Cosh(u));
+	}
+	
+	
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Tanh, la méthode visit(Tanh expr, String dx) est invoquée pour cet élément
+	*/
+	@Override
+	public Expression visit(Tanh expr, String dx) {
+		Expression u = expr.exprD;
+		Expression du = u.accept(this, dx);
+
+		//tanh(u)  -> u'/ch²(u)
+		return new Division(du, new Puissance(new Cosh(u), 2));
+	}
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Cotanh, la méthode visit(Cotanh expr, String dx) est invoquée pour cet élément
+	*/
+	@Override
+	public Expression visit(Cotanh expr, String dx) {
+		Expression u = expr.exprD;
+		Expression du = u.accept(this, dx);
+
+		//cotanh(u)  -> -u'/sh²(u)
+		return new Division(new Moins(du), new Puissance(new Sinh(u), 2));
+	}
+
 }

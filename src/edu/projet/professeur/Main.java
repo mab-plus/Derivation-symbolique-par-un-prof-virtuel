@@ -1,11 +1,5 @@
 package edu.projet.professeur;
 
-import java.util.Scanner;
-
-import edu.projet.calcul.Derivation;
-import edu.projet.expressions.*;
-import edu.projet.fonctions.Cos;
-
 /**
  * Application Professeur qui se connecte sur l'irc.
  * @author BAKHTAOUI Michel
@@ -20,16 +14,22 @@ public class Main {
 		
 		/*Variable x = new Variable("x");
 		Constante un = new Constante(1);
-		Division fx  = new Division(un, new Cos(x));
+		Expression fx  = new Cosh(x);
 		
 		Derivation d = new Derivation();	
-		System.out.println(d.deriver(fx, "x").asString());*/
+		System.out.println(d.deriver(fx, "x").asString());
+		
+		Expression u = Expression.formuleToExpression("tan(x)");
+		
+		System.out.println(u.asString());
+		System.out.println(d.deriver(u, "x").asString());*/
 		
 		//test
 		/*System.out.println("> Professeur : " + Professeur.reponse("je suis étudiant et j'ai besoin d'aide et je veux dériver sin(x)"));
 		System.out.println("> Professeur : " + Professeur.reponse("j'ai besoin de dériver cette fonction sin(1/x)"));
-		System.out.println("> Professeur : " + Professeur.reponse("oui la dérivée de x^2 + 1"));
-		System.out.println("> Professeur : " + Professeur.reponse("1/cos(x)", ""));*/
+		System.out.println("> Professeur : " + Professeur.reponse("sh(sin(x))", ""));
+		System.out.println("> Professeur : " + Professeur.reponse("oui, derives moi sh(sin(x)) par exemple ", ""));*/
+		System.out.println("> Professeur : " + Professeur.reponse("je reves de vous", "Abderahmane"));
 
 		/*Scanner sc = new Scanner(System.in);	 
 		System.out.println("> Professeur :" + Professeur.reponse("xdebut"));
@@ -45,7 +45,7 @@ public class Main {
 				System.out.println("> Professeur : " + reponse); 
 			}
 		}
-		sc.close();*/
+		sc.close();
 		
 		
 		ProfBot bot=new ProfBot("Prof");
@@ -61,7 +61,7 @@ public class Main {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 	}
  

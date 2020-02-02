@@ -91,6 +91,29 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
                    case "sin": 
                 	   pile.push(new Sin(expr1.accept(this))); 
                    break;
+                   
+                   case "tan": 
+                	   pile.push(new Tan(expr1.accept(this))); 
+                   break;
+                   case "cotan": 
+                	   pile.push(new Cotan(expr1.accept(this))); 
+                   break;
+                   
+                   
+                   case "ch": 
+                	   pile.push(new Cosh(expr1.accept(this))); 
+                   break;
+                   case "sh": 
+                	   pile.push(new Sinh(expr1.accept(this))); 
+                   break;
+                   
+                   case "th": 
+                	   pile.push(new Tanh(expr1.accept(this))); 
+                   break;
+                   case "coth": 
+                	   pile.push(new Cotanh(expr1.accept(this))); 
+                   break;
+                   
              } 
            }           
        } 
@@ -317,5 +340,52 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
 	public Expression visit(Sin expr) {	
 		return new Sin(expr.exprD.accept(this));
 	}
+	
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Sin, la méthode visit(Sin expr) est invoquée pour cet élément
+	**/
+	@Override
+	public Expression visit(Tan expr) {	
+		return new Tan(expr.exprD.accept(this));
+	}
 
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Sin, la méthode visit(Sin expr) est invoquée pour cet élément
+	**/
+	@Override
+	public Expression visit(Cotan expr) {	
+		return new Cotan(expr.exprD.accept(this));
+	}
+	
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Ch, la méthode visit(Ch expr) est invoquée pour cet élément
+	*/
+	@Override
+	public Expression visit(Cosh expr) {		
+		return new Cosh(expr.exprD.accept(this));
+	}
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Sh, la méthode visit(Sh expr) est invoquée pour cet élément
+	**/
+	@Override
+	public Expression visit(Sinh expr) {	
+		return new Sinh(expr.exprD.accept(this));
+	}
+	
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Ch, la méthode visit(Ch expr) est invoquée pour cet élément
+	*/
+	@Override
+	public Expression visit(Tanh expr) {		
+		return new Cosh(expr.exprD.accept(this));
+	}
+	/**
+	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Sh, la méthode visit(Sh expr) est invoquée pour cet élément
+	**/
+	@Override
+	public Expression visit(Cotanh expr) {	
+		return new Sinh(expr.exprD.accept(this));
+	}
+	
+	
 }

@@ -15,48 +15,56 @@ public interface SimplificationVisitor<R> {
 	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
 	 */
 	public R visit(Constante expr);
+	
 	/**
 	 * @param expr
 	 * @return interface publique ElementVisitor <R>
 	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
 	 */
 	public R visit(Variable expr);
+	
 	/**
 	 * @param expr
 	 * @return interface publique ElementVisitor <R>
 	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
 	 */
 	public R visit(Addition expr);
+	
 	/**
 	 * @param expr
 	 * @return interface publique ElementVisitor <R>
 	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
 	 */
 	public R visit(Moins expr);
+	
 	/**
 	 * @param expr
 	 * @return interface publique ElementVisitor <R>
 	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
 	 */
 	public R visit(Multiplication expr);
+	
 	/**
 	 * @param expr
 	 * @return interface publique ElementVisitor <R>
 	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
 	 */
 	public R visit(Puissance expr);
+	
 	/**
 	 * @param expr
 	 * @return interface publique ElementVisitor <R>
 	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
 	 */
 	public R visit(Log expr);
+	
 	/**
 	 * @param expr
 	 * @return interface publique ElementVisitor <R>
 	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
 	 */
 	public R visit(Exp expr);
+	
 	/**
 	 * @param expr
 	 * @return interface publique ElementVisitor <R>
@@ -69,4 +77,49 @@ public interface SimplificationVisitor<R> {
 	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
 	 */
 	public R visit(Sin expr);
+	
+	/**
+	 * @param expr
+	 * @return interface publique ElementVisitor <R>
+	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
+	 */
+	public R visit(Tan expr);
+	
+	/**
+	 * @param expr
+	 * @return interface publique ElementVisitor <R>
+	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
+	 */
+	public R visit(Cotan expr);
+	
+	/**
+	 * @param expr
+	 * @return interface publique ElementVisitor <R>
+	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
+	 */
+	public R visit(Cosh expr);
+	
+	/**
+	 * @param expr
+	 * @return interface publique ElementVisitor <R>
+	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
+	 */
+	public R visit(Sinh expr);
+	
+	/**
+	 * @param expr
+	 * @return interface publique ElementVisitor <R>
+	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
+	 */
+	public R visit(Tanh expr);
+	
+	/**
+	 * @param expr
+	 * @return interface publique ElementVisitor <R>
+	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
+	 */
+	public R visit(Cotanh expr);
+	
+	
+	
 }

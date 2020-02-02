@@ -33,7 +33,7 @@ public class Regex {
 
 	/**
 	 * @param in
-	 *  On parcourir l'entrée, caractère par caractère.
+	 * On parcourir l'entrée, caractère par caractère.
 	 * @param src
 	 * on remplace le caractère d'entrée.
 	 * @param dest

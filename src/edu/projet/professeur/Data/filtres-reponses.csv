@@ -1,6 +1,6 @@
-xdebut|-1|*|Bonjour, que puis-je pour vous ? (user)|Cher tchatcheur, peut-on vous aider ? (user)|Bonjour, vous avez l'air de me chercher ? (user)|Qu'y-a-t-il pour votre service ? (user)|Que puis-je faire pour vous ? (user)
+xdebut|-1|*|Bonjour (user), que puis-je pour vous ?|Cher (user), peut-on vous aider ?|Bonjour, vous avez l'air de me chercher ? (user)|Qu'y-a-t-il pour votre service ? (user)|Que puis-je faire pour vous ? (user)
 xrepetition|-1|*|Pourquoi vous vous répètez?|Perroquet...|Remettez le CD au début (da capo).|bla...bla ...bla|Ha, ha ! S'il vous plaît ne vous répètez pas car la pédagogie inversée ponctue les besoins caractéristiques du métacontexte.|Si le message ne me plait pas, je l'efface.|C'est une bonne démarche de se répéter mais jusqu'à quand?|La forme est essentielle du moment qu'elle exprime l'essentiel : le fond.
-xrien|0|*|(user), je ne suis pas sûr de bien vous comprendre.|S'il vous plaît continuez (user)|(user), qu'est-ce que cela vous suggère ? |(user), pensez-vous réellement capable de discuter de telles sujets ?|C'est intéressant. Continuez s'il vous plaît.|(user) dites-m'en plus.|(user), est-ce que cela vous dérange ?|Hé hé (user), ma méthode atténue les paramètres caractéristiques de votre problématique.|L'expérimentation identifie les penchants des personnes comme vous, (user).
+xrien|0|*|(user), je ne suis pas sûr de bien vous comprendre.|S'il vous plaît continuez (user)|(user), qu'est-ce que cela vous suggère ? |(user), pensez-vous réellement être capable de discuter de telles sujets ?|C'est intéressant. Continuez s'il vous plaît.|(user) dites-m'en plus.|(user), est-ce que cela vous dérange ?|Hé hé (user), ma méthode atténue les reliefs de votre problématique.|L'expérience identifie les penchants des personnes comme vous, (user).
 bonjour|0|*|Comment allez-vous ? (user) Veuillez indiquer votre problème.|Bonjour (user), quel est votre problème ?|Bonjour (user), que puis-je pour vous ?|Bonjour (user), je suis le professeur.
 hello|-1|*|goto bonjour
 salut|-1|*|goto bonjour
@@ -11,8 +11,8 @@ slm|-1|*|goto bonjour
 salam|-1|*|goto bonjour
 shalom|-1|*|goto bonjour
 xfin|-1|@fin|Avec mes salutations|Avec mes remerciements|En vous souhaitant cordialement une excellente journée|Bien à vous|Veuillez croire à mon meilleur souvenir.|Recevez, cher ami, mes sincères salutations.|Votre problème a-t-il été résolu  ?|Au revoir et passez une bonne fin de journée,
-dériver|-1|dériver|Humm... |Attendez voir... euh ...|Je dois réfléchir... cependant : |Laissez-moi voir ...|Ok, je cherche... : |Un mathématicien utilise la dérivée pour la connaissance, jamais pour fanfaronner. Voilà |Je ne suis pas sûr, mais je dirais que :|Nonobstant le fait que tout est relatif, je dirais que |alors là, c'est facile |J'ai un doute, mais je dirais que : |Au hasard, je dirai :|Je croyais ne plus aimer dériver :|La dérivée est très importante car on s’en sert tout le temps dans les études de fonction :
-fonction|-1|dériver|Humm... une fonction...|Attendez voir... vous parlez de fonction ...|Je dois réfléchir... à votre fonction ....|Laissez-moi voir votre fonction.|Ok, je cherche... votre fonction ...|Quoi donc ?|Toujours par deux elles vont. Ni plus, ni moins. La fonction et ses variables.|Quand on a une fonction f, on peut calculer une autre fonction que l’on note f' etqu’on appelle la dérivée:
+dériver|-1|dériver|Humm... |Attendez voir... euh ...|Je dois réfléchir... cependant : |Laissez-moi vous montrer ...|Ok, je cherche... : |Un mathématicien utilise la dérivée pour la connaissance, jamais pour fanfaronner. Voilà |Je ne suis pas sûr, mais je dirais que :|Nonobstant le fait que tout est relatif, je dirais que |alors là, c'est facile |J'ai un doute, mais je dirais que : |Au hasard, je dirai :|Je croyais ne plus aimer dériver :|La dérivée est très importante car on s’en sert tout le temps dans les études de fonction :
+fonction|-1|* (étudier) *|Humm... (3) ...|Attendez voir... vous parlez d'étudier (3) ...|Je dois réfléchir... à (3) ....|Laissez-moi voir ... (3)|Ok, je cherche... (3) ...|Quoi donc ? (3)|Toujours par deux elles vont. Ni plus, ni moins. La fonction et ses variables.|Quand on a une fonction f, on peut calculer une autre fonction que l’on note f' et qu’on appelle la dérivée.|Le signe de la dérivée peut aider à (2) (3) :
 dérivez|-1|*|goto dériver
 dérivée|-1|*|goto dériver
 dérivé|-1|*|goto dériver
@@ -79,14 +79,14 @@ je|0|* je @crois que je *|Est-ce que tu le penses vraiment ? (user)|Mais vous n'
 je|0|* je @crois que vous *|goto vous
 je|0|* je suis *|Est-ce parce que vous-êtes (2) que vous êtes venu me voir?|Depuis combien de temps êtes-vous (2)?|Croyez-vous qu'il est normal d'être (2)?|Aimez-vous être (2)?|Connaissez-vous quelqu'un d'autre qui soit (2)?
 je|0|* je @peuxpas *|Comment savez-vous que vous ne pouvez pas (3)?|As-tu essayé ?|Peut-être pourriez-vous (3) maintenant.|Réellement, voulez-vous être capable de (3)?|Et si vous pouviez (3)?
-je|0|* je @ne *|Pas possible,  (3)?|Pourquoi pas (3)?|Souhaitez-vous pouvoir (3)?|Cela vous dérange-t-il?
+je|0|* (je) @ne *|Comment, (2) (3) (4).|Pas possible, (2) (3) (4).|Pourquoi (2) (3) (4)?|Dommage, (2) (3) (4).|Cela vous dérange-t-il?
 je|0|* je @sens *|Parlez-moi de ces sentiments.|Vous sentez-vous souvent (3)?|Aimez-vous ressentir (3)?|Quels souvenirs, ce sentiment (3) vous remémore?
 je|0|* je vous *|Peut-être que dans vos fantasmes, vous me (2)|Souhaitez-vous me (2)?|Vous semblez avoir besoin de me (2).|Avez-vous (2) quelqu'un d'autre?
-je|0|*|Vous dites (1)?|Pourriez-vous préciser ?|Dites-vous (1) pour une raison particulière?|C'est assez intéressant.|(user), vous ne m'avez pas dit que vous m'avez dit (1)
+je|0|*|Vous dites que (1)?|Pourriez-vous préciser ?|Dites-vous que (1) pour une raison particulière?|C'est assez intéressant.|(user), vous ne m'avez pas dit que vous m'avez dit que (1)
 vous|0|* vous me rappellez  *|goto pareil
 vous|0|* vous êtes *|Qu'est-ce qui vous fait penser que je suis (2)?|Cela vous plait-il de croire que je suis (2)?|Souhaitez-vous parfois être (2)?|Peut-être que vous aimeriez être (2).
 vous|0|* vous * m'avez *|Pourquoi pensez-vous que je vous ai (3)?|Vous aimez penser que je vous ai (3) - n'est-ce pas?|Qu'est-ce qui vous fait penser que je vous ai (3)?|Vraiment, je vous ai (3)?|Souhaitez-vous croire que je vous ai (3)?|Supposons que je vous ai (3) - qu'est-ce que cela signifie?|Est-ce que quelqu'un d'autre croit que je vous ai (3)?
-vous|0|* vous êtes *|Oh ! je suis (2)|Et vous, vous n'êtes pas (2)|Nous parlions de vous - pas de moi.|Vous ne parlez pas vraiment de moi - n'est-ce pas?|Quels sont vos sentiments maintenant?|Quand vous serez comme moi, vous parlerez beaucoup moins.
+vous|0|* vous *|Oh ! je (2)|Et vous, vous (2)|Nous parlons de vous - pas de moi.|Vous ne parlez pas vraiment de moi - n'est-ce pas?|Quels sont vos sentiments maintenant?|Quand vous serez comme moi, vous parlerez beaucoup moins.
 votre|0|* votre *|Pourquoi êtes-vous préoccupé par mon (2)?|Et vôtre (2)?|Êtes-vous inquiet mon (2)?|Vraiment, mon (2)?|Qu'est-ce qui vous fait penser à mon (2)?|Voulez-vous mon (2)?
 oui|0|*|Vous semblez être assez positif.|Vous êtes sûr.|Je vois.|Je comprends.
 non|0|* @personne *|Êtes-vous sûr, personne (3)?|Sûrement quelqu'un (3).|Pouvez-vous penser à quelqu'un en particulier?|Pensez-vous à une personne très spéciale?|À qui puis-je demander?|Avez-vous une personne en tête, non?|De qui pensez-vous parler?

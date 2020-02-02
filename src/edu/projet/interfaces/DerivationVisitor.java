@@ -17,6 +17,7 @@ public interface DerivationVisitor<R> {
 	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
 	 */
 	public R visit(Constante expr, String dx);
+	
 	/**
 	 * @param expr
 	 * @param dx
@@ -24,6 +25,7 @@ public interface DerivationVisitor<R> {
 	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
 	 */
 	public R visit(Variable expr, String dx);
+	
 	/**
 	 * @param expr
 	 * @param dx
@@ -31,6 +33,7 @@ public interface DerivationVisitor<R> {
 	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
 	 */
 	public R visit(Addition expr, String dx);
+	
 	/**
 	 * @param expr
 	 * @param dx
@@ -38,6 +41,7 @@ public interface DerivationVisitor<R> {
 	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
 	 */
 	public R visit(Soustraction expr, String dx);
+	
 	/**
 	 * @param expr
 	 * @param dx
@@ -45,6 +49,7 @@ public interface DerivationVisitor<R> {
 	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
 	 */
 	public R visit(Moins expr, String dx);
+	
 	/**
 	 * @param expr
 	 * @param dx
@@ -52,6 +57,7 @@ public interface DerivationVisitor<R> {
 	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
 	 */
 	public R visit(Multiplication expr, String dx);
+	
 	/**
 	 * @param expr
 	 * @param dx
@@ -59,6 +65,7 @@ public interface DerivationVisitor<R> {
 	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
 	 */
 	public R visit(Division expr, String dx);
+	
 	/**
 	 * @param expr
 	 * @param dx
@@ -66,6 +73,7 @@ public interface DerivationVisitor<R> {
 	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
 	 */
 	public R visit(Puissance expr, String dx);
+	
 	/**
 	 * @param expr
 	 * @param dx
@@ -73,6 +81,7 @@ public interface DerivationVisitor<R> {
 	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
 	 */
 	public R visit(Log expr, String dx);
+	
 	/**
 	 * @param expr
 	 * @param dx
@@ -87,6 +96,7 @@ public interface DerivationVisitor<R> {
 	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
 	 */
 	public R visit(Cos expr, String dx);
+	
 	/**
 	 * @param expr
 	 * @param dx
@@ -94,4 +104,53 @@ public interface DerivationVisitor<R> {
 	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
 	 */
 	public R visit(Sin expr, String dx);
+	
+	/**
+	 * @param expr
+	 * @param dx
+	 * @return interface publique ElementVisitor <R>
+	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
+	 */
+	public R visit(Tan expr, String dx);
+	/**
+	 * @param expr
+	 * @param dx
+	 * @return interface publique ElementVisitor <R>
+	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
+	 */
+	public R visit(Cotan expr, String dx);
+	
+	/**
+	 * @param expr
+	 * @param dx
+	 * @return interface publique ElementVisitor <R>
+	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
+	 */
+	public R visit(Cosh expr, String dx);
+	
+	/**
+	 * @param expr
+	 * @param dx
+	 * @return interface publique ElementVisitor <R>
+	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
+	 */
+	public R visit(Sinh expr, String dx);
+	
+	/**
+	 * @param expr
+	 * @param dx
+	 * @return interface publique ElementVisitor <R>
+	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
+	 */
+	public R visit(Tanh expr, String dx);
+	
+	/**
+	 * @param expr
+	 * @param dx
+	 * @return interface publique ElementVisitor <R>
+	 * Lorsqu'un visiteur est passé à la méthode accept d'un élément, la méthode visit est invoquée.
+	 */
+	public R visit(Cotanh expr, String dx);
+	
+
 }

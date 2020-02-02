@@ -12,19 +12,19 @@ import edu.projet.interfaces.SimplificationVisitor;
  * @author BAKHTAOUI Michel
  * @version 1.0
  */
-public class Sin  extends Expression {
+public class Sinh  extends Expression {
 
 	/**
 	 * constructeur
 	 * @param argument
 	 */
-	public Sin(Expression argument) {
-		super(null, "sin", argument);
+	public Sinh(Expression argument) {
+		super(null, "sh", argument);
 	}
 
 	@Override
 	public double evaluer(HashMap<String, Double> liste) {
-		return Math.sin(this.exprD.evaluer(liste));
+		return Math.sinh(this.exprD.evaluer(liste));
 	}
 
 	@Override

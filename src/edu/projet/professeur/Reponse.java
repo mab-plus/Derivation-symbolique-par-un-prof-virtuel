@@ -23,7 +23,6 @@ public class Reponse {
      */
     private static Stack<String> memoireReponse;
     
-    
     /**
      * pour stocker l'index de la derniere réponse récupérée d'un filtre, 3 étant la première réponse possible 
      * voir fichier filtres-reponses.csv
@@ -33,7 +32,7 @@ public class Reponse {
      * idem index du filtre
      */
     private static int indexDernierFiltre= 0;
-    
+   
 	/**
 	 * @param getMotsClesQuestion
 	 * @param question
@@ -96,7 +95,7 @@ public class Reponse {
 		for(int i = 0; i < fichierFiltresReponses.size(); i++) {
 			//on splitte chaque ligne du fichier FiltresReponses
 			List<String> filtresReponses = Arrays.asList(fichierFiltresReponses.get(i).split("\\|"));
-			
+			//System.out.println(filtresReponses.get(0) + i);
 		    //si le mot-clé de la question est égale au mot-clé de la ligne du fichier
 		    if ( motCleQuestion.equals( filtresReponses.get(0) ) ) { 
 		    	
@@ -144,22 +143,24 @@ public class Reponse {
 		    	if(m.find()) {
 		    		reponse = getReponse(m.group(1), question);
 		    	}
-		      
-		    	//Si le filtre contient dériver 
-		    	if (filtre.equals("dériver")) {
-		    		regex.push("*");        
-		    		derivee = Calcul.getDerivee(question);
-		    	}
-		    	
-		    	//Si on peut encore extraire une équation de la question
-		    	if (motCleQuestion.equals("xrien"))
+
+		    	////Si le filtre contient dériver ou si on peut encore extraire une équation de la question
+		    	if (filtre.equals("dériver") || motCleQuestion.equals("xrien") || motCleQuestion.equals("fonction"))
 		    	{
+		    		//reformulation fonctions
+		    		question = question.replaceAll("tg(\\(.*?\\))", "tan($1)");
+		    		question = question.replaceAll("cotg(\\(.*?\\))", "cotan($1)");
+		    		question = question.replaceAll("cosh(\\(.*?\\))", "ch($1)");
+		    		question = question.replaceAll("sinh(\\(.*?\\))", "sh($1)");
+		    		question = question.replaceAll("tanh(\\(.*?\\))", "th($1)");
+		    		question = question.replaceAll("cotanh(\\(.*?\\))", "coth($1)");
+		    		
 		    		String eq = Expression.formuleToExpression(question).asString();
-			    	if (eq != "" && !eq.equals(question)) {
-			    		System.out.println("eq=" + eq);
+			    	if (!eq.equals("")) {
 			    		Calcul.setMemoireEquation(eq);
-			    		regex.push("*");
-			    		derivee = Calcul.derivation();
+			    		//regex.push("*");
+			    		derivee = Calcul.getDerivee();
+			    		System.out.println("derivee=" + derivee);
 			    	}
 		    	}
 
@@ -181,6 +182,7 @@ public class Reponse {
 		    	while (regexiTerator.hasNext()) { 		    	
 			        filtre= regexiTerator.next();
 			        filtre = Regex.getRegex(filtre);
+			        //System.out.println("filtre=" + filtre);
 			        /* * Si le match donne une reponse non null
 			        * * * si il y a une dérivée on renvoie la réponse avec le résultat de la dérivée
 			        * * * Sinon juste la réponse
@@ -215,7 +217,7 @@ public class Reponse {
                 
             	// sous groupe j matché
 	    		if (matcher.group(j) != null) {
-	    			//System.out.println("matcher.group(j) =" + matcher.group(j) + ":" + j);
+	    			System.out.println("matcher.group(j) =" + matcher.group(j) + ":" + j);
 	    			
 	    			//Seconde substitution, elle permute le sujet et l'objet
 	    			String sousReponse = Conjugaison.conjuger(matcher.group(j).trim() , Fichier.getCheminFichierSujetObjet());
@@ -227,8 +229,8 @@ public class Reponse {
             if (reponse != null)
             		return Conjugaison.orthographe(reponse);;
 		}
-		//Sinon null
+		//Si rien
 		return null; 
-	}	
-	
+	}
+
 }

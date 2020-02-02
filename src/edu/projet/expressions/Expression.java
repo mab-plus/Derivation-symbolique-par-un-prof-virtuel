@@ -162,7 +162,12 @@ public abstract class Expression implements Formule {
     */
   public static boolean isFonction(String fn) { 
 	  
-      if (fn.equals("log") || fn.equals("exp") || fn.equals("cos") || fn.equals("sin") )
+      if (fn.equals("log") || fn.equals("exp") 
+    		  || fn.equals("cos") || fn.equals("sin") 
+    		  || fn.equals("tan") || fn.equals("cotan") 
+    		  || fn.equals("ch") || fn.equals("sh") 
+    		  || fn.equals("th") || fn.equals("coth")
+    		  )
           return true; 
       
       else
@@ -262,7 +267,7 @@ public abstract class Expression implements Formule {
 	  List<String> termes = equationToPostfix(formule);
 
 	  for (int i = 0; i < termes.size(); i++) {
-		  //system.out.printf("termes.get(%d) : %s\n", i, termes.get(i));
+		  //System.out.printf("termes.get(%d) : %s\n", i, termes.get(i));
 	  	  // si operande -> la pile 
 	  	  if ( !isOperateur( termes.get(i) ) && !isFonction( termes.get(i) ) ) { 
 	  	   
@@ -279,9 +284,9 @@ public abstract class Expression implements Formule {
 	  	  	  expr1 = pile.pop();	  
 	  	  	  expr2 = pile.pop();
 	  	  	  
-	  	  	  //system.out.printf("operateur : %s\n", termes.get(i));
-	  	  	  //system.out.printf("expr1 : %s\n", expr1.asString());
-	  	  	  //system.out.printf("expr2 : %s\n", expr2.asString());
+	  	  	  //System.out.printf("operateur : %s\n", termes.get(i));
+	  	  	  //System.out.printf("expr1 : %s\n", expr1.asString());
+	  	  	  //System.out.printf("expr2 : %s\n", expr2.asString());
 	   	
 	  	  	  switch(termes.get(i)) { 
 	  	  	  	  case "+": 
@@ -310,8 +315,8 @@ public abstract class Expression implements Formule {
 	  	  	  // Pop argment de la fonction
 	  	  	  expr1 = pile.pop();
 	  	  	  
-	  	  	  //system.out.printf("fonction : %s\n", termes.get(i));
-	  	  	  //system.out.printf("expr1 : %s\n", expr1.asString());
+	  	  	 //System.out.printf("fonction : %s\n", termes.get(i));
+	  	  	 //System.out.printf("expr1 : %s\n", expr1.asString());
 	  	  	  
 	  	  	  switch(termes.get(i)) { 
 	  	  	  	  case "log": 
@@ -326,9 +331,31 @@ public abstract class Expression implements Formule {
 	  	  	  	  case "sin": 
 	  	  	  	  	  pile.push(new Sin(expr1)); 
 	  	  	  	  break;
+	  	  	  	  
+	  	  	  	  case "tan": 
+	  	  	  	  	  pile.push(new Tan(expr1)); 
+	  	  	  	  break;
+	  	  	  	  case "cotan": 
+	  	  	  	  	  pile.push(new Cotan(expr1)); 
+	  	  	  	  break;
+	  	  	  	  
+	  	  	  	  case "ch": 
+	  	  	  	  	  pile.push(new Cosh(expr1)); 
+	  	  	  	  break;
+	  	  	  	  case "sh": 
+	  	  	  	  	  pile.push(new Sinh(expr1)); 
+	  	  	  	  break;
+	  	  	  	  
+	  	  	  	  case "th": 
+	  	  	  	  	  pile.push(new Tanh(expr1)); 
+	  	  	  	  break;
+	  	  	  	  case "coth": 
+	  	  	  	  	  pile.push(new Cotanh(expr1)); 
+	  	  	  	  break;
+	  	  	  	  
 	  	  	  } 
 	  	  	  
-	  	  	  //system.out.printf("RESULT : %s\n", pile.lastElement().asString());
+	  	  	  //System.out.printf("RESULT : %s\n", pile.lastElement().asString());
 	  	  }	  	   
 	  } 
 	  

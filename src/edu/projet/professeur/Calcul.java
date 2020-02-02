@@ -1,10 +1,8 @@
 package edu.projet.professeur;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
-import java.util.regex.Matcher;
 
 import edu.projet.calcul.*;
 import edu.projet.expressions.Expression;
@@ -90,47 +88,12 @@ public class Calcul {
 	}
 
 	/**
-	 * @param question
-	 * @return	la dérivée de l'équation  par rapport à ses variables trouvées :
+	 * la dérivée de l'équation  par rapport à ses variables trouvées :
 	 * exemple x^2 + y --> x,y --> d/dx(^2 + y) = 2*x, d/dy(^2 + y) = 1.
-	 **/
-	static String getDerivee(String question) {
-
-		List<String> fichierFiltresEquations= Fichier.getFichierFiltresEquations();
-		Matcher matcher;
-		
-		// Essayez chaque regex dans l'ordre.
-		for(int i = 0; i < fichierFiltresEquations.size(); i++) {
-			
-			List<String> filtresEquations = Arrays.asList(fichierFiltresEquations.get(i).split("\n"));		
-
-			//matching équation
-			String reg = filtresEquations.get(0);
-			matcher = Regex.match(reg, question);
-			
-			//on retourne l'équation
-			if (matcher.find()) {
-	            for (int j = 0; j <= matcher.groupCount() ; j++) {
-	                // sous groupe j
-		    		if (matcher.group(j) != null) {
-		    			memoireEquation.push(matcher.group(j));
-		    		}
-
-	            }
-	            // Si réponse, on la retourne
-	            if (!memoireEquation.isEmpty())
-	            		return derivation();
-			}	
-        }
-		return null;
-    }
-	
-
-	/**
 	 * @return le résultat de la dérivée sous forme d'une réponse
 	 *
 	 **/
-	static String derivation() {
+	static String getDerivee() {
 		String variable, equation;
 		String resultat="";
 		Expression eEquation;

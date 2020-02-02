@@ -35,26 +35,31 @@ public class Conjugaison {
 		 * 
 		*/
 		List<String> termesQuestion = Arrays.asList(question.toLowerCase().split("\\s+"));
-					
-		for(int i = 0; i < Fichier.getfichier(cheminFichierDeTraitement).size(); i++) {	
-
-			/*
-			 * on remplace chaque mots par son correspondant dans le fichier cheminFichierDeTraitement
-			 * en entrée "conjugaison-traduction.csv"
-			 * en sortie "sujet-objet.csv"
-			 * 
-			*/
-			for(int j = 0; j < termesQuestion.size(); j++) {
-				List<String> prepost = Arrays.asList(Fichier.getfichier(cheminFichierDeTraitement).get(i).split("\\|"));
-				
-				if (termesQuestion.get(j).equals(prepost.get(0))) {
-					termesQuestion.set(j, prepost.get(1));
-				}
-			}	
-			
-		}
+		//fichier de conjugaison par exemple
+		List<String> FichierDeTraitement = Fichier.getfichier(cheminFichierDeTraitement);
 		
+		/*
+		 * on remplace chaque mots par son correspondant dans le fichier cheminFichierDeTraitement
+		 * en entrée "conjugaison-traduction.csv"
+		 * en sortie "sujet-objet.csv"
+		 * 
+		*/
+		for(int i = 0; i < termesQuestion.size(); i++) {
+			
+			for(int j = 0; j < FichierDeTraitement.size(); j++) {	
+				List<String> prepost = Arrays.asList(FichierDeTraitement.get(j).split("\\|"));
+				System.out.println(termesQuestion);
+				if (termesQuestion.get(i).equals(prepost.get(0))) {
+					termesQuestion.set(i, prepost.get(1));
+					//on trouve une correspondance on sort du fichier de traitement
+					break;
+				}
+
+			}
+		}
+
 		/* On reforme la chaîne pour pouvoir plus tard la splitter en mots clés*/
+		System.out.println("!!!" + String.join(" ", termesQuestion));
 		question = String.join(" ", termesQuestion);		
 		return  question;
 	}
