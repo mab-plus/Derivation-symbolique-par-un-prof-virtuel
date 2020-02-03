@@ -41,6 +41,7 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
        Expression expr1, expr2; 
  
        for (int i = 0; i < termes.size(); i++) {
+    	   
     	   // si operande -> la pile 
            if ( !Expression.isOperateur( termes.get(i).getSymbole() )  && !Expression.isFonction( termes.get(i).getSymbole() ) ) { 
                pile.push(termes.get(i));
@@ -167,7 +168,7 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
 			
 		// c + e
 		if ( Expression.isConstante(add.exprG ) )
-				return new Addition(add.exprD, add.exprG).accept(this);
+				return new Addition(add.exprG, add.exprD.accept(this));
 		
 		// e  + c
 		if ( Expression.isConstante(add.exprD ) )
@@ -206,7 +207,10 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
 	*/
 	@Override
 	public Expression visit(Moins expr) {
-		return new Moins(expr.exprD.accept(this));
+		if (expr.exprD instanceof Moins)
+			return expr.exprD.accept(this);
+		else
+			return new Moins(expr.exprD.accept(this));
 	}
 
 	/**
@@ -276,14 +280,23 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
 		// e^n * e^m =      -> e^(n+m)
 		if (mult.exprG instanceof Puissance && mult.exprD instanceof Puissance && mult.exprD.exprG.equals(mult.exprG.exprG))
 			return new Puissance(mult.exprG.exprG, new Addition(mult.exprG.exprD, mult.exprD.exprD).accept(this) );
+		
+		// (e^n)^m =      -> e^(n*m)
+		if (mult.exprG instanceof Puissance && mult.exprD instanceof Puissance && mult.exprD.exprG.equals(mult.exprG.exprG))
+			return new Puissance(mult.exprG.exprG, new Addition(mult.exprG.exprD, mult.exprD.exprD).accept(this) );
 	
 		return new Multiplication(mult.exprG.accept(this), mult.exprD.accept(this));
 	}
+	
 	/**
 	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Puissance, la méthode visit(Puissance expr) est invoquée pour cet élément
 	*/
 	@Override
 	public Expression visit(Puissance pw) {
+		
+		//1^c = 1
+		if ( Expression.isUn(pw.exprG) )
+			return new Constante(1);
 		
 		//e^0 = 1
 		if ( Expression.isZero(pw.exprD) )
@@ -302,11 +315,11 @@ public class Simplification implements FormuleSimplification, SimplificationVisi
 			return new Puissance(((Puissance) pw.exprG).exprG.accept(this) , 
 									new Multiplication( ((Puissance) pw.exprG).exprD, pw.exprD).accept(this) ).accept(this);
 		
-		//  e^(-n) = 1 / e^n
-		/*if ( pw.exprD instanceof Constante && ((Constante) pw.exprD).getValeur() < 0) {
+		//  e^(-n) = 1 / e^n		
+		if ( pw.exprD instanceof Constante && ((Constante) pw.exprD).getValeur() < 0 &&  ((Constante) pw.exprD).getValeur() != -1) {
 			int exposant = (int)((Constante) pw.exprD).getValeur() * -1;
 			return new Division(new Constante(1), new Puissance(pw.exprG , exposant).accept(this)  );
-		}*/
+		}
 		
 		// sinon puissance du facteur simplifié 
 		return new Puissance(pw.exprG.accept(this) , pw.exprD.accept(this));

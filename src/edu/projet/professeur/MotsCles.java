@@ -19,18 +19,21 @@ public class MotsCles {
 	 */
 	public static Map<String, Integer> getMotsClesQuestion (String question) {
 		
-		question= Regex.nettoyerQuestion(question);   				
+		question= Regex.nettoyerQuestion(question);   	
      	List< String>  termesQuestion = enleverDoublon(question);
      	
 		List< String> fichierFiltresReponses = Fichier.getFichierFiltresReponses();
 		Hashtable<String, Integer> motsClesQuestion = new Hashtable<String, Integer>();
 		
 		for(int i = 0; i < termesQuestion.size(); i++) {
-						
+			//System.out.println(termesQuestion.get(i));	
 			for(int j = 0; j < fichierFiltresReponses.size(); j++) {		
 				
 				List<String> filtresReponses = Arrays.asList(fichierFiltresReponses.get(j).split("\\|"));					
 				if (termesQuestion.get(i).equals(filtresReponses.get(0))) {	
+					
+					//System.out.println("+++" + filtresReponses.get(0));
+					
 					motsClesQuestion.put(filtresReponses.get(0), Integer.parseInt(filtresReponses.get(1)));
 					break;
 				}

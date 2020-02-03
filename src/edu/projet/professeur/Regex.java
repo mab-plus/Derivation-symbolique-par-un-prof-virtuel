@@ -25,8 +25,7 @@ public class Regex {
 
 		in = in.toLowerCase();	
 		in = in.trim();
-        in = remplacerMetaCaractere(in, "@#$%^&*()_-+=~`{[}]|:;<>\\\"","                          "  );
-        
+        in = remplacerMetaCaractere(in, "@#$%^&*()_-+=~`{[}]|:;,.<>\\\"","                            "  );
         return in = remplacerMetaCaractere(in, ",?!", "...");
 	}	
 	
@@ -104,24 +103,7 @@ public class Regex {
         }
 
 		return regex;
-    }
-    
-    /**
-     * @return les expressions régulières du fichier FiltresEquations
-     */
-    static Stack< String> getRegexEquations() { 
-    	
-    	List<String> fichierFiltresEquations = Fichier.getFichierFiltresEquations();
-    	Stack<String> regex = new Stack<>();
-    	
-    	for (int i =0; i < fichierFiltresEquations.size(); i++) {
-    		List<String> eq = Arrays.asList(fichierFiltresEquations.get(i).split("\\n"));		
-    		regex.push(eq.get(0));		
-    	}
-
-		return regex;
-    }
-    
+    }  
 
 	/**
 	 * @param regex

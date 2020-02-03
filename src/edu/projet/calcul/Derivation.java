@@ -42,7 +42,12 @@ public class Derivation implements FormuleDerivation, DerivationVisitor<Expressi
 	*/
 	@Override
 	public Expression visit(Addition expr, String dx) {
-		return new Addition( expr.exprG.accept(this, dx), expr.exprD.accept(this, dx) );
+		Expression u = expr.exprG;
+		Expression v = expr.exprD;
+		Expression du = u.accept(this, dx);
+		Expression dv = v.accept(this, dx);
+		
+		return new Addition( du, dv );
 	}
 	/**
 	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Soustraction, la méthode visit(Soustraction expr, String dx) est invoquée pour cet élément
@@ -57,7 +62,10 @@ public class Derivation implements FormuleDerivation, DerivationVisitor<Expressi
 	*/
 	@Override
 	public Expression visit(Moins expr, String dx) {
-		return new Moins(expr.exprD.accept(this,dx));
+		Expression v = expr.exprD;
+		Expression dv = v.accept(this, dx);
+		
+		return new Moins(dv);
 	}
 	/**
 	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Multiplication, la méthode visit(Multiplication expr, String dx) est invoquée pour cet élément
@@ -93,6 +101,7 @@ public class Derivation implements FormuleDerivation, DerivationVisitor<Expressi
 		if (v instanceof Constante ) {
 			int exposant = (int)((Constante) v).getValeur();
 			Expression du = u.accept(this, dx);
+			
 			return new Multiplication(v, new Multiplication(du, new Puissance(u, exposant - 1)) );
 		}
 		
@@ -106,7 +115,7 @@ public class Derivation implements FormuleDerivation, DerivationVisitor<Expressi
 	public Expression visit(Log expr, String dx) {
 		Expression u = expr.exprD;
 		Expression du = u.accept(this, dx);
-		
+
 		//log u -> u'/ u
 		return new Division(du, u);
 	}
@@ -116,6 +125,7 @@ public class Derivation implements FormuleDerivation, DerivationVisitor<Expressi
 	@Override
 	public Expression visit(Exp expr, String dx) {
 		Expression du = expr.exprD.accept(this, dx);
+
 		//e^u -> u' e^u
 		return new Multiplication(du, expr);
 	}
@@ -126,7 +136,7 @@ public class Derivation implements FormuleDerivation, DerivationVisitor<Expressi
 	public Expression visit(Cos expr, String dx) {
 		Expression u = expr.exprD;
 		Expression du = u.accept(this, dx);
-		
+
 		//cos(u)  -> -u' sin(u)
 		return new Moins(new Multiplication(du, new Sin(u)));
 	}
@@ -171,7 +181,7 @@ public class Derivation implements FormuleDerivation, DerivationVisitor<Expressi
 	public Expression visit(Cosh expr, String dx) {
 		Expression u = expr.exprD;
 		Expression du = u.accept(this, dx);
-		
+
 		//ch(u)  -> u' sh(u)
 		return new Multiplication(du, new Sinh(u));
 	}
@@ -186,7 +196,6 @@ public class Derivation implements FormuleDerivation, DerivationVisitor<Expressi
 		//sh(u)  -> u' ch(u)
 		return new Multiplication(du, new Cosh(u));
 	}
-	
 	
 	/**
 	* Lorsqu'un visiteur est passé à la méthode accept d'une instante de la classe Tanh, la méthode visit(Tanh expr, String dx) est invoquée pour cet élément

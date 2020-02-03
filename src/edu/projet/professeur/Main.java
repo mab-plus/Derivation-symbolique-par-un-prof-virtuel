@@ -1,5 +1,11 @@
 package edu.projet.professeur;
 
+import java.util.List;
+import java.util.Scanner;
+
+import edu.projet.calcul.Simplification;
+import edu.projet.expressions.Expression;
+
 /**
  * Application Professeur qui se connecte sur l'irc.
  * @author BAKHTAOUI Michel
@@ -11,33 +17,26 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
-		/*Variable x = new Variable("x");
-		Constante un = new Constante(1);
-		Expression fx  = new Cosh(x);
-		
-		Derivation d = new Derivation();	
-		System.out.println(d.deriver(fx, "x").asString());
-		
-		Expression u = Expression.formuleToExpression("tan(x)");
-		
-		System.out.println(u.asString());
-		System.out.println(d.deriver(u, "x").asString());*/
-		
+				
 		//test
 		/*System.out.println("> Professeur : " + Professeur.reponse("je suis étudiant et j'ai besoin d'aide et je veux dériver sin(x)"));
 		System.out.println("> Professeur : " + Professeur.reponse("j'ai besoin de dériver cette fonction sin(1/x)"));
 		System.out.println("> Professeur : " + Professeur.reponse("sh(sin(x))", ""));
 		System.out.println("> Professeur : " + Professeur.reponse("oui, derives moi sh(sin(x)) par exemple ", ""));*/
-		System.out.println("> Professeur : " + Professeur.reponse("je reves de vous", "Abderahmane"));
+		int i =1;
+		while( i < 2) {
+			System.out.println("> Professeur : " + Professeur.reponse("deux ans", "Abderahmane"));
+			i++;
+		}
 
+		
 		/*Scanner sc = new Scanner(System.in);	 
-		System.out.println("> Professeur :" + Professeur.reponse("xdebut"));
+		System.out.println("> Professeur :" + Professeur.reponse("xdebut", "Abderahmane"));
 		while (sc.hasNextLine()) {
 			String question = sc.nextLine();			
 
 			if (!question.trim().equals("")){	
-				String reponse = Professeur.reponse(question);
+				String reponse = Professeur.reponse(question,"Abderahmane");
 				if(reponse.equals("quitter")) {
 					System.out.println("> Professeur : Au revoir, merci et bonne journée!");	
 					break;
@@ -48,7 +47,7 @@ public class Main {
 		sc.close();
 		
 		
-		ProfBot bot=new ProfBot("Prof");
+		ProfBot bot = new ProfBot("LeProfesseur");
 		try {		
 			// Enable debugging output.
 	        bot.setVerbose(true);

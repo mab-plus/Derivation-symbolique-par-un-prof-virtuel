@@ -48,7 +48,7 @@ public class Conjugaison {
 			
 			for(int j = 0; j < FichierDeTraitement.size(); j++) {	
 				List<String> prepost = Arrays.asList(FichierDeTraitement.get(j).split("\\|"));
-				System.out.println(termesQuestion);
+
 				if (termesQuestion.get(i).equals(prepost.get(0))) {
 					termesQuestion.set(i, prepost.get(1));
 					//on trouve une correspondance on sort du fichier de traitement
@@ -59,7 +59,6 @@ public class Conjugaison {
 		}
 
 		/* On reforme la chaîne pour pouvoir plus tard la splitter en mots clés*/
-		System.out.println("!!!" + String.join(" ", termesQuestion));
 		question = String.join(" ", termesQuestion);		
 		return  question;
 	}

@@ -41,17 +41,17 @@ public class Puissance extends Expression {
 			return this.exprG.asString();
 
 		if (isMoinsUn(this.exprD))
-			return "1/" + this.exprG.asString();
+			return "(1/" + this.exprG.asString() + ")";
 		
 		if (isConstante(this.exprD) && ((Constante) this.exprD).getValeur() < 0) {
 			
 			Constante exp = new Constante(-1 * ((Constante) this.exprD).getValeur());
 			//return "(1/" + this.exprG.asString() + this.getSymbole() + "[" + exp.asString() + "])";
-			return "1/" + this.exprG.asString() + exposant(exp.asString()) ;
+			return "(1/" + this.exprG.asString() + exposant(exp.asString()) + ")";
 		}
 			
 		//expression = this.exprG.asString() + this.getSymbole() + "[" + this.exprD.asString() + "]";
-		return this.exprG.asString() + exposant( this.exprD.asString() ) ;	
+		return this.exprG.asString() + exposant( this.exprD.asString() );	
 	}
 	
 	private String exposant(String e) {

@@ -23,7 +23,7 @@ public class Moins extends Multiplication {
 	
 	@Override
 	public String asString() {
-		return "-" + this.exprD.asString();
+		return "(-" + this.exprD.asString() + ")";
 	}
 	
 	@Override

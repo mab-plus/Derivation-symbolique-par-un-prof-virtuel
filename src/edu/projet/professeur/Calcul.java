@@ -62,7 +62,7 @@ public class Calcul {
 	static void getVariables(String equation) {
 		//on tranforme l'expression  trouvée en notation polonaise inversée
 		//exemple x^2 + y  ---> x2^y+
-		List<String> termes = Expression.equationToPostfix(equation);
+		List<String> termes = Expression.equationToPostfix(equation);	
 		
 		// on inverse x2^y+ ---> +y^2x
 		Collections.sort(termes, Collections.reverseOrder()); 
@@ -99,6 +99,7 @@ public class Calcul {
 		Expression eEquation;
 		Simplification simp = new Simplification();
 		Derivation df = new Derivation();
+		boolean exemple =false;
 		
 		if ( getMemoireEquation().size() == 3)
 			equation = getMemoireEquation().get(0);
@@ -112,17 +113,50 @@ public class Calcul {
 	    
 		if(getMemoireVariable().size() == 1) {
 			variable = getMemoireVariable().pop();
+			
 			//on suppose que la variable est du style x, y ou n'importe quelle lettre mais pas un mot
-			if (variable.length() == 1) {
+			if (variable.length() == 1)
 				eEquation = Expression.formuleToExpression(equation);
-				eEquation = simp.simplifier(eEquation);
-				eEquation = df.deriver(eEquation, variable);
+			//si c'est un mot, on fabrique une équation polynome du 4eme degré pour que le professeur fasse une démonstration
+			else {
+				//constante
+				int coefficient = (int) (Math.random() * 8 + 2);
+				equation = Integer.toString(coefficient);
 				
-				if (equation.equals(variable))
-					resultat += "Je suis le professeur et voilà la dérivée d'une lettre de ton blabla, (d"+ equation + "/d" + variable + ") = 1";
-				else
-					resultat += "(" + equation + ")' = " + simp.simplifier(eEquation).asString();
+				//premier degré
+				coefficient = (int) (Math.random() * 9 + 2);
+				equation += "+" + Integer.toString(coefficient) + "*x";
+				
+				//le reste
+				for(int i = 2; i < 5; i++) {
+					coefficient = (int) (Math.random() * 10 + 2);
+					equation += "+" + Integer.toString(coefficient) + "*x^" + Integer.toString(i);
+				}
+				eEquation = Expression.formuleToExpression(equation);
+				variable = "x";
+				exemple = true;
 			}
+			
+
+			eEquation = simp.simplifier(eEquation);
+			eEquation = df.deriver(eEquation, variable);
+			eEquation = simp.simplifier(eEquation);
+			
+			//Heuristique :=) : retour dans la moulinette pour bien simplifier la dérivée
+			//eEquation = Expression.formuleToExpression(eEquation.string());
+			//eEquation = simp.simplifier(eEquation);
+			
+			
+			if (equation.equals(variable))
+				resultat += "(d"+ equation + "/d" + variable + ") = 1";
+			else {
+				if (exemple)
+					resultat += "Voici un petit exemple, (" + equation + ")' = " + eEquation.string();
+				else
+					resultat += "(" + equation + ")' = " + eEquation.string();
+			}
+
+
 		}
 		
 		if(getMemoireVariable().size() > 1) {

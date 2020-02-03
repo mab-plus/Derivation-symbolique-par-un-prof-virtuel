@@ -1,11 +1,9 @@
 package edu.projet.expressions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import edu.projet.fonctions.*;
 import edu.projet.interfaces.Formule;
 
@@ -62,6 +60,23 @@ public abstract class Expression implements Formule {
 			return this.getSymbole() + "(" + this.exprD.asString() + ")";
 			
 		return this.exprG.asString() + " " + this.getSymbole() + " " + this.exprD.asString();
+	}
+	
+    /**
+     * @return L'expression, sous la forme d'une chaîne de caractère.
+     */
+	public String string() {
+		
+		if (this instanceof Constante)
+			return this.asString();
+		
+		if (this instanceof Variable)
+			return this.asString();
+		
+		if (this.exprG == null)	
+			return this.getSymbole() + "(" + this.exprD.string() + ")";
+			
+		return this.exprG.string() + " " + this.getSymbole() + " " + this.exprD.string();
 	}
 	
 	/**
@@ -143,6 +158,27 @@ public abstract class Expression implements Formule {
    public static boolean isVariable (Expression expr) { 
 	   return expr instanceof Variable;
    }
+   
+   /**
+    * @param equation
+    * @return une liste de String des termes de l'équation
+    */
+   private static List<String> splitter(String equation) {	   
+	   
+	   //on decoupe suivant les espaces
+	   List<String> blocs = Arrays.asList(equation.split("\\s"));
+	  
+	   List<String> termes = new ArrayList<>();
+	   //chaque bloc suivant en termes d'équation
+	   for (String bloc : blocs)
+		   for (String str : bloc.split("(?<=[-+*/^()])|(?=[-+*/^()])"))
+			   if (isFonction(str) || str.length() < 3)
+				   termes.add(str); 
+		 
+	   return termes;
+   }
+   
+   
    /**
     * @param op
     * @return true si expr est un opérateur
@@ -195,27 +231,9 @@ public abstract class Expression implements Formule {
       else
     	  return -1;
   }
-  
+ 
 
-  /**
- * @param equation
- * @return une liste de String des termes de l'équation
- */
-  private static List<String> splitter(String equation) {
-	  
-      ArrayList<String> termes = new ArrayList<>();
-      //on essaie de bien couper l'équation en termes
-      Matcher matcher = Pattern.compile("\\(|\\)|[A-Za-z]+|\\d*\\.\\d*|\\d+|\\S+?").matcher(equation);
-     
-      while(matcher.find()) {
-        termes.add(matcher.group());
-      }
-      
-      return termes;
-  }
-  
-
-  /**
+ /**
  * @param equation
  * @return en notation postfix dans une liste de String l'équation
  */
@@ -226,32 +244,40 @@ public abstract class Expression implements Formule {
       ArrayList<String> resultat = new ArrayList<>();
       
       for(String str: termes) {
-    	  if(str.equals("("))
-              pile.push(str);
-    	  
+
+    	  if(str.equals("(")) {
+              pile.push(str);   		  
+    	  }
     	  else if(str.equals(")")) {
-              while(!pile.empty() ) {
-                  String s = pile.pop();
+    		  
+    		  while(!pile.empty() ) {
                   
+    			  String s = pile.pop();       
                   if(s.equals("(")) 
                 	  break;
+                  
                   resultat.add(s);
               }
           } 
     	  else if(isPrioritaire(str) > 0) {
-              int p = isPrioritaire(str);
-              
-              while(!pile.isEmpty() && isPrioritaire(pile.peek()) >= p) 
-            	  resultat.add(pile.pop());
-              pile.push(str);
+    		  
+    		  int p = isPrioritaire(str);
+
+    		  while(!pile.isEmpty() && isPrioritaire(pile.peek()) >= p) 
+    			  resultat.add(pile.pop());
+
+    		  pile.push(str);
           } 
-    	  else
+    	  else {  
     		  resultat.add(str);
+    	  }
       }
       
-      while(!pile.isEmpty()) 
+      while(!pile.isEmpty()) {
     	  resultat.add(pile.pop());
+      }
       
+      System.out.println("postfix=" + resultat);
       return resultat;
   }
     
@@ -259,15 +285,14 @@ public abstract class Expression implements Formule {
  * @param formule
  * @return  conversion d'une équation ou formule en Expression:
  */
+  
   public static Expression formuleToExpression(String formule) {
 	  
 	  Stack<Expression> pile = new Stack<Expression>(); 
 	  Expression expr1, expr2; 
-	  	
+	  
 	  List<String> termes = equationToPostfix(formule);
-
 	  for (int i = 0; i < termes.size(); i++) {
-		  //System.out.printf("termes.get(%d) : %s\n", i, termes.get(i));
 	  	  // si operande -> la pile 
 	  	  if ( !isOperateur( termes.get(i) ) && !isFonction( termes.get(i) ) ) { 
 	  	   
@@ -277,46 +302,64 @@ public abstract class Expression implements Formule {
 	  	  	  catch (Exception e) {
 	  	  	  	  pile.push(new Variable(termes.get(i)));
 	  	  	  }
-	  	  }
+	  	  }	  	  
 	  	  // operateur + - * / ^
 	  	  else if ( isOperateur( termes.get(i) ) ) { 
-	  	  	  // Pop les deux operandes de l'operateur
-	  	  	  expr1 = pile.pop();	  
-	  	  	  expr2 = pile.pop();
-	  	  	  
-	  	  	  //System.out.printf("operateur : %s\n", termes.get(i));
-	  	  	  //System.out.printf("expr1 : %s\n", expr1.asString());
-	  	  	  //System.out.printf("expr2 : %s\n", expr2.asString());
+	  		  
+	  		  System.out.println("pile.size=" + pile.size());
+	  		  
+	  		  if ( pile.size() == 1 && termes.get(i).equals("-")) {
+	  			  
+		  	  	  // operateur unaire moins
+		  	  	  expr1 = pile.pop();	  
+		  	  	  System.out.printf("operateur : %s\n", termes.get(i));
+		  	  	  System.out.printf("expr1 : %s\n", expr1.asString());
+		  	  	  if (expr1 instanceof Moins)
+		  	  		  pile.push(expr1);
+		  	  	  else
+		  	  		  pile.push(new Moins(expr1));
+	  		  }
+	  		  else {
+		  	  	  // Pop les deux operandes de l'operateur
+		  	  	  expr1 = pile.pop();	  
+		  	  	  expr2 = pile.pop();
+				  
+		  	  	  System.out.printf("operateur : %s\n", termes.get(i));
+		  	  	  System.out.printf("expr1 : %s\n", expr1.string());
+		  	  	  System.out.printf("expr2 : %s\n", expr2.string());
+		  	  	  
+		  	  	  switch(termes.get(i)) { 
+		  	  	  	  case "+": 
+		  	  	  		  pile.push(new Addition(expr2, expr1)); 
+		  	  	  	  break; 
+		  	  	  	  	  
+		  	  	  	  case "-": 
+		  	  	  	  	  pile.push(new Soustraction(expr2, expr1)); 
+		  	  	  	  break; 
+		  	  	  	  	  
+		  	  	  	  case "*":
+		  	  	  		 pile.push(new Multiplication(expr2, expr1)); 
+		  	  	  	  break; 
+		  	  	  	  	  
+		  	  	  	  case "/": 
+		  	  	  		  pile.push(new Division(expr2, expr1)); 
+		  	  	  	  break; 
+		  	  	  	  
+		  	  	  	  case "^": 
+		  	  	  	  	  pile.push(new Puissance(expr2, expr1)); 
+		  	  	  	  break;
+		  	  	  }  
+		  	  	  System.out.printf("RESULT : %s\n", pile.lastElement().string());
+	  		  }
 	   	
-	  	  	  switch(termes.get(i)) { 
-	  	  	  	  case "+": 
-	  	  	  	  	  pile.push(new Addition(expr2, expr1)); 
-	  	  	  	  break; 
-	  	  	  	  	  
-	  	  	  	  case "-": 
-	  	  	  	  	  pile.push(new Soustraction(expr2, expr1)); 
-	  	  	  	  break; 
-	  	  	  	  	  
-	  	  	  	  case "*":	  	  	  	  
-	  	  	  	  	  pile.push(new Multiplication(expr2, expr1)); 
-	  	  	  	  break; 
-	  	  	  	  	  
-	  	  	  	  case "/": 
-	  	  	  	  	  pile.push(new Division(expr2, expr1)); 
-	  	  	  	  break; 
-	  	  	  	  
-	  	  	  	  case "^": 
-	  	  	  	  	  pile.push(new Puissance(expr2, expr1)); 
-	  	  	  	  break;
-	  	  	  }
 	  	  }
 	  	  // fonctions cos sin exp log etc...
 	  	  else {
 	  	  	  // Pop argment de la fonction
 	  	  	  expr1 = pile.pop();
 	  	  	  
-	  	  	 //System.out.printf("fonction : %s\n", termes.get(i));
-	  	  	 //System.out.printf("expr1 : %s\n", expr1.asString());
+	  	  	 System.out.printf("fonction : %s\n", termes.get(i));
+	  	  	 System.out.printf("expr1 : %s\n", expr1.asString());
 	  	  	  
 	  	  	  switch(termes.get(i)) { 
 	  	  	  	  case "log": 
@@ -351,17 +394,17 @@ public abstract class Expression implements Formule {
 	  	  	  	  break;
 	  	  	  	  case "coth": 
 	  	  	  	  	  pile.push(new Cotanh(expr1)); 
-	  	  	  	  break;
-	  	  	  	  
+	  	  	  	  break;	  	  	  	 
 	  	  	  } 
-	  	  	  
-	  	  	  //System.out.printf("RESULT : %s\n", pile.lastElement().asString());
-	  	  }	  	   
+	  	  	  System.out.printf("RESULT : %s\n", pile.lastElement().string());
+	  	  }	
 	  } 
 	  
-	  Expression resultat = pile.pop();
-	   
-	  return resultat;   
+	  if (!pile.isEmpty())
+		   return pile.pop();
+	  else
+		  return new Constante(0);
+ 
   }
   
 }
