@@ -144,16 +144,16 @@ public class Calcul {
 			
 			//Heuristique :=) : retour dans la moulinette pour bien simplifier la dérivée
 			//eEquation = Expression.formuleToExpression(eEquation.string());
-			//eEquation = simp.simplifier(eEquation);
+			eEquation = simp.simplifier(eEquation);
 			
 			
 			if (equation.equals(variable))
 				resultat += "(d"+ equation + "/d" + variable + ") = 1";
 			else {
 				if (exemple)
-					resultat += "Voici un petit exemple, (" + equation + ")' = " + eEquation.string();
+					resultat += "Voici un petit exemple, [" + equation + "]' = " + eEquation.asString();
 				else
-					resultat += "(" + equation + ")' = " + eEquation.string();
+					resultat += "[" + equation + "]' = " + eEquation.asString();
 			}
 
 
@@ -170,7 +170,7 @@ public class Calcul {
 				//on suppose que la variable est du style x, y ou n'importe quelle lettre mais pas un mot
 				if (variable.length() == 1) {
 					expr = df.deriver(eEquation, variable);
-					resultat +="(d/d" + variable + ")(" + equation + ") = " + simp.simplifier(expr).asString() + ", ";
+					resultat +="(d/d" + variable + ")[" + equation + "] = " + simp.simplifier(expr).asString() + ", ";
 				}
 			}
 		}

@@ -1,11 +1,5 @@
 package edu.projet.professeur;
 
-import java.util.List;
-import java.util.Scanner;
-
-import edu.projet.calcul.Simplification;
-import edu.projet.expressions.Expression;
-
 /**
  * Application Professeur qui se connecte sur l'irc.
  * @author BAKHTAOUI Michel
@@ -22,12 +16,12 @@ public class Main {
 		/*System.out.println("> Professeur : " + Professeur.reponse("je suis étudiant et j'ai besoin d'aide et je veux dériver sin(x)"));
 		System.out.println("> Professeur : " + Professeur.reponse("j'ai besoin de dériver cette fonction sin(1/x)"));
 		System.out.println("> Professeur : " + Professeur.reponse("sh(sin(x))", ""));
-		System.out.println("> Professeur : " + Professeur.reponse("oui, derives moi sh(sin(x)) par exemple ", ""));*/
+		System.out.println("> Professeur : " + Professeur.reponse("oui, derives moi sh(sin(x)) par exemple ", ""));
 		int i =1;
 		while( i < 2) {
-			System.out.println("> Professeur : " + Professeur.reponse("derive moi", "Abderahmane"));
+			System.out.println("> Professeur : " + Professeur.reponse("derive moi -1/x + sin(y)", "Abderahmane"));
 			i++;
-		}
+		}*/
 
 		
 		/*Scanner sc = new Scanner(System.in);	 
@@ -44,7 +38,7 @@ public class Main {
 				System.out.println("> Professeur : " + reponse); 
 			}
 		}
-		sc.close();
+		sc.close();*/
 		
 		
 		ProfBot bot = new ProfBot("LeProfesseur");
@@ -60,7 +54,7 @@ public class Main {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-		}*/
+		}
 		
 	}
  
