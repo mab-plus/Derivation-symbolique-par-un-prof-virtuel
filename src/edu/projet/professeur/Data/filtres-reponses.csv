@@ -11,8 +11,10 @@ slm|-1|*|goto bonjour
 salam|-1|*|goto bonjour
 shalom|-1|*|goto bonjour
 xfin|-1|@fin|Avec mes salutations|Avec mes remerciements|En vous souhaitant cordialement une excellente journée|Bien à vous|Veuillez croire à mon meilleur souvenir.|Recevez, cher ami, mes sincères salutations.|Votre problème a-t-il été résolu  ?|Au revoir et passez une bonne fin de journée,
-dériver|-1|dériver|Humm...(dv) |Attendez voir... (dv)|Je dois réfléchir... cependant...(dv)|Laissez-moi vous montrer...(dv)|Ok, je cherche...(dv)|Un mathématicien utilise la dérivée pour la connaissance, jamais pour fanfaronner, voilà. (dv)|Je ne suis pas sûr, mais je crois savoir. (dv)|Nonobstant le fait que tout est relatif... (dv)|alors là, c'est facile. (dv)|J'ai un doute, (dv)?|Au hasard, (dv)|Je croyais ne plus aimer dériver. (dv)|La dérivée est très importante car on s'en sert tout le temps dans les études de fonction. (dv)|Je suis le professeur, (dv)|Comme ça de but en blanc...(dv) !|Aïe aïe aïe (dv)
+dériver|-1|dériver|Humm...(dv) |Attendez voir... (dv)|Je dois réfléchir... cependant...(dv)|Laissez-moi vous montrer...(dv)|Ok, je cherche...(dv)|Un mathématicien utilise la dérivée pour la connaissance, jamais pour fanfaronner, voilà. (dv)|Je ne suis pas sûr, mais je crois savoir. (dv)|Nonobstant le fait que tout est relatif... (dv)|alors là, c'est facile. (dv)|J'ai un doute, (dv)?|Au hasard, (dv)|Je croyais ne plus aimer dériver. (dv)|La dérivée est très importante car on s'en sert tout le temps dans les études de fonction. (dv)|Je suis le professeur ! (dv)|Comme ça de but en blanc...(dv) !|Aïe aïe aïe (dv)
 fonction|-1|* (étudier) *|Humm... (3) ... (dv)|Attendez voir... vous parlez d'étudier (3) ... (dv)|Je dois réfléchir... à (3).... (dv)|Laissez-moi voir ... (3)... (dv)|Ok, je cherche... (3) ... (dv)|Quoi donc ? (3) (dv) |Toujours par deux elles vont. Ni plus, ni moins. La fonction et ses variables. (dv)|Quand on a une fonction f, on peut calculer une autre fonction que l'on note f' et qu'on appelle la dérivée. (dv)|Le signe de la dérivée peut aider à (2) (3). (dv)
+derive|-1|*|goto dériver
+derives|-1|*|goto dériver
 dérivez|-1|*|goto dériver
 dérivée|-1|*|goto dériver
 dérivé|-1|*|goto dériver

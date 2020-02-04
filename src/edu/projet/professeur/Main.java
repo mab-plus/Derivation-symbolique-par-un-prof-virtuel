@@ -25,7 +25,7 @@ public class Main {
 		System.out.println("> Professeur : " + Professeur.reponse("oui, derives moi sh(sin(x)) par exemple ", ""));*/
 		int i =1;
 		while( i < 2) {
-			System.out.println("> Professeur : " + Professeur.reponse("deux ans", "Abderahmane"));
+			System.out.println("> Professeur : " + Professeur.reponse("derive moi", "Abderahmane"));
 			i++;
 		}
 

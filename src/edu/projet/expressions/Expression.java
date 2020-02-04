@@ -277,7 +277,7 @@ public abstract class Expression implements Formule {
     	  resultat.add(pile.pop());
       }
       
-      System.out.println("postfix=" + resultat);
+      //System.out.println("postfix=" + resultat);
       return resultat;
   }
     
@@ -324,9 +324,9 @@ public abstract class Expression implements Formule {
 		  	  	  expr1 = pile.pop();	  
 		  	  	  expr2 = pile.pop();
 				  
-		  	  	  System.out.printf("operateur : %s\n", termes.get(i));
+		  	  	  /*System.out.printf("operateur : %s\n", termes.get(i));
 		  	  	  System.out.printf("expr1 : %s\n", expr1.string());
-		  	  	  System.out.printf("expr2 : %s\n", expr2.string());
+		  	  	  System.out.printf("expr2 : %s\n", expr2.string());*/
 		  	  	  
 		  	  	  switch(termes.get(i)) { 
 		  	  	  	  case "+": 
@@ -349,7 +349,7 @@ public abstract class Expression implements Formule {
 		  	  	  	  	  pile.push(new Puissance(expr2, expr1)); 
 		  	  	  	  break;
 		  	  	  }  
-		  	  	  System.out.printf("RESULT : %s\n", pile.lastElement().string());
+		  	  	  //System.out.printf("RESULT : %s\n", pile.lastElement().string());
 	  		  }
 	   	
 	  	  }
@@ -358,8 +358,8 @@ public abstract class Expression implements Formule {
 	  	  	  // Pop argment de la fonction
 	  	  	  expr1 = pile.pop();
 	  	  	  
-	  	  	 System.out.printf("fonction : %s\n", termes.get(i));
-	  	  	 System.out.printf("expr1 : %s\n", expr1.asString());
+	  	  	 /*System.out.printf("fonction : %s\n", termes.get(i));
+	  	  	 System.out.printf("expr1 : %s\n", expr1.asString());*/
 	  	  	  
 	  	  	  switch(termes.get(i)) { 
 	  	  	  	  case "log": 
@@ -396,7 +396,7 @@ public abstract class Expression implements Formule {
 	  	  	  	  	  pile.push(new Cotanh(expr1)); 
 	  	  	  	  break;	  	  	  	 
 	  	  	  } 
-	  	  	  System.out.printf("RESULT : %s\n", pile.lastElement().string());
+	  	  	  //System.out.printf("RESULT : %s\n", pile.lastElement().string());
 	  	  }	
 	  } 
 	  

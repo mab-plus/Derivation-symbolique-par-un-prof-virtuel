@@ -29,12 +29,7 @@ public class Fichier {
     /**
      * Fichier filtres-reponses.csv
      */
-    private static String cheminFiltresReponses = "/filtres-reponses.csv";
-    /**
-     * Fichier filtres-equations.csv
-     */
-    private static String cheminFiltresEquations = "/filtres-equations.csv";
-     
+    private static String cheminFiltresReponses = "/filtres-reponses.csv";    
     
 	/**
 	 * @param chemin
@@ -84,15 +79,6 @@ public class Fichier {
 	}
 	
 	/**
-	 * @return Fichier FiltresEquations.
-	 */
-	static List< String>  getFichierFiltresEquations() {
-		
-		return getfichier(cheminFiltresEquations);
-	}
-	
-	
-	/**
 	 * @return Chemin Fichier Conjugaison.
 	 */
 	static String getCheminFichierConjugaison() {
@@ -120,10 +106,4 @@ public class Fichier {
 		return cheminFiltresReponses;
 	}
 	
-	/**
-	 * @return Chemin FiltresEquations.
-	 */
-	static String getCheminFiltresEquations() {
-		return cheminFiltresEquations;
-	}
 }
