@@ -34,9 +34,13 @@ public class Conjugaison {
 		 * exemple : Je voudrais savoir ... ->  [je, voudrais, savoir, ..]
 		 * 
 		*/
+		question = question.replaceAll("-vous", " vous");
+		question = question.replaceAll("-tu", " tu");
+		
 		List<String> termesQuestion = Arrays.asList(question.toLowerCase().split("\\s+"));
 		//fichier de conjugaison par exemple
 		List<String> FichierDeTraitement = Fichier.getfichier(cheminFichierDeTraitement);
+
 		
 		/*
 		 * on remplace chaque mots par son correspondant dans le fichier cheminFichierDeTraitement
@@ -48,18 +52,18 @@ public class Conjugaison {
 			
 			for(int j = 0; j < FichierDeTraitement.size(); j++) {	
 				List<String> prepost = Arrays.asList(FichierDeTraitement.get(j).split("\\|"));
-
-				if (termesQuestion.get(i).equals(prepost.get(0))) {
+				
+				if (termesQuestion.get(i).equals(prepost.get(0))) {					
 					termesQuestion.set(i, prepost.get(1));
 					//on trouve une correspondance on sort du fichier de traitement
 					break;
 				}
-
 			}
 		}
 
 		/* On reforme la chaîne pour pouvoir plus tard la splitter en mots clés*/
-		question = String.join(" ", termesQuestion);		
+		question = String.join(" ", termesQuestion);	
+		
 		return  question;
 	}
 	
@@ -71,6 +75,27 @@ public class Conjugaison {
 		
 		reponse = reponse.replaceAll("(j)e\\s+([aeiou])", "$1'$2");
 		reponse = reponse.replaceAll("(m)e\\s+([aeiou])", "$1'$2");
+		reponse = reponse.replaceAll("(n)e\\s+([aeiouê])", "$1'$2");
+		reponse = reponse.replaceAll("(moi)\\s+(\\p{L}+(er|ir|oir|re))", "me $2");
+		
+		reponse = reponse.replaceAll("(vous)\\s+(\\p{L}+)(rais)", "vous $2riez");
+		reponse = reponse.replaceAll("(vous)\\s+(\\p{L}+)(rais)", "vous $2riez");
+		
+	    reponse = reponse.replaceAll("\\,", ",");
+	    reponse = reponse.replaceAll("' ", "'");
+	    reponse = reponse.replaceAll("à [Ll]es ", "aux ");
+	    reponse = reponse.replaceAll("à [Ll]e ", "au ");
+	    reponse = reponse.replaceAll(" en [Ll]e ", " en ");
+	    reponse = reponse.replaceAll(" de ([AEIOUHYaeiouhyéèêàùäëïöüœ])i", " d'$1");
+	    reponse = reponse.replaceAll(" que ([AEIOUHYaeiouhyéèêàùäëïöüœ])i", " qu'$1");
+	    reponse = reponse.replaceAll("plus des ([aeiouhyéèêàùäëïöüœ])i", "plus d'$1");
+	    reponse = reponse.replaceAll(" de [Ll]es ", " des ");
+	    reponse = reponse.replaceAll(" de de(s)? ([aeiouéèêàîïùyhœ])i", " d'$2");
+	    reponse = reponse.replaceAll(" de de(s)? ([^aeiouéèêàîïùyhœ])i", " de $2");
+	    reponse = reponse.replaceAll(" de [Dd]'", " d'");
+	    reponse = reponse.replaceAll(" de ([Ll]e|du) ", " du ");
+		
+		
 		return  reponse;
 	}
 	

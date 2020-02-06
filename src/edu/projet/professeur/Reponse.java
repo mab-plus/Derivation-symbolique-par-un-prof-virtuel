@@ -42,10 +42,11 @@ public class Reponse {
 	 * Le premier trouvé est sélectionné. Si le match ne rend rien, on passe au  mot clé suivant.
 	 */
 	public static String getReponse (Map<String, Integer> motsClesQuestion, String question) {
-
+		
 		//on récupère les mots-clés de la question pour trouver la réponse adéquate
 		String[] reponse = {null, ""};
 		String derivee;
+		
 		for (Map.Entry<String, Integer> motCle : motsClesQuestion.entrySet()) {	
 			
 			reponse = getReponse(motCle.getKey(), question);
@@ -54,7 +55,6 @@ public class Reponse {
         		// on match le tag (dv) dans la réponse pour y mettre le résultat de la dérivée ou rien
         		return reponse[0].replaceAll("\\(dv\\)", derivee); 
 			}
-
 		}
 		
         //Pas de réponse, on retourne une réponse $ stockée 
@@ -62,13 +62,15 @@ public class Reponse {
         	return memoireReponse.pop();
         else  {
         	//si rien de rien alors.
-        	reponse = getReponse("xrien", question);
-        	derivee = reponse[1]; 	
-        	return reponse[0].replaceAll("\\(dv\\)", derivee);
+        	if (memoireReponse != null)
+        		return memoireReponse.pop();
+        	else {
+            	reponse = getReponse("xrien", question);
+            	derivee = reponse[1]; 	
+            	return reponse[0].replaceAll("\\(dv\\)", derivee);
+        	}
+
         }
-
-        	
-
 	}
 	
 
@@ -103,7 +105,9 @@ public class Reponse {
 	
 	private static String[] getReponse(String motCleQuestion, String question) {
 			
+		//on y stocke la réponse et une éventuelle dérivée
 		String[] reponse = {null, ""};
+		
 		for(int i = 0; i < fichierFiltresReponses.size(); i++) {
 			
 			//on splitte chaque ligne du fichier FiltresReponses
@@ -139,10 +143,8 @@ public class Reponse {
 		    	//on recupère le filtre
 		    	String filtre = filtresReponses.get(2);
 		    	
-		    	String derivee = "";
 		    	Stack<String> regex = new Stack<>();
 		    	Matcher matcher;
-
 		    	//Si le filtre commence par $ 
 		    	if (filtre.matches("^\\$")) {
 		    		matcher = Regex.match(Regex.getRegex(filtre), question); 
@@ -153,6 +155,7 @@ public class Reponse {
 		    	//m.group(1) correspond au terme derrière goto
 		    	Pattern p = Pattern.compile("goto\\s+(\\p{L}+)");
 		    	Matcher m = p.matcher(reponse[0].trim());
+		    	String derivee = "";
 		    	if(m.find()) {
 		    		reponse = getReponse(m.group(1), question);
 		    		derivee = reponse[1];
@@ -172,9 +175,9 @@ public class Reponse {
 		    		String eq = Expression.formuleToExpression(question).asString();
 			    	if (!eq.equals("0")) {
 			    		Calcul.setMemoireEquation(eq);
-			    		derivee = Calcul.getDerivee();
-			    		reponse[1] = derivee;
-			    		//System.out.println("derivee=" + derivee);
+			    		reponse[1] = Calcul.getDerivee();
+			    		derivee = reponse[1];
+			    		System.out.println("derivee=" + derivee);
 			    	}
 		    	}
 
@@ -188,17 +191,17 @@ public class Reponse {
 		    	else
 		    		regex.push(filtre);
 		    	
-		    	/*System.out.println("regex=" + regex);
+		    	System.out.println("regex=" + regex);
 		    	System.out.println("filtre=" + filtre);
 		    	System.out.println("reponse=" + reponse[0]);
 		    	System.out.println("derivee=" + derivee);
-		    	System.out.println("i=" + i);*/
+		    	System.out.println("i=" + i);
 		    	
 		    	Iterator<String> regexiTerator = regex.iterator();
 		    	while (regexiTerator.hasNext()) { 		    	
 			        filtre= regexiTerator.next();
 			        filtre = Regex.getRegex(filtre);
-			        //System.out.println("filtre=" + filtre);
+			        System.out.println("filtre=" + filtre);
 			        
 			        /*
 			        * Si le match donne une reponse, on renvoie le tableau de réponse [reponse, dérivée]
@@ -206,7 +209,7 @@ public class Reponse {
 			        */
 			        matcher = Regex.match(filtre, question);
 			        String rep = assemblageReponse(matcher, reponse[0]);
-					//System.out.println("rep=" + rep);
+
 			        if ( rep != null) {
 			        	reponse[0] = rep;
 			        	reponse[1] = derivee;

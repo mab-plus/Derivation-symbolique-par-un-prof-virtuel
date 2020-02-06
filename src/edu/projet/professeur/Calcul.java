@@ -137,13 +137,12 @@ public class Calcul {
 				exemple = true;
 			}
 			
-
 			eEquation = simp.simplifier(eEquation);
 			eEquation = df.deriver(eEquation, variable);
 			eEquation = simp.simplifier(eEquation);
 			
 			//Heuristique :=) : retour dans la moulinette pour bien simplifier la dérivée
-			//eEquation = Expression.formuleToExpression(eEquation.string());
+			eEquation = Expression.formuleToExpression(eEquation.string());
 			eEquation = simp.simplifier(eEquation);
 			
 			

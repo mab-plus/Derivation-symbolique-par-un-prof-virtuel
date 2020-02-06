@@ -1,5 +1,7 @@
 package edu.projet.professeur;
 
+import java.util.Scanner;
+
 /**
  * Application Professeur qui se connecte sur l'irc.
  * @author BAKHTAOUI Michel
@@ -19,12 +21,12 @@ public class Main {
 		System.out.println("> Professeur : " + Professeur.reponse("oui, derives moi sh(sin(x)) par exemple ", ""));
 		int i =1;
 		while( i < 2) {
-			System.out.println("> Professeur : " + Professeur.reponse("derive moi -1/x + sin(y)", "Abderahmane"));
+			System.out.println("\n>>>>>>>>>>> Professeur : " + Professeur.reponse("je suis très fatigués de supporter votre bêtise", "Abderahmane"));
+			System.out.println("");
 			i++;
-		}*/
-
+		}
 		
-		/*Scanner sc = new Scanner(System.in);	 
+		Scanner sc = new Scanner(System.in);	 
 		System.out.println("> Professeur :" + Professeur.reponse("xdebut", "Abderahmane"));
 		while (sc.hasNextLine()) {
 			String question = sc.nextLine();			

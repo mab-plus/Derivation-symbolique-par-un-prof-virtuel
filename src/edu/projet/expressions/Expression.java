@@ -159,25 +159,7 @@ public abstract class Expression implements Formule {
 	   return expr instanceof Variable;
    }
    
-   /**
-    * @param equation
-    * @return une liste de String des termes de l'équation
-    */
-   private static List<String> splitter(String equation) {	   
-	   
-	   //on decoupe suivant les espaces
-	   List<String> blocs = Arrays.asList(equation.split("\\s"));
-	  
-	   List<String> termes = new ArrayList<>();
-	   //chaque bloc suivant en termes d'équation
-	   for (String bloc : blocs)
-		   for (String str : bloc.split("(?<=[-+*/^()])|(?=[-+*/^()])"))
-			   if (isFonction(str) || str.length() < 3)
-				   termes.add(str); 
-		 
-	   return termes;
-   }
-   
+ 
    
    /**
     * @param op
@@ -232,7 +214,43 @@ public abstract class Expression implements Formule {
     	  return -1;
   }
  
-
+  /**
+   * @param equation
+   * @return une liste de String des termes de l'équation
+   */
+  private static List<String> splitter(String equation) {	   
+	   
+	   //on decoupe suivant les espaces
+	   List<String> blocs = Arrays.asList(equation.split("\\s"));
+	   
+	   List<String> termes = new ArrayList<>();
+	   //chaque bloc suivant en termes d'équation
+	   for (String bloc : blocs) {   
+		   for (String str : bloc.split("(?<=[-+*/^()?!.])|(?=[-+*/^()?!.])")) {
+			   if (isOperateur(str) || isFonction(str) || str.matches("[\\d|\\w]"))
+				   termes.add(str);  
+		   }  
+	   }
+	   System.out.println(termes);
+	   return termes;
+  }
+  
+  /** 
+   * C'est un signe négatif, lorsque le signe moins est au début d'une expression,
+   * ou après une parenthèse ouvrante ou après un opérateur binaire, 
+   * sinon c'est une soustraction.
+   */
+  static boolean is_negatif(String str, String avantDernierTerme) {
+      
+	  if (!str.equals("-")) 
+		  return false;
+      
+      if (isOperateur(avantDernierTerme) || isFonction(avantDernierTerme) || avantDernierTerme.equals("")) 
+    	  return true;
+      else
+    	  return false;                    
+  }
+  
  /**
  * @param equation
  * @return en notation postfix dans une liste de String l'équation
@@ -243,41 +261,69 @@ public abstract class Expression implements Formule {
       Stack<String> pile = new Stack<>();
       ArrayList<String> resultat = new ArrayList<>();
       
+      String variable = "";
+      boolean is_variable = false;
+      String signe = "";
+      String avantDernierTerme = ""; 
+      
       for(String str: termes) {
-
-    	  if(str.equals("(")) {
-              pile.push(str);   		  
-    	  }
-    	  else if(str.equals(")")) {
-    		  
-    		  while(!pile.empty() ) {
-                  
-    			  String s = pile.pop();       
-                  if(s.equals("(")) 
-                	  break;
-                  
-                  resultat.add(s);
-              }
+    	  
+          if (!isOperateur(str) && !isFonction(str) && str.matches("[\\d|\\w]")) {
+              is_variable = true;
+              variable  = str;
           } 
-    	  else if(isPrioritaire(str) > 0) {
-    		  
-    		  int p = isPrioritaire(str);
+          else {
+              if (is_variable) {
+            	  resultat.add(signe + variable);
+                  is_variable = false;
+                  variable  = "";
+                  signe = "";
+              }  
+              
+           	  if(str.equals("(")) {
+                  pile.push(str);   		  
+        	  }
+        	  else if(str.equals(")")) {
+        		  
+        		  while(!pile.empty() ) {
+                      
+        			  String s = pile.pop();       
+                      if(s.equals("(")) 
+                    	  break;
+                      
+                      resultat.add(s);
+                  }
+              } 
+        	  else if(isPrioritaire(str) > 0) {
+        		  //Distinction entre le signe négatif et le signe de soustraction
+                  if (is_negatif(str, avantDernierTerme)) {
+                      signe = "-";
+                  } else {
+                	  
+            		  int p = isPrioritaire(str);
 
-    		  while(!pile.isEmpty() && isPrioritaire(pile.peek()) >= p) 
-    			  resultat.add(pile.pop());
+            		  while(!pile.isEmpty() && isPrioritaire(pile.peek()) >= p) 
+            			  resultat.add(pile.pop());
 
-    		  pile.push(str);
-          } 
-    	  else {  
-    		  resultat.add(str);
-    	  }
+            		  pile.push(str);
+                  }
+              } 
+        	  else {  
+        		  resultat.add(str);
+        	  }
+          }
+    	  avantDernierTerme = str;   
       }
       
+      if (is_variable) { 
+    	  resultat.add(signe + variable);
+      }
+            
       while(!pile.isEmpty()) {
     	  resultat.add(pile.pop());
       }
       
-      //System.out.println("postfix=" + resultat);
+      System.out.println("postfix=" + resultat);
       return resultat;
   }
     
@@ -306,14 +352,14 @@ public abstract class Expression implements Formule {
 	  	  // operateur + - * / ^
 	  	  else if ( isOperateur( termes.get(i) ) ) { 
 	  		  
-	  		  System.out.println("pile.size=" + pile.size());
+	  		  //System.out.println("pile.size=" + pile.size());
 	  		  
 	  		  if ( pile.size() == 1 && termes.get(i).equals("-")) {
 	  			  
 		  	  	  // operateur unaire moins
 		  	  	  expr1 = pile.pop();	  
-		  	  	  System.out.printf("operateur : %s\n", termes.get(i));
-		  	  	  System.out.printf("expr1 : %s\n", expr1.asString());
+		  	  	  /*System.out.printf("operateur : %s\n", termes.get(i));
+		  	  	  System.out.printf("expr1 : %s\n", expr1.asString());*/
 		  	  	  if (expr1 instanceof Moins)
 		  	  		  pile.push(expr1);
 		  	  	  else
