@@ -32,6 +32,8 @@ public class Professeur {
          	motsClesQuestion = MotsCles.getMotsClesQuestion (question);
          	questionPrecedente = question;
     	}
+    	
+		System.out.println("+++" + motsClesQuestion);
     	return Reponse.getReponse(motsClesQuestion, question);
      }
 }
