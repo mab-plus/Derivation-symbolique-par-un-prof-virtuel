@@ -1,6 +1,6 @@
 package edu.projet.professeur;
 
-import java.util.Scanner;
+//import java.util.Scanner;
 
 /**
  * Application Professeur qui se connecte sur l'irc.
@@ -21,7 +21,7 @@ public class Main {
 		System.out.println("> Professeur : " + Professeur.reponse("oui, derives moi sh(sin(x)) par exemple ", ""));
 		int i =1;
 		while( i < 2) {
-			System.out.println("\n>>>>>>>>>>> Professeur : " + Professeur.reponse("je suis très fatigués de supporter votre bêtise", "Abderahmane"));
+			System.out.println("\n>>>>>>>>>>> Professeur : " + Professeur.reponse("log( 3*x )\n", "Abderahmane"));
 			System.out.println("");
 			i++;
 		}

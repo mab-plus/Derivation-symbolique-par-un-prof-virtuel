@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import edu.projet.fonctions.*;
 import edu.projet.interfaces.Formule;
 
@@ -196,7 +199,7 @@ public abstract class Expression implements Formule {
  * @param op
  * @return la priorité de l'opération ou de la fonction op 
  */
-  public static int isPrioritaire(String op) { 
+  public static int Priorite(String op) { 
 	   
       if ( op.equals("+") || op.equals("-") )
     	  return 1;
@@ -220,18 +223,32 @@ public abstract class Expression implements Formule {
    */
   private static List<String> splitter(String equation) {	   
 	   
-	   //on decoupe suivant les espaces
-	   List<String> blocs = Arrays.asList(equation.split("\\s"));
+	  Pattern pattern;
+	  Matcher matcher;;
+	  
+	  //on decoupe suivant les espaces
+	  List<String> blocs = Arrays.asList(equation.split("\\s"));
+	  System.out.println("blocs = " + blocs);
+	  List<String> termes = new ArrayList<>();
+	  //chaque bloc suivant en termes d'équation
+	  for (String bloc : blocs) {  
+		  for (String str : bloc.replaceAll("\\s+", "").split("(?<=[-+*/^()?!.])|(?=[-+*/^()?!.])")) {
+			  System.out.println("str=" + str);
+			  pattern = Pattern.compile("(\\d+)(\\w+)");
+			  matcher = pattern.matcher(str);
+			  if (matcher.find()) {
+				  System.out.println("group 1: " + matcher.group(1));
+			      System.out.println("group 2: " + matcher.group(2));
+			      termes.add(matcher.group(1));
+			      termes.add("*");
+			      termes.add(matcher.group(2));
+			  }
+			  else if (isOperateur(str) || isFonction(str) || str.matches("[\\d|\\w]") || str.equals("(") || str.equals(")"))
+				  termes.add(str);  
+		   } 
 	   
-	   List<String> termes = new ArrayList<>();
-	   //chaque bloc suivant en termes d'équation
-	   for (String bloc : blocs) {   
-		   for (String str : bloc.split("(?<=[-+*/^()?!.])|(?=[-+*/^()?!.])")) {
-			   if (isOperateur(str) || isFonction(str) || str.matches("[\\d|\\w]"))
-				   termes.add(str);  
-		   }  
-	   }
-	   System.out.println(termes);
+	  }
+	   
 	   return termes;
   }
   
@@ -256,7 +273,7 @@ public abstract class Expression implements Formule {
  * @return en notation postfix dans une liste de String l'équation
  */
   public static List<String> equationToPostfix(String equation) {
-	  
+	  //System.out.printf("equation : %s\n", equation);
 	  List<String> termes = splitter(equation);
       Stack<String> pile = new Stack<>();
       ArrayList<String> resultat = new ArrayList<>();
@@ -265,9 +282,11 @@ public abstract class Expression implements Formule {
       boolean is_variable = false;
       String signe = "";
       String avantDernierTerme = ""; 
-      
+      System.out.println("termes = " + termes);
       for(String str: termes) {
-    	  
+    	  /*System.out.println("str = " + str);
+    	  System.out.println("pile = " + pile);
+    	  System.out.println("resultat = " + resultat);*/
           if (!isOperateur(str) && !isFonction(str) && str.matches("[\\d|\\w]")) {
               is_variable = true;
               variable  = str;
@@ -294,15 +313,15 @@ public abstract class Expression implements Formule {
                       resultat.add(s);
                   }
               } 
-        	  else if(isPrioritaire(str) > 0) {
+        	  else if(Priorite(str) > 0) {
         		  //Distinction entre le signe négatif et le signe de soustraction
                   if (is_negatif(str, avantDernierTerme)) {
                       signe = "-";
                   } else {
                 	  
-            		  int p = isPrioritaire(str);
+            		  int p = Priorite(str);
 
-            		  while(!pile.isEmpty() && isPrioritaire(pile.peek()) >= p) 
+            		  while(!pile.isEmpty() && Priorite(pile.peek()) >= p) 
             			  resultat.add(pile.pop());
 
             		  pile.push(str);
@@ -352,14 +371,14 @@ public abstract class Expression implements Formule {
 	  	  // operateur + - * / ^
 	  	  else if ( isOperateur( termes.get(i) ) ) { 
 	  		  
-	  		  //System.out.println("pile.size=" + pile.size());
+	  		  System.out.println("pile.size=" + pile.size());
 	  		  
 	  		  if ( pile.size() == 1 && termes.get(i).equals("-")) {
 	  			  
 		  	  	  // operateur unaire moins
 		  	  	  expr1 = pile.pop();	  
-		  	  	  /*System.out.printf("operateur : %s\n", termes.get(i));
-		  	  	  System.out.printf("expr1 : %s\n", expr1.asString());*/
+		  	  	  //System.out.printf("operateur : %s\n", termes.get(i));
+		  	  	  //System.out.printf("expr1 : %s\n", expr1.asString());
 		  	  	  if (expr1 instanceof Moins)
 		  	  		  pile.push(expr1);
 		  	  	  else
@@ -370,9 +389,9 @@ public abstract class Expression implements Formule {
 		  	  	  expr1 = pile.pop();	  
 		  	  	  expr2 = pile.pop();
 				  
-		  	  	  /*System.out.printf("operateur : %s\n", termes.get(i));
-		  	  	  System.out.printf("expr1 : %s\n", expr1.string());
-		  	  	  System.out.printf("expr2 : %s\n", expr2.string());*/
+		  	  	  //System.out.printf("operateur : %s\n", termes.get(i));
+		  	  	  //System.out.printf("expr1 : %s\n", expr1.string());
+		  	  	  //System.out.printf("expr2 : %s\n", expr2.string());
 		  	  	  
 		  	  	  switch(termes.get(i)) { 
 		  	  	  	  case "+": 
@@ -404,8 +423,8 @@ public abstract class Expression implements Formule {
 	  	  	  // Pop argment de la fonction
 	  	  	  expr1 = pile.pop();
 	  	  	  
-	  	  	 /*System.out.printf("fonction : %s\n", termes.get(i));
-	  	  	 System.out.printf("expr1 : %s\n", expr1.asString());*/
+	  	  	 //System.out.printf("fonction : %s\n", termes.get(i));
+	  	  	 //System.out.printf("expr1 : %s\n", expr1.asString());
 	  	  	  
 	  	  	  switch(termes.get(i)) { 
 	  	  	  	  case "log": 
