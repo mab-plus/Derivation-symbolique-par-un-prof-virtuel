@@ -142,8 +142,8 @@ public class Calcul {
 			eEquation = simp.simplifier(eEquation);
 			
 			//Heuristique :=) : retour dans la moulinette pour bien simplifier la dérivée
-			eEquation = Expression.formuleToExpression(eEquation.string());
-			eEquation = simp.simplifier(eEquation);
+			/*eEquation = Expression.formuleToExpression(eEquation.string());
+			eEquation = simp.simplifier(eEquation);*/
 			
 			
 			if (equation.equals(variable))
