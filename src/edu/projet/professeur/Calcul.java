@@ -111,7 +111,8 @@ public class Calcul {
 	    if(getMemoireVariable().size() == 0)
 			return resultat + "(" + equation + ")' = 0";
 	    
-		if(getMemoireVariable().size() == 1) {
+		if(getMemoireVariable().size() == 1) 
+		{
 			variable = getMemoireVariable().pop();
 			
 			//on suppose que la variable est du style x, y ou n'importe quelle lettre mais pas un mot
@@ -148,7 +149,8 @@ public class Calcul {
 			
 			if (equation.equals(variable))
 				resultat += "(d"+ equation + "/d" + variable + ") = 1";
-			else {
+			else 
+			{
 				if (exemple)
 					resultat += "Voici un petit exemple, [" + equation + "]' = " + eEquation.asString();
 				else
