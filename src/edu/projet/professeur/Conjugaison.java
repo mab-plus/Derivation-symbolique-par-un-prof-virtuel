@@ -8,8 +8,6 @@ import java.util.List;
  * @version 1.0
  */
 public class Conjugaison {
-	
-
 
 	/**
 	 * @param cheminFichierDeTraitement

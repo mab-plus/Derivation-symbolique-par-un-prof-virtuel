@@ -4,80 +4,80 @@
   <class id="1" language="java" name="edu.projet.professeur.Calcul" project="Derivation-symbolique-par-un-prof-virtuel" 
     file="/Derivation-symbolique-par-un-prof-virtuel/src/edu/projet/professeur/Calcul.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="637" y="508"/>    
+    <position height="-1" width="-1" x="853" y="243"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="edu.projet.professeur.Professeur" 
-    project="Derivation-symbolique-par-un-prof-virtuel" 
-    file="/Derivation-symbolique-par-un-prof-virtuel/src/edu/projet/professeur/Professeur.java" binary="false" 
+  <class id="2" language="java" name="edu.projet.professeur.ProfBot" project="Derivation-symbolique-par-un-prof-virtuel" 
+    file="/Derivation-symbolique-par-un-prof-virtuel/src/edu/projet/professeur/ProfBot.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="633" y="106"/>    
+    <position height="-1" width="-1" x="853" y="58"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="edu.projet.professeur.Conjugaison" 
+  <class id="3" language="java" name="edu.projet.professeur.Reponse" project="Derivation-symbolique-par-un-prof-virtuel" 
+    file="/Derivation-symbolique-par-un-prof-virtuel/src/edu/projet/professeur/Reponse.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="322" y="112"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="edu.projet.professeur.Conjugaison" 
     project="Derivation-symbolique-par-un-prof-virtuel" 
     file="/Derivation-symbolique-par-un-prof-virtuel/src/edu/projet/professeur/Conjugaison.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="636" y="256"/>    
+    <position height="-1" width="-1" x="322" y="622"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="edu.projet.professeur.Regex" project="Derivation-symbolique-par-un-prof-virtuel" 
-    file="/Derivation-symbolique-par-un-prof-virtuel/src/edu/projet/professeur/Regex.java" binary="false" 
+  <class id="5" language="java" name="edu.projet.professeur.Fichier" project="Derivation-symbolique-par-un-prof-virtuel" 
+    file="/Derivation-symbolique-par-un-prof-virtuel/src/edu/projet/professeur/Fichier.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="387" y="290"/>    
+    <position height="-1" width="-1" x="589" y="166"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="edu.projet.professeur.MotsCles" 
+  <class id="6" language="java" name="edu.projet.professeur.MotsCles" 
     project="Derivation-symbolique-par-un-prof-virtuel" 
     file="/Derivation-symbolique-par-un-prof-virtuel/src/edu/projet/professeur/MotsCles.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="896" y="264"/>    
+    <position height="-1" width="-1" x="322" y="290"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="edu.projet.professeur.Fichier" project="Derivation-symbolique-par-un-prof-virtuel" 
-    file="/Derivation-symbolique-par-un-prof-virtuel/src/edu/projet/professeur/Fichier.java" binary="false" 
+  <class id="7" language="java" name="edu.projet.professeur.Professeur" 
+    project="Derivation-symbolique-par-un-prof-virtuel" 
+    file="/Derivation-symbolique-par-un-prof-virtuel/src/edu/projet/professeur/Professeur.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1618" y="213"/>    
+    <position height="-1" width="-1" x="97" y="76"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="edu.projet.professeur.ProfBot" project="Derivation-symbolique-par-un-prof-virtuel" 
-    file="/Derivation-symbolique-par-un-prof-virtuel/src/edu/projet/professeur/ProfBot.java" binary="false" 
+  <class id="8" language="java" name="edu.projet.professeur.Regex" project="Derivation-symbolique-par-un-prof-virtuel" 
+    file="/Derivation-symbolique-par-un-prof-virtuel/src/edu/projet/professeur/Regex.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1902" y="105"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="8" language="java" name="edu.projet.professeur.Reponse" project="Derivation-symbolique-par-un-prof-virtuel" 
-    file="/Derivation-symbolique-par-un-prof-virtuel/src/edu/projet/professeur/Reponse.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2201" y="159"/>    
+    <position height="-1" width="-1" x="322" y="460"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

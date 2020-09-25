@@ -1,5 +1,5 @@
 package edu.projet.professeur;
-	
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -13,71 +13,70 @@ import java.util.stream.Stream;
  * @version 1.0
  */
 public class Fichier {
-	
-    /**
-     * Fichier conjugaison-traduction.csv
-     */
-    private static String cheminFichierConjugaison = "/conjugaison-traduction.csv";
-    /**
-     * Fichier sujet-objet.csv
-     */
-    private static String cheminFichierSujetObjet = "/sujet-objet.csv";
-    /**
-     * Fichier synonymes.csv
-     */
-    private static String cheminSynonymes = "/synonymes.csv";
-    /**
-     * Fichier filtres-reponses.csv
-     */
-    private static String cheminFiltresReponses = "/filtres-reponses.csv";    
-    
+
+	/**
+	 * Fichier conjugaison-traduction.csv
+	 */
+	private static String cheminFichierConjugaison = "/conjugaison-traduction.csv";
+	/**
+	 * Fichier sujet-objet.csv
+	 */
+	private static String cheminFichierSujetObjet = "/sujet-objet.csv";
+	/**
+	 * Fichier synonymes.csv
+	 */
+	private static String cheminSynonymes = "/synonymes.csv";
+	/**
+	 * Fichier filtres-reponses.csv
+	 */
+	private static String cheminFiltresReponses = "/filtres-reponses.csv";
+
 	/**
 	 * @param chemin
 	 * @return extraction des fichiers.
 	 */
-	static List< String>  getfichier(String chemin ) {
-			
+	static List<String> getfichier(String chemin) {
+
 		InputStream s = Fichier.class.getResourceAsStream(chemin);
-		
+
 		try (Stream<String> stream = new BufferedReader(new InputStreamReader(s, Charset.forName("UTF-8"))).lines()) {
-			//on ne prend les lignes vides du fichier
+			// on ne prend les lignes vides du fichier
 			return stream.filter(x -> !x.trim().equals("")).collect(Collectors.toList());
 		}
-		
 	}
-	
+
 	/**
 	 * @return Fichier Conjugaison.
 	 */
-	static List< String>  getFichierConjugaison() {
-		
+	static List<String> getFichierConjugaison() {
+
 		return getfichier(cheminFichierConjugaison);
 	}
-	
+
 	/**
 	 * @return Fichier SujetObjet.
 	 */
-	static List< String>  getFichierSujetObjet() {
-		
+	static List<String> getFichierSujetObjet() {
+
 		return getfichier(cheminFichierSujetObjet);
 	}
 
 	/**
 	 * @return Fichier Synonymes.
 	 */
-	static List< String>  getFichierSynonymes() {
-		
+	static List<String> getFichierSynonymes() {
+
 		return getfichier(cheminSynonymes);
 	}
-	
+
 	/**
 	 * @return Fichier FiltresReponses.
 	 */
-	static List< String>  getFichierFiltresReponses() {
-		
+	static List<String> getFichierFiltresReponses() {
+
 		return getfichier(cheminFiltresReponses);
 	}
-	
+
 	/**
 	 * @return Chemin Fichier Conjugaison.
 	 */
@@ -91,7 +90,7 @@ public class Fichier {
 	static String getCheminFichierSujetObjet() {
 		return cheminFichierSujetObjet;
 	}
-	
+
 	/**
 	 * @return Chemin Synonymes.
 	 */
@@ -105,5 +104,4 @@ public class Fichier {
 	static String getCheminFiltresReponses() {
 		return cheminFiltresReponses;
 	}
-	
 }
