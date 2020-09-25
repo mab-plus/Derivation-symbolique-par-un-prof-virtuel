@@ -13,7 +13,6 @@ import java.util.stream.Stream;
  * @version 1.0
  */
 public class Fichier {
-
 	/**
 	 * Fichier conjugaison-traduction.csv
 	 */
