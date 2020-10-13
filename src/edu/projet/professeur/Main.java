@@ -27,7 +27,7 @@ public class Main {
 		 * e.printStackTrace(); }
 		 */
 		String reponse;
-		reponse = Professeur.reponse("tu es le prof ?", "abarti");
+		reponse = Professeur.reponse("tu es le professeur ?", "abarti");
 		System.out.println(">" + reponse);
 		/*
 		 * Scanner sc = new Scanner(System.in);

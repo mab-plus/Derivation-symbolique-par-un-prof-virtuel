@@ -214,7 +214,6 @@ public class Reponse {
 					 */
 					matcher = Regex.match(filtre, question);
 					String rep = assemblageReponse(matcher, reponse[0]);
-
 					if (rep != null) {
 						System.out.println("matching(" + filtre + "," + question + ")=ok");
 						reponse[0] = rep;
