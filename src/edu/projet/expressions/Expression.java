@@ -231,7 +231,7 @@ public abstract class Expression implements Formule {
 
 		Pattern pattern;
 		Matcher matcher;
-		;
+		System.out.println("class Expression:List<String> splitter(String " + equation + ")");
 
 		// on decoupe suivant les espaces
 		List<String> blocs = Arrays.asList(equation.split("\\s"));
@@ -255,7 +255,7 @@ public abstract class Expression implements Formule {
 			}
 
 		}
-
+		System.out.println("class Expression:List<String> splitter retourne: termes " + termes);
 		return termes;
 	}
 

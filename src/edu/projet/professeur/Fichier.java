@@ -36,6 +36,7 @@ public class Fichier {
 	 */
 	static List<String> getfichier(String chemin) {
 
+		System.out.println("class Fichier.getFichier (" + chemin + ")");
 		InputStream s = Fichier.class.getResourceAsStream(chemin);
 
 		try (Stream<String> stream = new BufferedReader(new InputStreamReader(s, Charset.forName("UTF-8"))).lines()) {

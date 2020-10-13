@@ -26,19 +26,16 @@ public class MotsCles {
 		Hashtable<String, Integer> motsClesQuestion = new Hashtable<String, Integer>();
 
 		for (int i = 0; i < termesQuestion.size(); i++) {
-			System.out.println(termesQuestion.get(i));
 			for (int j = 0; j < fichierFiltresReponses.size(); j++) {
 
 				List<String> filtresReponses = Arrays.asList(fichierFiltresReponses.get(j).split("\\|"));
 				if (termesQuestion.get(i).equals(filtresReponses.get(0))) {
-
-					System.out.println("+++" + filtresReponses.get(0));
-
 					motsClesQuestion.put(filtresReponses.get(0), Integer.parseInt(filtresReponses.get(1)));
 					break;
 				}
 			}
 		}
+		System.out.println("class MotsCles:MotsCles.getMotsClesQuestion(" + question + ")=" + motsClesQuestion);
 		return trieParValeur(motsClesQuestion);
 	}
 
@@ -47,9 +44,11 @@ public class MotsCles {
 	 * @return la collection (mots-clés, poids) triés par ordre croissant.
 	 */
 	private static Map<String, Integer> trieParValeur(final Map<String, Integer> motsClesQuestion) {
-
-		return motsClesQuestion.entrySet().stream().sorted((Map.Entry.<String, Integer>comparingByValue()))
+		Map<String, Integer> tmp = motsClesQuestion.entrySet().stream()
+				.sorted((Map.Entry.<String, Integer>comparingByValue()))
 				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (q1, q2) -> q1, LinkedHashMap::new));
+		System.out.println("class MotsCles:MotsCles.trieParValeur(" + motsClesQuestion + ")=" + tmp);
+		return tmp;
 	}
 
 	/**

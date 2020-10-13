@@ -8,32 +8,30 @@ import java.util.Map;
  * @version 1.0
  */
 public class Professeur {
-	
+
 	public static String user;
-	
-    /**
-     * Pour tester si l'utilisateur répète la même question
-     */
-    private static String questionPrecedente ="";
-    	
-    /**
-     * @param question
-     * @return la réponse du Professeur.
-     */
-    public static String reponse (String question, String sender) {
-    	
-    	Professeur.user = sender;
-    	Map<String, Integer> motsClesQuestion = new HashMap<>();
-    	question = Conjugaison.conjuger(question, Fichier.getCheminFichierConjugaison());
-    	
-    	if (questionPrecedente.equals(question))
-         	motsClesQuestion.put("xrepetition", -1);
-    	else {
-         	motsClesQuestion = MotsCles.getMotsClesQuestion (question);
-         	questionPrecedente = question;
-    	}
-    	
-		System.out.println("+++" + motsClesQuestion);
-    	return Reponse.getReponse(motsClesQuestion, question);
-     }
+
+	/**
+	 * Pour tester si l'utilisateur répète la même question
+	 */
+	private static String questionPrecedente = "";
+
+	/**
+	 * @param question
+	 * @return la réponse du Professeur.
+	 */
+	public static String reponse(String question, String sender) {
+
+		Professeur.user = sender;
+		Map<String, Integer> motsClesQuestion = new HashMap<>();
+		question = Conjugaison.conjuger(question, Fichier.getCheminFichierConjugaison());
+
+		if (questionPrecedente.equals(question))
+			motsClesQuestion.put("xrepetition", -1);
+		else {
+			motsClesQuestion = MotsCles.getMotsClesQuestion(question);
+			questionPrecedente = question;
+		}
+		return Reponse.getReponse(motsClesQuestion, question);
+	}
 }
