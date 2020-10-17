@@ -42,7 +42,7 @@ public class Constante extends Expression {
 		// pour supprimer le point si entier à afficher
 		double d = Double.parseDouble(this.constante);
 		
-		if ( (double) (int) d == d ) {
+		if ( (int) d == d ) {
 			
 			if (d < 0)
 				return "(" + Integer.toString((int) d ) + ")";

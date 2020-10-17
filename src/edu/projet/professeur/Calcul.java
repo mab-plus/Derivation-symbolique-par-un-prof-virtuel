@@ -20,20 +20,22 @@ public class Calcul {
 	private static Stack<String> memoireEquation = new Stack<String>();
 
 	/**
-	 * pour stocker les variables de l'équation trouvée dans l'entrée utilisateur
+	 * pour stocker les variables de l'équation trouvée dans l'entrée
+	 * utilisateur
 	 */
 	private static Stack<String> memoireVariable = new Stack<String>();
 
 	/**
-	 * @return une pile contenant toutes les variables de l'équation trouvée dans
-	 *         l'entrée utilisateur
+	 * @return une pile contenant toutes les variables de l'équation trouvée
+	 *         dans l'entrée utilisateur
 	 */
 	static Stack<String> getMemoireVariable() {
 		return memoireVariable;
 	}
 
 	/**
-	 * @param data, enregistre les variables de l'équation dans memoireVariable.
+	 * @param data,
+	 *            enregistre les variables de l'équation dans memoireVariable.
 	 */
 	static void setMemoireVariable(String data) {
 		memoireVariable.push(data);
@@ -48,15 +50,17 @@ public class Calcul {
 	}
 
 	/**
-	 * @param data, enregistre l'équation dans memoireEquation.
+	 * @param data,
+	 *            enregistre l'équation dans memoireEquation.
 	 */
 	static void setMemoireEquation(String data) {
 		memoireEquation.push(data);
 	}
 
 	/**
-	 * @param equation une fois l'équation trouvée, extraction des variables :
-	 *                 exemple x^2 + y --> x,y.
+	 * @param equation
+	 *            une fois l'équation trouvée, extraction des variables :
+	 *            exemple x^2 + y --> x,y.
 	 * 
 	 **/
 	static void getVariables(String equation) {
@@ -70,7 +74,8 @@ public class Calcul {
 
 		for (int i = 0; i < termes.size(); i++) {
 			// si un terme n'est pas operateur ni une fonction (sin cos log ...)
-			if (!Expression.isOperateur(termes.get(i)) && !Expression.isFonction(termes.get(i))) {
+			if (!Expression.isOperateur(termes.get(i))
+					&& !Expression.isFonction(termes.get(i))) {
 
 				// on regarde si c'est une constante float par une conversion
 				try {
@@ -84,11 +89,14 @@ public class Calcul {
 				}
 			}
 		}
+		if (Professeur.activeTrace)
+			System.out.println("class Calcul getVariables(" + equation + ")="
+					+ getMemoireVariable().firstElement());
 	}
 
 	/**
-	 * la dérivée de l'équation par rapport à ses variables trouvées : exemple x^2 +
-	 * y --> x,y --> d/dx(^2 + y) = 2*x, d/dy(^2 + y) = 1.
+	 * la dérivée de l'équation par rapport à ses variables trouvées : exemple
+	 * x^2 + y --> x,y --> d/dx(^2 + y) = 2*x, d/dy(^2 + y) = 1.
 	 * 
 	 * @return le résultat de la dérivée sous forme d'une réponse
 	 *
@@ -104,7 +112,8 @@ public class Calcul {
 		if (getMemoireEquation().size() == 3)
 			equation = getMemoireEquation().get(0);
 		else
-			equation = getMemoireEquation().get(getMemoireEquation().size() - 1);
+			equation = getMemoireEquation()
+					.get(getMemoireEquation().size() - 1);
 
 		getVariables(equation);
 
@@ -114,11 +123,13 @@ public class Calcul {
 		if (getMemoireVariable().size() == 1) {
 			variable = getMemoireVariable().pop();
 
-			// on suppose que la variable est du style x, y ou n'importe quelle lettre mais
+			// on suppose que la variable est du style x, y ou n'importe quelle
+			// lettre mais
 			// pas un mot
 			if (variable.length() == 1)
 				eEquation = Expression.formuleToExpression(equation);
-			// si c'est un mot, on fabrique une équation polynome du 4eme degré pour que le
+			// si c'est un mot, on fabrique une équation polynome du 4eme degré
+			// pour que le
 			// professeur fasse une démonstration
 			else {
 				// constante
@@ -132,28 +143,52 @@ public class Calcul {
 				// le reste
 				for (int i = 2; i < 5; i++) {
 					coefficient = (int) (Math.random() * 10 + 2);
-					equation += "+" + Integer.toString(coefficient) + "*x^" + Integer.toString(i);
+					equation += "+" + Integer.toString(coefficient) + "*x^"
+							+ Integer.toString(i);
 				}
 				eEquation = Expression.formuleToExpression(equation);
 				variable = "x";
 				exemple = true;
 			}
 
-			eEquation = simp.simplifier(eEquation);
-			eEquation = df.deriver(eEquation, variable);
+			if (Professeur.activeTrace)
+				System.out.print("class Derivation:Expression simplifier("
+						+ eEquation.asString() + ")=");
+
 			eEquation = simp.simplifier(eEquation);
 
-			// Heuristique :=) : retour dans la moulinette pour bien simplifier la dérivée
+			if (Professeur.activeTrace)
+				System.out.println(eEquation.asString());
+			if (Professeur.activeTrace)
+				System.out.print("class Derivation:Expression Deriver("
+						+ eEquation.asString() + "," + variable + ")=");
+
+			eEquation = df.deriver(eEquation, variable);
+
+			if (Professeur.activeTrace)
+				System.out.println(eEquation.asString());
+			if (Professeur.activeTrace)
+				System.out.print("class Derivation:Expression simplifier("
+						+ eEquation.asString() + ")=");
+
+			eEquation = simp.simplifier(eEquation);
+
+			if (Professeur.activeTrace)
+				System.out.println(eEquation.asString());
+
+			// Heuristique :=) : retour dans la moulinette pour bien simplifier
+			// la dérivée
 			/*
-			 * eEquation = Expression.formuleToExpression(eEquation.string()); eEquation =
-			 * simp.simplifier(eEquation);
+			 * eEquation = Expression.formuleToExpression(eEquation.string());
+			 * eEquation = simp.simplifier(eEquation);
 			 */
 
 			if (equation.equals(variable))
 				resultat += "(d" + equation + "/d" + variable + ") = 1";
 			else {
 				if (exemple)
-					resultat += "Voici un petit exemple, [" + equation + "]' = " + eEquation.asString();
+					resultat += "Voici un petit exemple, [" + equation + "]' = "
+							+ eEquation.asString();
 				else
 					resultat += "[" + equation + "]' = " + eEquation.asString();
 			}
@@ -167,17 +202,21 @@ public class Calcul {
 
 			for (int i = 0; i < memoireVariable; i++) {
 				variable = getMemoireVariable().pop();
-				// on suppose que la variable est du style x, y ou n'importe quelle lettre mais
+				// on suppose que la variable est du style x, y ou n'importe
+				// quelle lettre mais
 				// pas un mot
 				if (variable.length() == 1) {
 					expr = df.deriver(eEquation, variable);
-					resultat += "(d/d" + variable + ")[" + equation + "] = " + simp.simplifier(expr).asString() + ", ";
+					resultat += "(d/d" + variable + ")[" + equation + "] = "
+							+ simp.simplifier(expr).asString() + ", ";
 				}
 			}
 		}
-
 		getMemoireEquation().clear();
 		getMemoireVariable().clear();
+		if (Professeur.activeTrace)
+			System.out
+					.println("class Calcul:String getDerivee() ()=" + resultat);
 		return resultat;
 	}
 }

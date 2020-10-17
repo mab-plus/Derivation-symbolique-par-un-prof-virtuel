@@ -36,12 +36,15 @@ public class Fichier {
 	 */
 	static List<String> getfichier(String chemin) {
 
-		System.out.println("class Fichier.getFichier (" + chemin + ")");
-		InputStream s = Fichier.class.getResourceAsStream(chemin);
+		if (Professeur.activeTrace)
+			System.out.println("class Fichier.getFichier (" + chemin + ")");
 
-		try (Stream<String> stream = new BufferedReader(new InputStreamReader(s, Charset.forName("UTF-8"))).lines()) {
+		InputStream s = Fichier.class.getResourceAsStream(chemin);
+		try (Stream<String> stream = new BufferedReader(
+				new InputStreamReader(s, Charset.forName("UTF-8"))).lines()) {
 			// on ne prend les lignes vides du fichier
-			return stream.filter(x -> !x.trim().equals("")).collect(Collectors.toList());
+			return stream.filter(x -> !x.trim().equals(""))
+					.collect(Collectors.toList());
 		}
 	}
 

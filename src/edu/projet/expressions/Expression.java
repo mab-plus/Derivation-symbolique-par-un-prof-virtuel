@@ -18,6 +18,7 @@ import edu.projet.fonctions.Sinh;
 import edu.projet.fonctions.Tan;
 import edu.projet.fonctions.Tanh;
 import edu.projet.interfaces.Formule;
+import edu.projet.professeur.Professeur;
 
 /**
  * Une expression algébrique peut être définie récursivement de la manière
@@ -34,7 +35,8 @@ import edu.projet.interfaces.Formule;
 public abstract class Expression implements Formule {
 
 	/**
-	 * @param Opérande gauche et droite
+	 * @param Opérande
+	 *            gauche et droite
 	 */
 	public Expression exprG, exprD;
 
@@ -46,9 +48,12 @@ public abstract class Expression implements Formule {
 	/**
 	 * Constructeur Expression.
 	 * 
-	 * @param exprG   opérande gauche
-	 * @param symbole opérateur
-	 * @param exprD   opérande droite
+	 * @param exprG
+	 *            opérande gauche
+	 * @param symbole
+	 *            opérateur
+	 * @param exprD
+	 *            opérande droite
 	 */
 	public Expression(Expression exprG, String symbole, Expression exprD) {
 		this.exprG = exprG;
@@ -72,7 +77,8 @@ public abstract class Expression implements Formule {
 		if (this.exprG == null)
 			return this.getSymbole() + "(" + this.exprD.asString() + ")";
 
-		return this.exprG.asString() + " " + this.getSymbole() + " " + this.exprD.asString();
+		return this.exprG.asString() + " " + this.getSymbole() + " "
+				+ this.exprD.asString();
 	}
 
 	/**
@@ -89,7 +95,8 @@ public abstract class Expression implements Formule {
 		if (this.exprG == null)
 			return this.getSymbole() + "(" + this.exprD.string() + ")";
 
-		return this.exprG.string() + " " + this.getSymbole() + " " + this.exprD.string();
+		return this.exprG.string() + " " + this.getSymbole() + " "
+				+ this.exprD.string();
 	}
 
 	/**
@@ -139,7 +146,8 @@ public abstract class Expression implements Formule {
 	 * @return true si l'expression expr est la constante 0
 	 */
 	public static boolean isZero(Expression expr) {
-		return (expr instanceof Constante) && (((Constante) expr).getValeur() == 0);
+		return (expr instanceof Constante)
+				&& (((Constante) expr).getValeur() == 0);
 	}
 
 	/**
@@ -147,7 +155,8 @@ public abstract class Expression implements Formule {
 	 * @return true si l'expression expr est la constante 1
 	 */
 	public static boolean isUn(Expression expr) {
-		return (expr instanceof Constante) && (((Constante) expr).getValeur() == 1);
+		return (expr instanceof Constante)
+				&& (((Constante) expr).getValeur() == 1);
 	}
 
 	/**
@@ -155,7 +164,8 @@ public abstract class Expression implements Formule {
 	 * @return true si l'expression expr est la constante -1
 	 */
 	public static boolean isMoinsUn(Expression expr) {
-		return (expr instanceof Constante) && (((Constante) expr).getValeur() == -1);
+		return (expr instanceof Constante)
+				&& (((Constante) expr).getValeur() == -1);
 	}
 
 	/**
@@ -180,7 +190,8 @@ public abstract class Expression implements Formule {
 	 */
 	public static boolean isOperateur(String op) {
 
-		if (op.equals("+") || op.equals("-") || op.equals("*") || op.equals("/") || op.equals("^"))
+		if (op.equals("+") || op.equals("-") || op.equals("*") || op.equals("/")
+				|| op.equals("^"))
 			return true;
 
 		else
@@ -193,8 +204,10 @@ public abstract class Expression implements Formule {
 	 */
 	public static boolean isFonction(String fn) {
 
-		if (fn.equals("log") || fn.equals("exp") || fn.equals("cos") || fn.equals("sin") || fn.equals("tan")
-				|| fn.equals("cotan") || fn.equals("ch") || fn.equals("sh") || fn.equals("th") || fn.equals("coth"))
+		if (fn.equals("log") || fn.equals("exp") || fn.equals("cos")
+				|| fn.equals("sin") || fn.equals("tan") || fn.equals("cotan")
+				|| fn.equals("ch") || fn.equals("sh") || fn.equals("th")
+				|| fn.equals("coth"))
 			return true;
 
 		else
@@ -231,45 +244,51 @@ public abstract class Expression implements Formule {
 
 		Pattern pattern;
 		Matcher matcher;
-		System.out.println("class Expression:List<String> splitter(String " + equation + ")");
-
-		// on decoupe suivant les espaces
-		List<String> blocs = Arrays.asList(equation.split("\\s"));
-		System.out.println("blocs = " + blocs);
 		List<String> termes = new ArrayList<>();
+		List<String> blocs = Arrays.asList(equation.split("\\s"));
+
+		if (Professeur.activeTrace)
+			System.out.println("\nblocs = " + blocs);
+
 		// chaque bloc suivant en termes d'équation
 		for (String bloc : blocs) {
-			for (String str : bloc.replaceAll("\\s+", "").split("(?<=[-+*/^()?!.])|(?=[-+*/^()?!.])")) {
-				System.out.println("str=" + str);
+			for (String str : bloc.replaceAll("\\s+", "")
+					.split("(?<=[-+*/^()?!.])|(?=[-+*/^()?!.])")) {
 				pattern = Pattern.compile("(\\d+)(\\w+)");
 				matcher = pattern.matcher(str);
 				if (matcher.find()) {
-					System.out.println("group 1: " + matcher.group(1));
-					System.out.println("group 2: " + matcher.group(2));
+					if (Professeur.activeTrace) {
+						System.out.println("group 1: " + matcher.group(1));
+						System.out.println("group 2: " + matcher.group(2));
+					}
 					termes.add(matcher.group(1));
 					termes.add("*");
 					termes.add(matcher.group(2));
-				} else if (isOperateur(str) || isFonction(str) || str.matches("[\\d|\\w]") || str.equals("(")
+				} else if (isOperateur(str) || isFonction(str)
+						|| str.matches("[\\d|\\w]") || str.equals("(")
 						|| str.equals(")"))
 					termes.add(str);
 			}
 
 		}
-		System.out.println("class Expression:List<String> splitter retourne: termes " + termes);
+		if (Professeur.activeTrace)
+			System.out.println("class Expression:List<String> splitter("
+					+ equation + ")=" + termes);
 		return termes;
 	}
 
 	/**
-	 * C'est un signe négatif, lorsque le signe moins est au début d'une expression,
-	 * ou après une parenthèse ouvrante ou après un opérateur binaire, sinon c'est
-	 * une soustraction.
+	 * C'est un signe négatif, lorsque le signe moins est au début d'une
+	 * expression, ou après une parenthèse ouvrante ou après un opérateur
+	 * binaire, sinon c'est une soustraction.
 	 */
 	static boolean is_negatif(String str, String avantDernierTerme) {
 
 		if (!str.equals("-"))
 			return false;
 
-		if (isOperateur(avantDernierTerme) || isFonction(avantDernierTerme) || avantDernierTerme.equals(""))
+		if (isOperateur(avantDernierTerme) || isFonction(avantDernierTerme)
+				|| avantDernierTerme.equals(""))
 			return true;
 		else
 			return false;
@@ -290,7 +309,8 @@ public abstract class Expression implements Formule {
 		String avantDernierTerme = "";
 
 		for (String str : termes) {
-			if (!isOperateur(str) && !isFonction(str) && str.matches("[\\d|\\w]")) {
+			if (!isOperateur(str) && !isFonction(str)
+					&& str.matches("[\\d|\\w]")) {
 				is_variable = true;
 				variable = str;
 			} else {
@@ -311,7 +331,8 @@ public abstract class Expression implements Formule {
 						resultat.add(s);
 					}
 				} else if (Priorite(str) > 0) {
-					// Distinction entre le signe négatif et le signe de soustraction
+					// Distinction entre le signe négatif et le signe de
+					// soustraction
 					if (is_negatif(str, avantDernierTerme)) {
 						signe = "-";
 					} else {
@@ -335,6 +356,10 @@ public abstract class Expression implements Formule {
 			resultat.add(pile.pop());
 		}
 
+		if (Professeur.activeTrace)
+			System.out
+					.println("class Expression:List<String> equationToPostfix("
+							+ equation + ")=" + resultat);
 		return resultat;
 	}
 
@@ -346,7 +371,7 @@ public abstract class Expression implements Formule {
 	public static Expression formuleToExpression(String formule) {
 
 		Stack<Expression> pile = new Stack<Expression>();
-		Expression expr1, expr2;
+		Expression expr1, expr2, tmp;
 
 		List<String> termes = equationToPostfix(formule);
 		for (int i = 0; i < termes.size(); i++) {
@@ -362,14 +387,13 @@ public abstract class Expression implements Formule {
 			// operateur + - * / ^
 			else if (isOperateur(termes.get(i))) {
 
-				System.out.println("pile.size=" + pile.size());
+				if (Professeur.activeTrace)
+					System.out.println("pile.size=" + pile.size());
 
 				if (pile.size() == 1 && termes.get(i).equals("-")) {
 
 					// operateur unaire moins
 					expr1 = pile.pop();
-					// System.out.printf("operateur : %s\n", termes.get(i));
-					// System.out.printf("expr1 : %s\n", expr1.asString());
 					if (expr1 instanceof Moins)
 						pile.push(expr1);
 					else
@@ -379,32 +403,27 @@ public abstract class Expression implements Formule {
 					expr1 = pile.pop();
 					expr2 = pile.pop();
 
-					// System.out.printf("operateur : %s\n", termes.get(i));
-					// System.out.printf("expr1 : %s\n", expr1.string());
-					// System.out.printf("expr2 : %s\n", expr2.string());
-
 					switch (termes.get(i)) {
-					case "+":
-						pile.push(new Addition(expr2, expr1));
-						break;
+						case "+" :
+							pile.push(new Addition(expr2, expr1));
+							break;
 
-					case "-":
-						pile.push(new Soustraction(expr2, expr1));
-						break;
+						case "-" :
+							pile.push(new Soustraction(expr2, expr1));
+							break;
 
-					case "*":
-						pile.push(new Multiplication(expr2, expr1));
-						break;
+						case "*" :
+							pile.push(new Multiplication(expr2, expr1));
+							break;
 
-					case "/":
-						pile.push(new Division(expr2, expr1));
-						break;
+						case "/" :
+							pile.push(new Division(expr2, expr1));
+							break;
 
-					case "^":
-						pile.push(new Puissance(expr2, expr1));
-						break;
+						case "^" :
+							pile.push(new Puissance(expr2, expr1));
+							break;
 					}
-					// System.out.printf("RESULT : %s\n", pile.lastElement().string());
 				}
 
 			}
@@ -413,53 +432,56 @@ public abstract class Expression implements Formule {
 				// Pop argment de la fonction
 				expr1 = pile.pop();
 
-				// System.out.printf("fonction : %s\n", termes.get(i));
-				// System.out.printf("expr1 : %s\n", expr1.asString());
-
 				switch (termes.get(i)) {
-				case "log":
-					pile.push(new Log(expr1));
-					break;
-				case "exp":
-					pile.push(new Exp(expr1));
-					break;
-				case "cos":
-					pile.push(new Cos(expr1));
-					break;
-				case "sin":
-					pile.push(new Sin(expr1));
-					break;
+					case "log" :
+						pile.push(new Log(expr1));
+						break;
+					case "exp" :
+						pile.push(new Exp(expr1));
+						break;
+					case "cos" :
+						pile.push(new Cos(expr1));
+						break;
+					case "sin" :
+						pile.push(new Sin(expr1));
+						break;
 
-				case "tan":
-					pile.push(new Tan(expr1));
-					break;
-				case "cotan":
-					pile.push(new Cotan(expr1));
-					break;
+					case "tan" :
+						pile.push(new Tan(expr1));
+						break;
+					case "cotan" :
+						pile.push(new Cotan(expr1));
+						break;
 
-				case "ch":
-					pile.push(new Cosh(expr1));
-					break;
-				case "sh":
-					pile.push(new Sinh(expr1));
-					break;
+					case "ch" :
+						pile.push(new Cosh(expr1));
+						break;
+					case "sh" :
+						pile.push(new Sinh(expr1));
+						break;
 
-				case "th":
-					pile.push(new Tanh(expr1));
-					break;
-				case "coth":
-					pile.push(new Cotanh(expr1));
-					break;
+					case "th" :
+						pile.push(new Tanh(expr1));
+						break;
+					case "coth" :
+						pile.push(new Cotanh(expr1));
+						break;
 				}
-				// System.out.printf("RESULT : %s\n", pile.lastElement().string());
 			}
 		}
 
-		if (!pile.isEmpty())
-			return pile.pop();
-		else
-			return new Constante(0);
-
+		if (!pile.isEmpty()) {
+			tmp = pile.pop();
+			// return pile.pop();
+		} else {
+			tmp = new Constante(0);
+			// return new Constante(0);
+		}
+		if (Professeur.activeTrace)
+			System.out
+					.println("class Expression:Expression formuleToExpression("
+							+ formule + ")=" + tmp.asString());
+		return tmp;
 	}
 
 }

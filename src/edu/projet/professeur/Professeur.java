@@ -9,7 +9,9 @@ import java.util.Map;
  */
 public class Professeur {
 
-	public static String user;
+	public static boolean activeTrace = false;
+	static boolean irc = false;
+	static String user;
 
 	/**
 	 * Pour tester si l'utilisateur répète la même question
@@ -24,7 +26,8 @@ public class Professeur {
 
 		Professeur.user = sender;
 		Map<String, Integer> motsClesQuestion = new HashMap<>();
-		question = Conjugaison.conjuger(question, Fichier.getCheminFichierConjugaison());
+		question = Conjugaison.conjuger(question,
+				Fichier.getCheminFichierConjugaison());
 
 		if (questionPrecedente.equals(question))
 			motsClesQuestion.put("xrepetition", -1);

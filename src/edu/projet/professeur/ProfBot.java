@@ -19,6 +19,7 @@ public class ProfBot extends PircBot {
 		setName(name);
 	}
 
+	@Override
 	public void onMessage(String channel, String sender, String login, String hostname, String message) {
 
 		if (!message.trim().equals("") && channel.equals("#ircprojet")) {

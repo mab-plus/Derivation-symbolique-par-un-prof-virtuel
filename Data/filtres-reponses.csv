@@ -91,7 +91,7 @@ suis|0|* je suis *|goto je
 suis|0|*|Pourquoi dites-vous «suis» ?|(user), je ne comprends pas.
 suis-je|0|* @suis-je *|Croyez-vous que vous êtes (3)?|Voudriez-vous être (3)?|Souhaitez-vous que je vous dise que vous êtes (3)?|Qu'est-ce que cela signifierait si vous étiez (3)?|goto que
 votre|0|* votre *|Pourquoi êtes-vous préoccupé par mon (2)?|Et vôtre (2)?|Êtes-vous inquiet mon (2)?|Vraiment, mon (2)?|Qu'est-ce qui vous fait penser à mon (2)?|Voulez-vous mon (2)?
-vous|0|* vous me rappellez  *|goto pareil
+vous|0|* vous me rappelez  *|goto pareil
 vous|0|* vous êtes *|Qu'est-ce qui vous fait penser que je suis (2)?|Cela vous plait-il de croire que je suis (2)?|Souhaitez-vous parfois être (2)?|Peut-être que vous aimeriez être (2).
 vous|0|* vous * m'avez *|Pourquoi pensez-vous que je vous ai (3)?|Vous aimez penser que je vous ai (3) - n'est-ce pas?|Qu'est-ce qui vous fait penser que je vous ai (3)?|Vraiment, je vous ai (3)?|Souhaitez-vous croire que je vous ai (3)?|Supposons que je vous ai (3) - qu'est-ce que cela signifie?|Est-ce que quelqu'un d'autre croit que je vous ai (3)?
 vous|0|* vous *|Oh ! je (1) (2)|Et vous, vous (1) (2)|Nous parlons de vous - pas de moi.|Vous ne parlez pas vraiment de moi - n'est-ce pas?|Quels sont vos sentiments ?|Quand vous serez comme moi, vous parlerez beaucoup moins.
